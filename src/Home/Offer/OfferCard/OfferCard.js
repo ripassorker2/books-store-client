@@ -5,29 +5,32 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { Box } from '@mui/system';
 
-export default function OfferCard() {
+export default function OfferCard({ book }) {
+    console.log(book)
     return (
-        <Card sx={{ maxWidth: "100%" }}>
+        <Card sx={{ maxWidth: "100%", height: "500px" }}>
             <CardMedia
                 component="img"
-                height="140"
-                image="/static/images/cards/contemplative-reptile.jpg"
-                alt="green iguana"
+                height="50%"
+                image={book?.photo}
+                alt="book img"
             />
-            <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                    Lizard
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                    Lizards are a widespread group of squamate reptiles, with over 6,000
-                    species, ranging across all continents except Antarctica
-                </Typography>
-            </CardContent>
-            <CardActions>
-                <Button size="small">Share</Button>
-                <Button size="small">Learn More</Button>
-            </CardActions>
+            <Box className='flex flex-col justify-between h-[50%]'>
+                <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                        {book?.title}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                        {book?.description.slice(0, 150)}
+                    </Typography>
+                </CardContent>
+                <CardActions className='flex justify-between'>
+                    <p className='price'>Price: {book?.price}$</p>
+                    <Button size="small">More Details</Button>
+                </CardActions>
+            </Box>
         </Card>
     );
 }

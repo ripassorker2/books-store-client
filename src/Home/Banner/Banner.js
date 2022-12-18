@@ -12,7 +12,7 @@ const Banner = () => {
           autoPlay={true}
           showIndicators={false}
           showArrows={false}
-          
+          showThumbs={false}
         >
           <div className="first_slide">
             <div className="slide_details">
