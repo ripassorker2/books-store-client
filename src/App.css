@@ -2,12 +2,22 @@
   margin: 0;
   padding: 0;
 }
-
+/* ---------------------navbar css ------------ */
+.navbar-bg {
+  background-color: #03203c !important;
+  padding: 1rem 0;
+}
+/* .search {
+  background-color: red !important;
+} */
 .offer-container {
   padding-left: 0px !important;
   padding-right: 0px !important;
 }
+<<<<<<< HEAD
 
 .box-containre{
   padding: 0px;
 }
+=======
+>>>>>>> 9cc6aebb327613ca7d09ee6c4bac4ca15aa64f5e
