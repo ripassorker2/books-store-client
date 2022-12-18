@@ -35,3 +35,12 @@
     border: 2px solid red;
     height: 100%;
 }
+
+.offer .card-img img{
+    height: 250px;
+}
+
+.price{
+    color: #fc3333;
+    font-weight: 500;
+}

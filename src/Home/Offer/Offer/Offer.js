@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import './Offer.css';
@@ -6,14 +6,25 @@ import { Grid, Link, Paper } from '@mui/material';
 import OfferCard from '../OfferCard/OfferCard';
 
 const Offer = () => {
+    const [books, setBooks] = useState([]);
+
+    useEffect(() => {
+        fetch('books.json')
+            .then(res => res.json())
+            .then(data => {
+                setBooks(data)
+            })
+    }, []);
+
+    // console.log(books)
 
     return (
-        <Container className='mt-5 mb-5' maxWidth="xl">
+        <Container className='offer mt-5 mb-5' maxWidth="xl">
             <Box sx={{ width: '100%' }}>
                 <Grid container spacing={2}>
                     <Grid item sx={12} sm={4} xl={4}>
                         <Box className='mega-offer'>
-                            <OfferCard></OfferCard>
+                            Time Limited Mega Offer
                         </Box>
                     </Grid>
                     <Grid item sx={12} sm={8} xl={8}>
@@ -25,25 +36,12 @@ const Offer = () => {
                                 <li className='ml-4'><Link>70% Offer</Link></li>
                             </ul>
                         </Box>
-                        <Grid container spacing={2}>
-                            <Grid item sx={12} sm={6} md={6} lg={4} xl={4}>
-                                <OfferCard />
-                            </Grid>
-                            <Grid item sx={12} sm={6} md={6} lg={4} xl={4}>
-                                <OfferCard />
-                            </Grid>
-                            <Grid item sx={12} sm={6} md={6} lg={4} xl={4}>
-                                <OfferCard />
-                            </Grid>
-                            <Grid item sx={12} sm={6} md={6} lg={4} xl={4}>
-                                <OfferCard />
-                            </Grid>
-                            <Grid item sx={12} sm={6} md={6} lg={4} xl={4}>
-                                <OfferCard />
-                            </Grid>
-                            <Grid item sx={12} sm={6} md={6} lg={4} xl={4}>
-                                <OfferCard />
-                            </Grid>
+                        <Grid className='card-img' container spacing={2}>
+                            {
+                                books.map((book, i) => <Grid key={i} item sx={12} sm={6} md={6} lg={4} xl={4}>
+                                    <OfferCard book={book} />
+                                </Grid>)
+                            }
                         </Grid>
                     </Grid>
                 </Grid>
