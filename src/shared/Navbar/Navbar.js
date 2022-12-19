@@ -14,6 +14,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import {
+  Avatar,
   Badge,
   FormControl,
   InputBase,
@@ -29,6 +30,8 @@ import {
   HeartBroken,
   ShoppingCartCheckoutOutlined,
 } from "@mui/icons-material";
+import { Stack } from "@mui/system";
+import NavLinksBar from "./NavLinksBar";
 
 const drawerWidth = 240;
 const navItems = ["Home", "About", "Contact"];
@@ -130,6 +133,12 @@ export default function Navbar(props) {
                 <ShoppingCartCheckoutOutlined></ShoppingCartCheckoutOutlined>
               </Badge>
             </Button>
+            <Button>
+              <Stack>
+                <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
+              </Stack>
+            </Button>
+
             {/* {navItems.map((item) => (
               <Button key={item} sx={{ color: "#fff" }}>
                 {item}
@@ -160,7 +169,15 @@ export default function Navbar(props) {
       </Box>
       <Box component="main">
         <Toolbar />
-        {/* <Typography></Typography> */}
+
+        <div className="flex items-center justify-between p-3 mt-5 navLinks">
+          <div>drop down</div>
+          <div>
+            {navItems.map((item) => (
+              <Button key={item}>{item}</Button>
+            ))}
+          </div>
+        </div>
       </Box>
     </Box>
   );
