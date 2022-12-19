@@ -5,11 +5,13 @@
 /* ---------------------navbar css ------------ */
 .navbar-bg {
   background-color: #03203c !important;
-  padding: 1rem 0;
+  padding: 12px 0;
 }
 /* .search {
   background-color: red !important;
 } */
+.navLinks div {
+}
 .offer-container {
   padding-left: 0px !important;
   padding-right: 0px !important;
