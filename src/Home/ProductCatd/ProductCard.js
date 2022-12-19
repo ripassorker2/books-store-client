@@ -10,22 +10,23 @@ const ProductCard = ({ products }) => {
     products;
   return (
     <Card sx={{}}>
+      <CardMedia
+        component="img"
+        height="140"
+        image={img}
+        alt="green iguana"
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          Lizard
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          Lizards are a widespread group of squamate reptiles, with over
+          6,000 species, ranging across all continents except Antarctica
+        </Typography>
+      </CardContent>
       <CardActionArea>
-        <CardMedia
-          component="img"
-          height="140"
-          image={img}
-          alt="green iguana"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            Lizard
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over
-            6,000 species, ranging across all continents except Antarctica
-          </Typography>
-        </CardContent>
+        <button>Details</button>
       </CardActionArea>
     </Card>
   );
