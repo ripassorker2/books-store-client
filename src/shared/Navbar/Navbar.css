@@ -1,0 +1,68 @@
+/* ---------------------navbar css ------------ */
+.navbar-bg {
+  background-color: #03203c !important;
+  padding: 12px 0;
+}
+.main {
+  width: 100%;
+}
+.navLinks {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu-icon {
+  display: none !important;
+}
+.profile-icon {
+  text-align: end !important;
+}
+.drawer-content-style {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media screen and (min-width: 1200px) {
+  .category {
+    width: 40%;
+    text-align: center;
+  }
+  .menu-links {
+    width: 60%;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar-bg {
+    padding: 5px 0;
+  }
+  .navLinks {
+    margin: 0;
+    padding: 0;
+  }
+  .menu-icon {
+    display: block !important;
+  }
+  .input-field {
+    display: none !important;
+  }
+  .menu-element {
+    display: none !important;
+  }
+  .input-style {
+    width: 200px !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+  .category,
+  .menu-links {
+    display: none;
+  }
+}

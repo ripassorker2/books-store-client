@@ -13,6 +13,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import "./Navbar.css";
 import {
   Avatar,
   Badge,
@@ -34,7 +35,7 @@ import { Stack } from "@mui/system";
 import NavLinksBar from "./NavLinksBar";
 
 const drawerWidth = 240;
-const navItems = ["Home", "About", "Contact"];
+const navItems = ["Home", "Pages", "Shop", "Blog", "Gallery"];
 
 export default function Navbar(props) {
   const { window } = props;
@@ -43,25 +44,34 @@ export default function Navbar(props) {
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
-  const [age, setAge] = React.useState("");
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        MUI
+      <Typography variant="h6" sx={{ my: 2 }} className="drawer-content-style">
+        <span className="text-[16px] ml-3">All Category</span>
+        <Box>
+          <Button>
+            <Badge color="secondary" badgeContent={99}>
+              <FavoriteBorder></FavoriteBorder>
+            </Badge>
+          </Button>
+          <Button>
+            <Badge color="secondary" badgeContent={99}>
+              <ShoppingCartCheckoutOutlined></ShoppingCartCheckoutOutlined>
+            </Badge>
+          </Button>
+        </Box>
       </Typography>
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item} />
-            </ListItemButton>
-          </ListItem>
+          <List>
+            <ListItem key={item} disablePadding>
+              <ListItemButton sx={{ textAlign: "center" }}>
+                <ListItemText primary={item} />
+              </ListItemButton>
+            </ListItem>
+          </List>
         ))}
       </List>
     </Box>
@@ -80,23 +90,22 @@ export default function Navbar(props) {
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
+            sx={{ mr: 2 }}
+            className="menu-icon"
           >
             <MenuIcon />
           </IconButton>
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            sx={{ flexGrow: 1 }}
+            className="menu-element"
           >
             Book Store
           </Typography>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Paper
+              className="input-style"
               component="form"
               sx={{
                 p: "2px 4px",
@@ -122,7 +131,7 @@ export default function Navbar(props) {
               </IconButton>
             </Paper>
           </Typography>
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+          <Box className="menu-element">
             <Button sx={{ color: "#fff" }}>
               <Badge color="secondary" badgeContent={99}>
                 <FavoriteBorder></FavoriteBorder>
@@ -133,17 +142,13 @@ export default function Navbar(props) {
                 <ShoppingCartCheckoutOutlined></ShoppingCartCheckoutOutlined>
               </Badge>
             </Button>
+          </Box>
+          <Box className="profile-icon ">
             <Button>
               <Stack>
                 <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
               </Stack>
             </Button>
-
-            {/* {navItems.map((item) => (
-              <Button key={item} sx={{ color: "#fff" }}>
-                {item}
-              </Button>
-            ))} */}
           </Box>
         </Toolbar>
       </AppBar>
@@ -157,7 +162,6 @@ export default function Navbar(props) {
             keepMounted: true, // Better open performance on mobile.
           }}
           sx={{
-            display: { xs: "block", sm: "none" },
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
@@ -167,15 +171,36 @@ export default function Navbar(props) {
           {drawer}
         </Drawer>
       </Box>
-      <Box component="main">
+      <Box component="main" className="main">
         <Toolbar />
-
-        <div className="flex items-center justify-between p-3 mt-5 navLinks">
-          <div>drop down</div>
-          <div>
-            {navItems.map((item) => (
-              <Button key={item}>{item}</Button>
-            ))}
+        <div className=" p-3 mt-5 navLinks">
+          <div className="category">
+            <FormControl sx={{ m: 1, minWidth: 220 }} size="small">
+              <InputLabel id="demo-select-small">All Category</InputLabel>
+              <Select
+                labelId="demo-select-small"
+                id="demo-select-small"
+                label="Age"
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value={10}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem>
+              </Select>
+            </FormControl>
+          </div>
+          <div className="menu-links">
+            <List className="nav-links">
+              {navItems.map((item) => (
+                <ListItem key={item} disablePadding>
+                  <ListItemButton sx={{ textAlign: "center" }}>
+                    <ListItemText primary={item} />
+                  </ListItemButton>
+                </ListItem>
+              ))}
+            </List>
           </div>
         </div>
       </Box>
