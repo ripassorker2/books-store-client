@@ -1,6 +1,7 @@
 import { Container } from "@mui/material";
 import "./App.css";
 import Banner from "./Home/Banner/Banner";
+import HotSell from "./Home/HotSell/HotSell";
 
 import Offer from "./Home/Offer/Offer/Offer";
 import Product from "./Home/Product/Product";
@@ -15,6 +16,7 @@ function App() {
       <Banner></Banner>
       <Offer></Offer>
       <Product></Product>
+      <HotSell />
       <Subscription />
       <Footer />
     </Container>
