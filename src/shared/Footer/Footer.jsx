@@ -4,30 +4,30 @@ const Footer = () => {
   return (
     <footer class="bg-white dark:bg-gray-900">
       <div class="container p-6 mx-auto">
-        <div class="lg:flex md:flex-col-reverse gap-x-3">
-          <div class="w-full lg:w-2/5">
-            <div class="px-6">
-              <div>
+        <div class="lg:flex gap-x-3">
+          <div class="w-full lg:w-2/5 mx-auto ">
+            <div class="px-6 md:m-auto lg:text-start text-center ">
+              <div className="">
                 <a
                   href="/"
-                  class="text-2xl font-serif font-bold text-red-600  hover:text-gray-700 dark:hover:text-gray-300"
+                  class="text-2xl  font-serif font-bold text-red-600  hover:text-red-700 duration-200"
                 >
                   Book Store
                 </a>
               </div>
 
-              <p class="max-w-sm mt-2 text-gray-300 dark:text-gray-300 pr-5">
+              <p class=" mt-2 text-gray-300  dark:text-gray-300 pr-5">
                 Join 31,000+ users and never miss out on new books.
               </p>
 
-              <div class="flex mt-6 -mx-2">
+              <div class="flex lg:justify-start justify-center mt-6 -mx-2">
                 <a
                   href="/"
-                  class="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
+                  class="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-red-600 "
                   aria-label="Reddit"
                 >
                   <svg
-                    class="w-5 h-5 fill-current"
+                    class="w-7 h-7 fill-current"
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -38,11 +38,11 @@ const Footer = () => {
 
                 <a
                   href="/"
-                  class="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
+                  class="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-red-600"
                   aria-label="Facebook"
                 >
                   <svg
-                    class="w-5 h-5 fill-current"
+                    class="w-7 h-7 fill-current"
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -53,11 +53,11 @@ const Footer = () => {
 
                 <a
                   href="/"
-                  class="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
+                  class="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-red-600"
                   aria-label="Github"
                 >
                   <svg
-                    class="w-5 h-5 fill-current"
+                    class="w-7 h-7 fill-current"
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -68,6 +68,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
+
           <div class="mt-6 lg:mt-0 lg:flex-1">
             <div class="grid grid-cols-1 gap-6  md:grid-cols-4 lg:grid-cols-4">
               <div>
