@@ -17,7 +17,7 @@ const HotSell = () => {
   }, []);
 
   return (
-    <div className="my-9 w-[90%] mx-auto">
+    <div className=" my-8 w-[90%] mx-auto">
       <div className="flex md:justify-end justify-center px-4 ">
         <ul className="offer-ul flex no-underline mb-3">
           <li>
@@ -61,8 +61,8 @@ const HotSell = () => {
         className="mySwiper"
       >
         {books.map((book, index) => (
-          <SwiperSlide>
-            <div class="flex  md:h-64 h-56 w-full bg-gray-70 hover:border- hover:shadow-xl  duration-300  border  relative">
+          <SwiperSlide key={index}>
+            <div class="flex  md:h-64 h-56 w-full hover:border- hover:shadow-xl  duration-300  border  relative">
               <div class="  bg-white ">
                 <div className="flex justify-center w-full ">
                   <img
