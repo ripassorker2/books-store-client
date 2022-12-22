@@ -15,7 +15,7 @@ const BannerItem = ({ products }) => {
           <button>Submit</button>
         </div>
         <div className="slide-img">
-          <img src={picture} alt="img" />
+          <img className='slider_img' src={picture} alt="img" />
         </div>
       </div>
     </>
