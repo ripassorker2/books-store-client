@@ -36,7 +36,7 @@ const HotSell = () => {
         slidesPerView={1}
         spaceBetween={0}
         autoplay={{
-          delay: 4000,
+          delay: 3000,
           disableOnInteraction: false,
         }}
         modules={[Pagination, Navigation, Autoplay]}
