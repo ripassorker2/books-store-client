@@ -1,10 +1,10 @@
 import { StarRate } from "@mui/icons-material";
-import { Link } from "@mui/material";
+import { Container, Link } from "@mui/material";
 import React from "react";
 
 const ProductReview = () => {
   return (
-    <div className="sm:max-w-xl md:max-w-full lg:max-w-screen-xl px-5 m-auto">
+    <Container className="sm:max-w-xl md:max-w-full lg:max-w-screen-xl px-5 m-auto">
       <ul className="offer-ul flex text-gray-800 no-underline mb-2">
         <li className="">
           <Link>Reviews</Link>
@@ -106,7 +106,7 @@ const ProductReview = () => {
           <StarRate fontSize="14" className="text-red-500 inline-block ml-1 " />
         </p>
       </div>
-    </div>
+    </Container>
   );
 };
 

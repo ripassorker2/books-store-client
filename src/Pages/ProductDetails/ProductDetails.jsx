@@ -1,11 +1,12 @@
 import { HeartBroken } from "@mui/icons-material";
+import { Container } from "@mui/material";
 import React from "react";
 import ProductReview from "./ProductReview";
 
 const ProductDetails = () => {
   return (
     <>
-      <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+      <Container className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
         <div className="flex flex-col items-center justify-between lg:flex-row">
           <div className="relative lg:w-1/2">
             <img
@@ -16,7 +17,7 @@ const ProductDetails = () => {
           </div>
           <div className="mb-10 lg:max-w-lg lg:pr-5 lg:mb-0 pt-6 md:pt-0 ">
             <div className="max-w-xl mb-6">
-              <h2 className="mb-3  text-xl font-bold tracking-tight text-gray-900 sm:leading-none">
+              <h2 className="mb-3 md:mt-0 mt-3  text-xl font-bold tracking-tight text-gray-900 sm:leading-none">
                 Desert Star
               </h2>
               <h2 className="mb-3  text-lg font-bold tracking-tight text-gray-900 sm:leading-none">
@@ -58,7 +59,7 @@ const ProductDetails = () => {
             </div>
           </div>
         </div>
-      </div>
+      </Container>
       <ProductReview />
     </>
   );

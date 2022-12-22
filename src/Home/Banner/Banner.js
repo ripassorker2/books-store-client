@@ -1,70 +1,45 @@
-import React from 'react';
-import { Carousel } from 'react-responsive-carousel';
-import "react-responsive-carousel/lib/styles/carousel.min.css"; 
+import React, { useEffect, useState } from 'react';
 import './Banner.css'
-import img2 from '../../asete/asset 16.png'
-import img3 from '../../asete/asset 17.png'
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import "./Banner.css";
+import { Autoplay, Pagination, Navigation } from "swiper";
+import BannerItem from './BannerItem';
 
 const Banner = () => {
+  const [product, setProduct] = useState([]);
+  
+
+  useEffect(() => {
+    fetch("category.json")
+      .then((res) => res.json())
+      .then((data) => setProduct(data));
+  }, []);
     return (
-      <div className="banner">
-        <Carousel
-          autoPlay={true}
-          showIndicators={false}
-          showArrows={false}
-          showThumbs={false}
+      <>
+        <Swiper
+          spaceBetween={30}
+          centeredSlides={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          navigation={true}
+          modules={[Autoplay, Pagination, Navigation]}
+          className="mySwiper"
         >
-          <div className="first_slide">
-            <div className="slide_details">
-              <h1>
-                GET ALL <span>ORIGINAL AUTO</span> PARTS
-              </h1>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. os
-                perferendis minus in hic deserunt qui fugit illo{" "}
-              </p>
-
-              <button>Submit</button>
-            </div>
-            <div className="slide-img">
-              <img src={img2} alt="img" />
-            </div>
-          </div>
-          <div className="first_slide">
-            <div className="slide_details">
-              <h1>
-                GET ALL <span>ORIGINAL AUTO</span> PARTS
-              </h1>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. os
-                perferendis minus in hic deserunt qui fugit illo{" "}
-              </p>
-
-              <button>Submit</button>
-            </div>
-            <div className="slide-img">
-              <img src={img3} alt="img" />
-            </div>
-          </div>
-          <div className="first_slide">
-            <div className="slide_details">
-              <h1>
-                GET ALL <span>ORIGINAL AUTO</span> PARTS
-              </h1>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. os
-                perferendis minus in hic deserunt qui fugit illo{" "}
-              </p>
-
-              <button>Submit</button>
-            </div>
-            <div className="slide-img">
-              <img src={img2} alt="img" />
-            </div>
-          </div>
-        </Carousel>
-      </div>
+          {product.map((products) => (
+            <SwiperSlide>
+              <BannerItem key={products._id} products={products}></BannerItem>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </>
     );
 };
-// ReactDOM.render(<DemoCarousel />, document.querySelector(".demo-carousel"));
 export default Banner;
