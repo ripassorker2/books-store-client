@@ -1,0 +1,18 @@
+.all-product{
+    color: black;
+    align-items: center;
+}
+.all-ul li a{
+    text-decoration: none;
+    font-weight:600;
+    cursor: pointer;
+    position: relative;
+    color: black;
+}
+
+.all-ul li a:hover{
+    color: #fc3333;
+}
+
+
+
