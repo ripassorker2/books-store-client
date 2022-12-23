@@ -4,6 +4,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
+import { Link } from 'react-router-dom';
 
 const ProductCard = ({ products }) => {
   const { img } =
@@ -26,7 +27,7 @@ const ProductCard = ({ products }) => {
         </Typography>
       </CardContent>
       <CardActionArea>
-        <button>Details</button>
+        <Link to='/details'>Details</Link>
       </CardActionArea>
     </Card>
   );
