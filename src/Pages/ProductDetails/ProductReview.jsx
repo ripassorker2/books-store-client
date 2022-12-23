@@ -4,7 +4,7 @@ import React from "react";
 
 const ProductReview = () => {
   return (
-    <Container className="sm:max-w-xl md:max-w-full lg:max-w-screen-xl px-5 m-auto">
+    <div className="max-w-screen-xl px-5 m-auto">
       <ul className="offer-ul flex text-gray-800 no-underline mb-2">
         <li className="">
           <Link>Reviews</Link>
@@ -106,7 +106,27 @@ const ProductReview = () => {
           <StarRate fontSize="14" className="text-red-500 inline-block ml-1 " />
         </p>
       </div>
-    </Container>
+      <div>
+        <ul className="offer-ul flex text-gray-800 no-underline mb-2">
+          <li className="">
+            <Link>Create Review</Link>
+          </li>
+        </ul>
+        <textarea
+          className="border p-3 border-gray-600 focus:outline-gray-600 focus:outline-1 
+          md:w-[40%] "
+          name="riview"
+          id="riview"
+          rows="2"
+          placeholder="Write here your review"
+        ></textarea>
+        <div>
+          <button className="md:px-6 px-4 md:py-3 py-2 mt-1 md:text-base text-sm text-gray-100 bg-red-600 hover:bg-purple-600  font-semibold rounded-md duration-300 ">
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
   );
 };
 
