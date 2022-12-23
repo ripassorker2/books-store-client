@@ -10,27 +10,27 @@ import BannerItem from './BannerItem';
 
 const Banner = () => {
   const [product, setProduct] = useState([]);
-  
+
 
   useEffect(() => {
     fetch("category.json")
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, []);
-    return (
+  return (
       <>
         <Swiper
           spaceBetween={30}
           centeredSlides={true}
           autoplay={{
-            delay: 2500,
+            delay: 3000,
             disableOnInteraction: false,
           }}
           pagination={{
             clickable: true,
           }}
           navigation={true}
-          modules={[Autoplay, Pagination, Navigation]}
+          modules={[Pagination, Navigation, Autoplay]}
           className="mySwiper"
         >
           {product.map((products) => (
@@ -40,6 +40,6 @@ const Banner = () => {
           ))}
         </Swiper>
       </>
-    );
+  );
 };
 export default Banner;

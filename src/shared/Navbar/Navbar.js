@@ -33,6 +33,7 @@ import {
 } from "@mui/icons-material";
 import { Stack } from "@mui/system";
 import NavLinksBar from "./NavLinksBar";
+import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
 const navItems = ["Home", "Pages", "Shop", "Blog", "Gallery"];
@@ -101,7 +102,7 @@ export default function Navbar(props) {
             sx={{ flexGrow: 1 }}
             className="menu-element"
           >
-            Book Store
+            <Link to="/">Book Store</Link>
           </Typography>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Paper
