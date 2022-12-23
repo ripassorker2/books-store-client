@@ -42,7 +42,7 @@ const HotSell = () => {
         modules={[Pagination, Navigation, Autoplay]}
         breakpoints={{
           390: {
-            slidesPerView: 1,
+            slidesPerView: 2,
             spaceBetween: 20,
           },
           640: {
@@ -72,11 +72,14 @@ const HotSell = () => {
                   />
                 </div>
                 <div class="p-4 text-start">
-                  <h5 class="text-gray-700 md:text-lg font-semibold mb-2">
+                  <h5 class="text-gray-700 md:text-base font-semibold mb-2">
                     {book?.title}
                   </h5>
                   <div className="flex justify-end">
-                    <p className="text-end md:text-lg text-red-600 absolute  bottom-3 right-4">
+                    <button className="px-2 py-1 absolute bottom-4 left-4  text-gray-100 bg-red-600 hover:bg-purple-600  text-sm font-semibold rounded-md duration-300 ">
+                      Details
+                    </button>
+                    <p className="text-end md:text-lg text-red-600 absolute  bottom-4 right-4">
                       ${book?.price}.00
                     </p>
                   </div>
