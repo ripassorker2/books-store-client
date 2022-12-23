@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
+import {Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation, Autoplay } from "swiper";
 import { Link } from "@mui/material";
 

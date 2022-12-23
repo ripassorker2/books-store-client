@@ -8,7 +8,6 @@ import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
 
 export default function OfferCard({ book }) {
-    console.log(book)
     return (
         <Card sx={{ maxWidth: "100%", height: "500px" }}>
             <CardMedia
