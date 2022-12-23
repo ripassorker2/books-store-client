@@ -6,10 +6,11 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
+import { Link } from 'react-router-dom';
 
 export default function OfferCard({ book }) {
     return (
-        <Card sx={{ maxWidth: "100%", height: "500px" }}>
+        <Card sx={{ maxWidth: "100%" }}>
             <CardMedia
                 component="img"
                 height="50%"
@@ -21,13 +22,10 @@ export default function OfferCard({ book }) {
                     <Typography gutterBottom variant="h5" component="div">
                         {book?.title}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                        {book?.description.slice(0, 150)}
-                    </Typography>
                 </CardContent>
                 <CardActions className='flex justify-between'>
                     <p className='price'>Price: {book?.price}$</p>
-                    <Button size="small">More Details</Button>
+                    <Link size="small" to="/details">More Details</Link>
                 </CardActions>
             </Box>
         </Card>

@@ -17,7 +17,7 @@ const HotSell = () => {
   }, []);
 
   return (
-    <div className=" my-8 w-[90%] mx-auto">
+    <div className="my-8 w-[90%] mx-auto">
       <div className="flex md:justify-end justify-center px-4 ">
         <ul className="offer-ul flex no-underline mb-3">
           <li>
