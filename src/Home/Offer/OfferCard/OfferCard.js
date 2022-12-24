@@ -10,22 +10,21 @@ import { Link } from 'react-router-dom';
 
 export default function OfferCard({ book }) {
     return (
-        <Card sx={{ maxWidth: "100%" }}>
+        <Card sx={{ maxWidth: "100%", height:'400px' }} className="flex flex-col justify-between">
             <CardMedia
                 component="img"
-                height="50%"
                 image={book?.photo}
                 alt="book img"
             />
-            <Box className='flex flex-col justify-between h-[50%]'>
+            <Box className='flex flex-col justify-between'>
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                         {book?.title}
                     </Typography>
                 </CardContent>
                 <CardActions className='flex justify-between'>
-                    <p className='price'>Price: {book?.price}$</p>
-                    <Link size="small" to="/details">More Details</Link>
+                    <p className='price fw-semibold'>Price: {book?.price}$</p>
+                    <Link className='bg-[#fc3333] text-white px-4 py-1 rounded-md fw-bold' size="small" to="/details">More Details</Link>
                 </CardActions>
             </Box>
         </Card>

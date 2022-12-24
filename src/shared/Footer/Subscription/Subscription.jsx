@@ -2,8 +2,8 @@ import React from "react";
 
 const Subscription = () => {
   return (
-    <div>
-      <div class="w-full  bg-red-600  bg-no-repeat">
+    <div className="my-12">
+      <div class="w-full  bg-[#fc3333]  bg-no-repeat">
         <div class=" p-10  py-20  flex    flex-wrap  justify-around  ">
           <div className="text-center md:text-start">
             <div class=" m-0  p-0  text-2xl  text-white  antialiased ">
