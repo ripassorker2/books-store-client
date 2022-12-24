@@ -10,7 +10,7 @@ const Subscription = () => {
               Books & Get Updates
             </div>
             <div class=" m-0  p-0  text-base  text-white  antialiased  ">
-              Sign up for our books to get up-to-date from us
+              Sign up for our books to get up-to-date from us!
             </div>
           </div>
           <div class=" mt-3  flex  flex-row  ">
@@ -20,7 +20,7 @@ const Subscription = () => {
               placeholder="Enter your email here"
             />
             <button
-              class=" p-2  w-1/3   rounded-r-2xl  text-white hover:bg-purple-600 duration-300 bg-gray-900"
+              class=" p-2  w-1/3 rounded-r-2xl  text-white hover:bg-purple-600 duration-300 bg-gray-900"
               type="button"
             >
               Subscribe
