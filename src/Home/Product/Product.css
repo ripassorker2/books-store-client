@@ -1,0 +1,14 @@
+.product_card{
+    border-radius: 0 !important;
+    height: 400px;
+    position: relative;
+}
+.card-img img{
+    height: 250px;
+}
+.btn_more{
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+}
