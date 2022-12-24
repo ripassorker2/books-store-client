@@ -9,7 +9,7 @@ const Offer = () => {
     const [books, setBooks] = useState([]);
 
     useEffect(() => {
-        fetch('books.json')
+        fetch('http://localhost:5000/products')
             .then(res => res.json())
             .then(data => {
                 setBooks(data)

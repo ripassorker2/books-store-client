@@ -1,9 +1,13 @@
 .top-banner-slider {
   height: 400px;
-  background-color: aqua;
   padding: 0px 50px;
   display: flex;
   align-items: center;
+}
+
+.banner-slider{
+  background-color: #e4e1e1;
+  padding: 10px 0px;
 }
 
 .first_slide {
@@ -20,14 +24,14 @@
 .slide_details h1 {
   font-size: 40px;
   font-weight: 700;
-  color: crimson;
+  color: #fc3333;
 }
 
 .slide_details button {
   margin-top: 20px;
   padding: 10px 10px;
   width: 150px;
-  background: crimson;
+  background: #fc3333;
   color: aliceblue;
   border: none;
   border-radius: 5px;
