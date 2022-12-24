@@ -12,7 +12,7 @@ const BannerItem = ({ products }) => {
             perferendis minus in hic deserunt qui fugit illo{" "}
           </p>
 
-          <button>Submit</button>
+          <button>View Collection</button>
         </div>
         <div className="slide-img">
           <img className='slider_img' src={picture} alt="img" />

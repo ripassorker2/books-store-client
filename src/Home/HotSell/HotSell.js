@@ -3,7 +3,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay } from "swiper";
-import { Link } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const HotSell = () => {
   const [books, setBooks] = useState([]);
@@ -54,7 +54,7 @@ const HotSell = () => {
               slidesPerView: 4,
               spaceBetween: 20,
             },
-            1022: {
+            1024: {
               slidesPerView: 6,
               spaceBetween: 20,
             },
@@ -77,10 +77,10 @@ const HotSell = () => {
                       {book?.title}
                     </h5>
                     <div className="flex justify-end">
-                      <button className="px-2 py-1 absolute bottom-4 left-4  text-gray-100 bg-red-600 hover:bg-purple-600  text-sm font-semibold rounded-md duration-300 ">
+                      <Link className="px-2 py-1 absolute bottom-4 left-4  text-gray-100 bg-[#fc3333] hover:bg-purple-600  text-sm font-semibold rounded-md duration-300 ">
                         Details
-                      </button>
-                      <p className="text-end md:text-lg text-red-600 absolute  bottom-4 right-4">
+                      </Link>
+                      <p className="text-end md:text-lg text-[#fc3333] absolute  bottom-4 fw-semibold right-4">
                         ${book?.price}.00
                       </p>
                     </div>
