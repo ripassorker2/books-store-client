@@ -25,17 +25,14 @@ import {
   Select,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import DirectionsIcon from "@mui/icons-material/Directions";
 import {
   FavoriteBorder,
-  HeartBroken,
   ShoppingCartCheckoutOutlined,
 } from "@mui/icons-material";
 import { Stack } from "@mui/system";
-import NavLinksBar from "./NavLinksBar";
 import { Link } from "react-router-dom";
 
-const drawerWidth = 240;
+const drawerWidth = 260;
 const navItems = ["Home", "Pages", "Shop", "Blog", "Gallery"];
 
 export default function Navbar(props) {
@@ -49,18 +46,41 @@ export default function Navbar(props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }} className="drawer-content-style">
-        <span className="text-[16px] ml-3">All Category</span>
         <Box>
-          <Button>
-            <Badge color="secondary" badgeContent={99}>
-              <FavoriteBorder></FavoriteBorder>
-            </Badge>
-          </Button>
-          <Button>
-            <Badge color="secondary" badgeContent={99}>
-              <ShoppingCartCheckoutOutlined></ShoppingCartCheckoutOutlined>
-            </Badge>
-          </Button>
+          <div className="flex justify-between items-center px-2 mb-2">
+            <Link sx={{ color: "#fff" }}>
+              <Badge color="secondary" badgeContent={99}>
+                <FavoriteBorder></FavoriteBorder>
+              </Badge>
+            </Link>
+            <Link sx={{ color: "#fff" }}>
+              <Badge color="secondary" badgeContent={99}>
+                <ShoppingCartCheckoutOutlined></ShoppingCartCheckoutOutlined>
+              </Badge>
+            </Link>
+            <Link>
+              <button>Singup</button>
+            </Link>
+            <Link>
+              <button>Login</button>
+            </Link>
+          </div>
+          <FormControl sx={{ m: 1, minWidth: 240 }} size="small">
+            <InputLabel id="demo-select-small">All Category</InputLabel>
+            <Select
+              labelId="demo-select-small"
+              id="demo-select-small"
+              label="Age"
+              placeholder=""
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value={10}>Ten</MenuItem>
+              <MenuItem value={20}>Twenty</MenuItem>
+              <MenuItem value={30}>Thirty</MenuItem>
+            </Select>
+          </FormControl>
         </Box>
       </Typography>
       <Divider />
@@ -85,73 +105,70 @@ export default function Navbar(props) {
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar component="nav" className="navbar-bg">
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2 }}
-            className="menu-icon"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1 }}
-            className="menu-element"
-          >
-            <Link to="/">Book Store</Link>
-          </Typography>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <Paper
-              className="input-style"
-              component="form"
-              sx={{
-                p: "2px 4px",
-                display: "flex",
-                alignItems: "center",
-                width: 400,
-              }}
+        <div className="flex justify-between items-center md:block px-2">
+          <div>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2 }}
+              className="menu-icon"
             >
-              <InputBase
-                sx={{ ml: 1, flex: 1 }}
-                placeholder="Find your product"
-                inputProps={{ "aria-label": "search google maps" }}
-              />
+              <MenuIcon />
+            </IconButton>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 ms-auto py-2">
+            <div className="hidden md:block text-xl">
+              <Link to="/">
+                <button>Book Store</button>
+              </Link>
+            </div>
+            <div>
+              <div class=" flex  flex-row">
+                <input
+                  type="text"
+                  class=" text-gray-600  md:w-[340px] p-2  rounded-l-2xl"
+                  placeholder="Find your product"
+                />
+                <button
+                  class=" p-2  w-1/3  rounded-r-2xl  text-white hover:bg-purple-600 duration-300 bg-red-600"
+                  type="button"
+                >
+                  <SearchIcon></SearchIcon>
+                </button>
+              </div>
+            </div>
 
-              <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-              <IconButton
-                type="button"
-                sx={{ p: "10px" }}
-                aria-label="search"
-                className="search"
-              >
-                <SearchIcon />
-              </IconButton>
-            </Paper>
-          </Typography>
-          <Box className="menu-element">
-            <Button sx={{ color: "#fff" }}>
-              <Badge color="secondary" badgeContent={99}>
-                <FavoriteBorder></FavoriteBorder>
-              </Badge>
-            </Button>
-            <Button sx={{ color: "#fff" }}>
-              <Badge color="secondary" badgeContent={99}>
-                <ShoppingCartCheckoutOutlined></ShoppingCartCheckoutOutlined>
-              </Badge>
-            </Button>
-          </Box>
-          <Box className="profile-icon ">
-            <Button>
-              <Stack>
-                <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-              </Stack>
-            </Button>
-          </Box>
-        </Toolbar>
+            <div className="text-end hidden md:block">
+              <Link sx={{ color: "#fff" }} className="mx-2 lg:mx-4 text-xl ">
+                <Badge color="secondary" badgeContent={99}>
+                  <FavoriteBorder></FavoriteBorder>
+                </Badge>
+              </Link>
+              <Link sx={{ color: "#fff" }} className="mx-2 lg:mx-4 text-xl ">
+                <Badge color="secondary" badgeContent={99}>
+                  <ShoppingCartCheckoutOutlined></ShoppingCartCheckoutOutlined>
+                </Badge>
+              </Link>
+              {/* for login authentication */}
+              <Link>
+                <button className="mx-2 lg:mx-4 text-xl ">Singup</button>
+              </Link>
+              <Link>
+                <button className="mx-2 lg:mx-4 text-xl ">Login</button>
+              </Link>
+              {/* <Button className="profile-icon ">
+                  <Stack>
+                    <Avatar
+                      alt="Cindy Baker"
+                      src="/static/images/avatar/3.jpg"
+                    />
+                  </Stack>
+                </Button> */}
+            </div>
+          </div>
+        </div>
       </AppBar>
       <Box component="nav">
         <Drawer
@@ -176,32 +193,33 @@ export default function Navbar(props) {
         <Toolbar />
         <div className=" p-3 mt-5 navLinks">
           <div className="category">
-            <FormControl sx={{ m: 1, minWidth: 220 }} size="small">
-              <InputLabel id="demo-select-small">All Category</InputLabel>
-              <Select
-                labelId="demo-select-small"
-                id="demo-select-small"
-                label="Age"
-              >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
-              </Select>
-            </FormControl>
-          </div>
-          <div className="menu-links">
-            <List className="nav-links">
-              {navItems.map((item) => (
-                <ListItem key={item} disablePadding>
-                  <ListItemButton sx={{ textAlign: "center" }}>
-                    <ListItemText primary={item} />
-                  </ListItemButton>
-                </ListItem>
-              ))}
-            </List>
+            <div>
+              <FormControl sx={{ m: 1, minWidth: 220 }} size="small">
+                <InputLabel id="demo-select-small">All Category</InputLabel>
+                <Select
+                  labelId="demo-select-small"
+                  id="demo-select-small"
+                  label="Age"
+                  placeholder=""
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={10}>Ten</MenuItem>
+                  <MenuItem value={20}>Twenty</MenuItem>
+                  <MenuItem value={30}>Thirty</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+            <div className="menu-links">
+              <div className="flex items-center justify-between">
+                {navItems.map((item) => (
+                  <Link>
+                    <button className="lg:mr-16 mx-6">{item}</button>
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </Box>
