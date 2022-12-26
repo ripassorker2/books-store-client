@@ -1,5 +1,4 @@
 import { HeartBroken } from "@mui/icons-material";
-import { Container } from "@mui/material";
 import React from "react";
 import ProductReview from "./ProductReview";
 import ReletedProducts from "./ReletedProducts";
