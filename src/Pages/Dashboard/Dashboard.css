@@ -1,0 +1,27 @@
+.dashboard-common-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
+}
+.profile-container {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 10px;
+}
+.profile-child {
+  border: 1px solid rgb(219, 214, 214);
+}
+.dashboard-navbar-bg {
+  background-color: #03203c !important;
+}
+.dashboard-navlinks {
+  display: block !important;
+  margin: 0 auto !important;
+}
+@media screen and (max-width: 767px) {
+  .dashboard-common-container {
+    grid-template-columns: 1fr;
+  }
+  .profile-container {
+    grid-template-columns: 1fr;
+  }
+}
