@@ -32,9 +32,12 @@
 }
 
 .mega-offer{
-    border: 2px solid red;
-    height: 100%;
+    border: 1px solid red;
+    text-align: center;
+    height: 700px;
+    
 }
+
 
 .offer .card-img img{
     height: 250px;

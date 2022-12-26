@@ -77,7 +77,9 @@ const HotSell = () => {
                       {book?.title}
                     </h5>
                     <div className="flex justify-end">
-                      <Link className="px-2 py-1 absolute bottom-4 left-4  text-gray-100 bg-[#fc3333] hover:bg-purple-600  text-sm font-semibold rounded-md duration-300 ">
+                      <Link
+                        className="px-2 py-1 absolute bottom-4 left-4  text-gray-100 bg-[#fc3333] hover:bg-purple-600  text-sm font-semibold rounded-md duration-300 "
+                      >
                         Details
                       </Link>
                       <p className="text-end md:text-lg text-[#fc3333] absolute  bottom-4 fw-semibold right-4">
