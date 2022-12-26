@@ -9,7 +9,7 @@ const AllProduct = () => {
   const [allProduct, setAllProduct] = useState([]);
 
   useEffect(() => {
-    fetch("https://car-server-site-chi.vercel.app/product")
+    fetch("books.json")
       .then((res) => res.json())
       .then((data) => setAllProduct(data));
   }, []);
@@ -51,7 +51,7 @@ const AllProduct = () => {
       <Box>
         <Grid className="card-img" container spacing={2}>
           {allProduct.map((products) => (
-            <Grid key={products._id} item sx={12} sm={6} md={4} lg={3} xl={3}>
+            <Grid key={products._id} item sx={12} sm={6} md={3} lg={3} xl={3}>
               <AllProductCard products={products} />
             </Grid>
           ))}
