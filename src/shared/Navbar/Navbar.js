@@ -33,7 +33,28 @@ import { Stack } from "@mui/system";
 import { Link } from "react-router-dom";
 
 const drawerWidth = 260;
-const navItems = ["Home", "Pages", "Shop", "Blog", "Gallery"];
+const navItems = [
+  {
+    name: "Home",
+    link: "/home",
+  },
+  {
+    name: "Pages",
+    link: "/pages",
+  },
+  {
+    name: "Shop",
+    link: "/shop",
+  },
+  {
+    name: "Blog",
+    link: "/blog",
+  },
+  {
+    name: "Dashboard",
+    link: "/dashboard/dashboard",
+  },
+];
 
 export default function Navbar(props) {
   const { window } = props;
@@ -85,12 +106,12 @@ export default function Navbar(props) {
       </Typography>
       <Divider />
       <List>
-        {navItems.map((item) => (
+        {navItems?.map((item) => (
           <List>
-            <ListItem key={item} disablePadding>
-              <ListItemButton sx={{ textAlign: "center" }}>
-                <ListItemText primary={item} />
-              </ListItemButton>
+            <ListItem disablePadding cl>
+              <Link key={item} to={`${item?.link}`}>
+                <button className="mx-6">{item?.name}</button>
+              </Link>
             </ListItem>
           </List>
         ))}
@@ -213,9 +234,9 @@ export default function Navbar(props) {
             </div>
             <div className="menu-links">
               <div className="flex items-center justify-between">
-                {navItems.map((item) => (
-                  <Link>
-                    <button className="lg:mr-16 mx-6">{item}</button>
+                {navItems?.map((item) => (
+                  <Link key={item} to={`${item?.link}`}>
+                    <button className="lg:mr-16 mx-6">{item?.name}</button>
                   </Link>
                 ))}
               </div>
