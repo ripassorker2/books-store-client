@@ -15,6 +15,7 @@ const Resistation = () => {
     const name = event.target.name.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
+    const photo = event.target.photo.value;
     const role = event.target.role.value;
 
     createUser(email, password)
@@ -69,17 +70,18 @@ const Resistation = () => {
   // };
 
   return (
-    <div class="w-full max-w-sm shadow-xl hover:shadow-2xl rounded-lg m-auto">
+    <div class="w-full max-w-md shadow-xl rounded-lg m-auto border-2 -mt-14">
       <h1 className="text-red-600 pt-5 text-center font-semibold text-4xl">
-        Sign Up{" "}
+        {" "}
       </h1>
       <form onSubmit={handleResister} class="bg-white rounded px-8 pt-6 pb-2">
-        <div class="mb-4">
+        <div class="mb-4 mt-3">
           <label class="block text-gray-700 text-sm mb-2" for="username">
             Full Name
           </label>
           <input
-            class=" border rounded w-full py-3 focus:outline-gray-600 px-3 text-gray-700 leading-tight border-gray-500 "
+            class=" border rounded w-full py-3 focus:outline-gray-600 px-3
+             text-gray-700 leading-tight border-gray-500 "
             id="name"
             type="text"
             placeholder="Full Name"
@@ -91,28 +93,14 @@ const Resistation = () => {
             Email
           </label>
           <input
-            class=" border rounded w-full py-3 focus:outline-gray-600 px-3 text-gray-700 leading-tight border-gray-500 "
+            class=" border rounded w-full py-3 focus:outline-gray-600 px-3
+             text-gray-700 leading-tight border-gray-500 "
             id="email"
             type="email"
             placeholder="Enter Your Email"
             required
           />
         </div>
-        {/* <div>
-            <label htmlFor="email" className="block mb-2 text-sm">
-              Select profile type
-            </label>
-            <select
-              name="role"
-              className=" border rounded w-full py-3 focus:outline-gray-600 px-3 text-gray-700 leading-tight border-gray-500 "
-            >
-              <option disabled selected>
-                Select profile type
-              </option>
-              <option>Seller</option>
-              <option>Buyer</option>
-            </select>
-          </div> */}
         <label htmlFor="email" className="block mb-2 text-sm">
           Select profile type
         </label>
@@ -158,7 +146,8 @@ const Resistation = () => {
             Password
           </label>
           <input
-            class=" border rounded w-full py-3 focus:outline-gray-600 px-3 text-gray-700 leading-tight border-gray-500 "
+            class=" border rounded w-full py-3 focus:outline-gray-600 px-3 
+            text-gray-700 leading-tight border-gray-500 "
             id="password"
             type="password"
             placeholder="Password"
@@ -167,7 +156,8 @@ const Resistation = () => {
         </div>
         <div class="flex items-center justify-between">
           <button
-            class="bg-red-600 w-full hover:bg-red-700 text-white font-bold py-3 px-4 rounded duration-300 "
+            class="bg-purple-600 w-full hover:bg-purple-700 text-white font-bold py-3 px-4 
+            rounded duration-300 "
             type="submit"
           >
             Sign Up
@@ -176,10 +166,9 @@ const Resistation = () => {
       </form>
 
       <div className="px-8 pb-3">
-        <p className="text-gray-700 text-sm">If you have any account? Login</p>
         <button
           onClick={handleGoogleSignin}
-          className=" py-3.5 px-4 border rounded-lg   border-red-700 flex items-center w-full my-3"
+          className=" py-3.5 px-4 border rounded-lg   border-purple-600 flex justify-center items-center w-full my-3"
         >
           <svg
             width={19}
