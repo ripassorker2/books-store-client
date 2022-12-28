@@ -17,9 +17,6 @@ const Home = () => {
       <Services></Services>
       <HotsellTabs />
       <Product></Product>
-      <MainCheckout />
-      <CartPage></CartPage>
-      <Whistlist></Whistlist>
       <Subscription />
     </div>
   );

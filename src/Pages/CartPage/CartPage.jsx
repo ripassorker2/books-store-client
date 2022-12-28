@@ -1,5 +1,6 @@
 import { Container, TextField } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const CartPage = () => {
   return (
@@ -85,9 +86,11 @@ const CartPage = () => {
                 <h5>$760.00</h5>
               </div>
 
-              <button className="md:px-6 w-full px-4 md:py-4 py-2  text-gray-100 bg-red-600 hover:bg-purple-600  md:text-base text-sm font-semibold rounded-md duration-300 mt-2">
-                Proceed to checkout
-              </button>
+              <Link to="/payment">
+                <button className="md:px-6 w-full px-4 md:py-4 py-2  text-gray-100 bg-red-600 hover:bg-purple-600  md:text-base text-sm font-semibold rounded-md duration-300 mt-2">
+                  Proceed to checkout
+                </button>
+              </Link>
             </div>
           </div>
         </div>
