@@ -6,6 +6,7 @@ import './Offer.css';
 import { Grid } from '@mui/material';
 import OfferTabs from '../OfferTap/OfferTap';
 import img from '../../../asete/asset 17.png'
+import TimeCount from '../TimeCount/TimeCount';
 
 const Offer = () => {
     return (
@@ -13,28 +14,30 @@ const Offer = () => {
         <Box sx={{ width: "100%" }}>
           <Grid container spacing={2}>
             <Grid item sx={12} sm={4} xl={4}>
-              <Box className="mega-offer ml-0">
-                <div>
-                  <img class="w-40 md:w-60 m-auto my-8" src={img} alt="" />
-                  <p class="md:text-xl text-base duration-300">
+              <Box className="mega-offer">
+                <div className="m-6 md:m-2">
+                  <img className="w-40 md:w-60 m-auto my-8" src={img} alt="" />
+                  <p className="md:text-xl text-base duration-300">
                     Time Limited Mega
                   </p>
                   <h1
-                    class="text-[#fc3333] md:text-xl lg:text-2xl  text-2xl font-semibold my-2
-                  duration-300"
+                    className="text-[#fc3333] text-2xl md:text-[30px] lg:text-2xl  
+                   xl:text-3xl font-semibold duration-300"
                   >
                     50% Discount $500
                   </h1>
-                  <div class="flex justify-between md:px-2 lg:px-12 xl:px-16 sm:px-2 md:text-sm font-semibold">
+                  <div
+                    className="flex justify-between text-[12px] xl:px-16 lg:px-10  
+                  md:text-[13px] md:px-2 font-semibold"
+                  >
                     <p>Already Sold:01</p>
                     <p>Available:20</p>
                   </div>
-                  <h1
-                    class="text-2xl md:text-xl font-semibold my-6
-                  duration-300"
-                  >
-                    <span class="text-[#fc3333]">Hurry up!</span> offer end in
+                  <h1 className="text-xl  md:text-[19px] font-semibold my-6 lg:text-xl">
+                    <span className="text-[#fc3333]">Hurry up!</span> offer end
+                    in:
                   </h1>
+                  <TimeCount></TimeCount>
                 </div>
               </Box>
             </Grid>
