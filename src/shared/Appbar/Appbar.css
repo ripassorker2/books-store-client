@@ -1,0 +1,38 @@
+.color-change {
+  background-color: #fff;
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  box-shadow: 1px 2px 2px rgb(187, 185, 185);
+}
+.navbar {
+  position: relative !important;
+  background-color: #03203c !important;
+}
+.top-nav-links {
+  display: block;
+  margin-left: auto;
+}
+.appbar-links {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+.menu-icon {
+  display: none !important;
+}
+.page-title {
+  display: block !important;
+}
+@media screen and (max-width: 767px) {
+  .appbar-links {
+    display: none;
+  }
+  .menu-icon {
+    display: block !important;
+  }
+  .page-title {
+    display: none !important;
+  }
+}

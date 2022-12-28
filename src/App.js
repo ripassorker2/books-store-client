@@ -5,9 +5,11 @@ import { router } from "./Routes/Router";
 
 function App() {
   return (
-    <Container className="offer-container" maxWidth="xl">
-      <RouterProvider router={router}></RouterProvider>
-    </Container>
+    <div className="relative">
+      <Container className="offer-container" maxWidth="xl">
+        <RouterProvider router={router}></RouterProvider>
+      </Container>
+    </div>
   );
 }
 
