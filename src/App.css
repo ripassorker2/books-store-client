@@ -2,11 +2,13 @@
   margin: 0;
   padding: 0;
 }
-
+.ml-0{
+  margin-left: 0 !important;
+}
 .offer-container {
   padding-left: 0px !important;
   padding-right: 0px !important;
-  background-color: #f7fafc;
+  /* background-color: #f7fafc; */
 }
 
 .box-containre {

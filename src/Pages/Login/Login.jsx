@@ -1,11 +1,42 @@
-import React from "react";
+import React, { useContext } from "react";
+import { toast } from "react-hot-toast";
+import { useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
 const Login = () => {
+  const { signin, setLoading, signInWithGoogle } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
     console.log(email, password);
+
+    signin(email, password)
+      .then((result) => {
+        toast.success("Login successful.....!");
+        navigate(from, { replace: true });
+      })
+      .catch((err) => {
+        toast.error(err.message);
+        setLoading(false);
+      });
+  };
+
+  const handleGoogleSignin = () => {
+    signInWithGoogle()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("Login succesfully....!");
+      })
+      .catch((err) => {
+        toast.error(err.message);
+        setLoading(false);
+      });
   };
 
   return (
@@ -55,7 +86,10 @@ const Login = () => {
         <p className="text-gray-700 text-sm">
           If you have no account? Resister
         </p>
-        <button className="focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-700 py-3.5 px-4 border rounded-lg   border-red-700 flex items-center w-full my-3">
+        <button
+          onClick={handleGoogleSignin}
+          className="py-3.5 px-4 border rounded-lg   border-red-700 flex items-center w-full my-3"
+        >
           <svg
             width={19}
             height={20}

@@ -23,6 +23,12 @@ const AllProductCard = ({ products }) => {
       </CardContent>
       <CardActions>
         <div className="flex justify-end">
+          <p
+            className="text-end md:text-lg text-red-600 
+          absolute  bottom-4 right-4"
+          >
+            ${price}.00
+          </p>
           <Link to="/details">
             <button
               className="px-2 py-1 absolute bottom-4 left-4  
@@ -32,12 +38,6 @@ const AllProductCard = ({ products }) => {
               Details
             </button>
           </Link>
-          <p
-            className="text-end md:text-lg text-red-600 
-          absolute  bottom-4 right-4"
-          >
-            ${price}.00
-          </p>
         </div>
       </CardActions>
     </Card>

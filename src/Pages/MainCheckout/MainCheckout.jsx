@@ -18,7 +18,7 @@ const MainCheckout = () => {
                       type="text"
                       name="name"
                       id="name"
-                      class="h-10 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-gray-400"
+                      class="h-10 border border-gray-400 mt-1 rounded px-4 w-full bg-gray-50 focus:outline-gray-400"
                       placeholder="Enter Your Name"
                       required
                     />
@@ -30,7 +30,7 @@ const MainCheckout = () => {
                       type="email"
                       name="email"
                       id="email"
-                      class="h-10 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-gray-400"
+                      class="h-10 border border-gray-400 mt-1 rounded px-4 w-full bg-gray-50 focus:outline-gray-400"
                       placeholder="example@gmail.com"
                       required
                     />
@@ -42,7 +42,7 @@ const MainCheckout = () => {
                       type="number"
                       name="number"
                       id="number"
-                      class="h-10 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-gray-400"
+                      class="h-10 border  border-gray-400 mt-1 rounded px-4 w-full bg-gray-50 focus:outline-gray-400"
                       placeholder="Enter Your Number"
                       required
                     />
@@ -54,7 +54,7 @@ const MainCheckout = () => {
                       type="text"
                       name="address"
                       id="address"
-                      class="h-10 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-gray-400"
+                      class="h-10 border border-gray-400 mt-1 rounded px-4 w-full bg-gray-50 focus:outline-gray-400"
                       placeholder="Street"
                       required
                     />
@@ -66,7 +66,7 @@ const MainCheckout = () => {
                       type="text"
                       name="city"
                       id="city"
-                      class="h-10 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-gray-400"
+                      class="h-10 border border-gray-400 mt-1 rounded px-4 w-full bg-gray-50 focus:outline-gray-400"
                       placeholder="City"
                     />
                   </div>
@@ -77,7 +77,7 @@ const MainCheckout = () => {
                       name="country"
                       id="country"
                       placeholder="Country"
-                      class="h-10 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-gray-400"
+                      class="h-10 border border-gray-400 mt-1 rounded px-4 w-full bg-gray-50 focus:outline-gray-400"
                       required
                     />
                   </div>
@@ -88,7 +88,7 @@ const MainCheckout = () => {
                       name="state"
                       id="state"
                       placeholder="State"
-                      class="h-10 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-gray-400"
+                      class="h-10 border border-gray-400 mt-1 rounded px-4 w-full bg-gray-50 focus:outline-gray-400"
                       required
                     />
                   </div>
@@ -99,7 +99,7 @@ const MainCheckout = () => {
                       type="text"
                       name="zipcode"
                       id="zipcode"
-                      class="h-10 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-gray-400"
+                      class="h-10 border border-gray-400 mt-1 rounded px-4 w-full bg-gray-50 focus:outline-gray-400"
                       placeholder="Zipcode"
                     />
                   </div>
