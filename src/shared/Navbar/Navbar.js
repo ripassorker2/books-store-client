@@ -34,28 +34,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
 const drawerWidth = 260;
-const navItems = [
-  {
-    name: "Home",
-    link: "/home",
-  },
-  {
-    name: "Pages",
-    link: "/pages",
-  },
-  {
-    name: "Shop",
-    link: "/shop",
-  },
-  {
-    name: "Blog",
-    link: "/blog",
-  },
-  {
-    name: "Dashboard",
-    link: "/dashboard/dashboard",
-  },
-];
+const navItems = ["Home", "Pages", "Shop", "Blog", "Gallery"];
 
 export default function Navbar(props) {
   const { user, logout } = React.useContext(AuthContext);
@@ -76,7 +55,7 @@ export default function Navbar(props) {
                 <FavoriteBorder></FavoriteBorder>
               </Badge>
             </Link>
-            <Link sx={{ color: "#fff" }}>
+            <Link to="/addtocart" sx={{ color: "#fff" }}>
               <Badge color="secondary" badgeContent={99}>
                 <ShoppingCartCheckoutOutlined></ShoppingCartCheckoutOutlined>
               </Badge>
@@ -110,7 +89,7 @@ export default function Navbar(props) {
       <List>
         {navItems?.map((item) => (
           <List>
-            <ListItem disablePadding cl>
+            <ListItem disablePadding>
               <Link key={item} to={`${item?.link}`}>
                 <button className="mx-6">{item?.name}</button>
               </Link>
@@ -164,12 +143,12 @@ export default function Navbar(props) {
             </div>
 
             <div className="text-end hidden md:block">
-              <Link sx={{ color: "#fff" }} className="mx-2 lg:mx-4 text-xl ">
+              <Link to="/wisthlist" sx={{ color: "#fff" }} className="mx-2 lg:mx-4 text-xl ">
                 <Badge color="secondary" badgeContent={99}>
                   <FavoriteBorder></FavoriteBorder>
                 </Badge>
               </Link>
-              <Link sx={{ color: "#fff" }} className="mx-2 lg:mx-4 text-xl ">
+              <Link to="/addtocart" sx={{ color: "#fff" }} className="mx-2 lg:mx-4 text-xl ">
                 <Badge color="secondary" badgeContent={99}>
                   <ShoppingCartCheckoutOutlined></ShoppingCartCheckoutOutlined>
                 </Badge>
