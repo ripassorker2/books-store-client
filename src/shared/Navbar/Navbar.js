@@ -33,7 +33,7 @@ import { Stack } from "@mui/system";
 import { Link } from "react-router-dom";
 
 const drawerWidth = 260;
-const navItems = ["Home", "Pages", "Shop", "Blog", "Gallery"];
+const navItems = ["Home", "Pages", "Shop", "Blog", "Deshboard"];
 
 export default function Navbar(props) {
   const { window } = props;
