@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 const Offer = () => {
   const [books, setBooks] = useState([]);
 
-  const handelOffer = (offer = 30) => {
+  const handelOffer = (offer) => {
     fetch(`http://localhost:5000/offer/${offer}`)
       .then((res) => res.json())
       .then((data) => {
