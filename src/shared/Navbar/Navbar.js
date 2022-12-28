@@ -55,7 +55,7 @@ export default function Navbar(props) {
                 <FavoriteBorder></FavoriteBorder>
               </Badge>
             </Link>
-            <Link sx={{ color: "#fff" }}>
+            <Link to="/addtocart" sx={{ color: "#fff" }}>
               <Badge color="secondary" badgeContent={99}>
                 <ShoppingCartCheckoutOutlined></ShoppingCartCheckoutOutlined>
               </Badge>
@@ -89,7 +89,7 @@ export default function Navbar(props) {
       <List>
         {navItems?.map((item) => (
           <List>
-            <ListItem disablePadding cl>
+            <ListItem disablePadding>
               <Link key={item} to={`${item?.link}`}>
                 <button className="mx-6">{item?.name}</button>
               </Link>

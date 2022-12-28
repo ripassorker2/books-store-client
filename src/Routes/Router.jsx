@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Main from "../Layout/Main";
 import AllProduct from "../Pages/AllProduct/AllProduct";
-import Checkout from "../Pages/Checkout/Checkout";
+import CartPage from "../Pages/CartPage/CartPage";
 import AllMail from "../Pages/Dashboard/AllMail/AllMail";
 import Chat from "../Pages/Dashboard/Chat/Chat";
 import Dashboard from "../Pages/Dashboard/Dashboard";
@@ -41,6 +41,10 @@ export const router = createBrowserRouter([
         path: "/resistation",
         element: <Resistation />,
       },
+      {
+        path:'/addtocart',
+        element:<CartPage></CartPage>
+      }
     ],
   },
 
