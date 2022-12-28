@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
 import { Link } from 'react-router-dom';
 
-export default function OfferCard({ book }) {
+const OfferCard = ({ book }) => {
     return (
       <Card
         sx={{ maxWidth: "100%", height: "400px" }}
@@ -37,3 +37,5 @@ export default function OfferCard({ book }) {
       </Card>
     );
 }
+
+export default OfferCard;
