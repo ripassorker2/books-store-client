@@ -40,17 +40,18 @@ const Login = () => {
   };
 
   return (
-    <div class="w-full max-w-sm shadow-xl hover:shadow-2xl rounded-lg m-auto">
+    <div class="w-full max-w-md shadow-xl rounded-lg m-auto border-2 -mt-14">
       <h1 className="text-red-600 text-center pt-5 font-semibold text-4xl">
-        Sign In{" "}
+        {" "}
       </h1>
       <form onSubmit={handleSubmit} class="bg-white rounded px-8 pt-6 pb-2">
-        <div class="mb-4">
+        <div class="mb-4 mt-3">
           <label class="block text-gray-700 text-sm mb-2" for="email">
             Email
           </label>
           <input
-            class=" border rounded w-full py-3 focus:outline-gray-600 px-3 text-gray-700 leading-tight border-gray-500 "
+            class=" border rounded w-full py-3 focus:outline-gray-600 px-3
+             text-gray-700 leading-tight border-gray-500 "
             id="email"
             type="email"
             placeholder="Enter Your Email"
@@ -62,7 +63,8 @@ const Login = () => {
             Password
           </label>
           <input
-            class=" border rounded w-full py-3 focus:outline-gray-600 px-3 text-gray-700 leading-tight border-gray-500 "
+            class=" border rounded w-full py-3 focus:outline-gray-600 px-3
+             text-gray-700 leading-tight border-gray-500 "
             id="password"
             type="password"
             placeholder="Password"
@@ -74,7 +76,8 @@ const Login = () => {
         </p>
         <div class="flex items-center justify-between">
           <button
-            class="bg-red-600 w-full hover:bg-red-700 text-white font-bold py-3 px-4 rounded duration-300 "
+            class="bg-red-600 w-full hover:bg-red-700 text-white font-bold py-3 px-4
+             rounded duration-300 "
             type="submit"
           >
             Sign Up
@@ -83,16 +86,15 @@ const Login = () => {
       </form>
 
       <div className="px-8 pb-3">
-        <p className="text-gray-700 text-sm">
-          If you have no account? Resister
-        </p>
         <button
           onClick={handleGoogleSignin}
-          className="py-3.5 px-4 border rounded-lg   border-red-700 flex items-center w-full my-3"
+          className="py-3.5 px-4 border rounded-lg flex justify-center  border-purple-700 
+          items-center w-full my-3"
         >
           <svg
             width={19}
             height={20}
+            className="inline-block"
             viewBox="0 0 19 20"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"

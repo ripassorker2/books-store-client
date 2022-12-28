@@ -46,7 +46,7 @@ const Trend = () => {
           }}
           className="mySwiper"
         >
-          {books.slice(1, 4).map((book, index) => (
+          {books.slice(6, 24).map((book, index) => (
             <SwiperSlide key={index}>
               <HotSellCard book={book} />
             </SwiperSlide>
