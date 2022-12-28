@@ -31,6 +31,7 @@ import {
 } from "@mui/icons-material";
 import { Stack } from "@mui/system";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
 const drawerWidth = 260;
 const navItems = [
@@ -57,6 +58,7 @@ const navItems = [
 ];
 
 export default function Navbar(props) {
+  const { user, logout } = React.useContext(AuthContext);
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -173,20 +175,31 @@ export default function Navbar(props) {
                 </Badge>
               </Link>
               {/* for login authentication */}
-              <Link>
-                <button className="mx-2 lg:mx-4 text-xl ">Singup</button>
-              </Link>
-              <Link>
-                <button className="mx-2 lg:mx-4 text-xl ">Login</button>
-              </Link>
-              {/* <Button className="profile-icon ">
-                  <Stack>
-                    <Avatar
-                      alt="Cindy Baker"
-                      src="/static/images/avatar/3.jpg"
-                    />
-                  </Stack>
-                </Button> */}
+              {user ? (
+                <>
+                  {" "}
+                  <Button className="profile-icon ">
+                    <Stack>
+                      <Avatar
+                        alt="Cindy Baker"
+                        src="/static/images/avatar/3.jpg"
+                      />
+                    </Stack>
+                  </Button>
+                  <button onClick={logout} className="mx-2 lg:mx-4 text-lg ">
+                    Sign Out
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link to={"/login"}>
+                    <button className="mx-2 lg:mx-4 text-lg ">Sign In</button>
+                  </Link>
+                  <Link to={"/resistation"}>
+                    <button className="mx-2 lg:mx-4 text-lg ">Sign Up</button>
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>
