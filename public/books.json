@@ -462,5 +462,21 @@
     "quantity": "30",
     "advertise": false,
     "status": "available"
+  },
+  {
+    "id": "6",
+    "category": "Horror",
+    "title": "The Serpent and the Wings of Night",
+    "photo": "https://m.media-amazon.com/images/I/81jFnjIDPGL._CR111,0,1307,1307_UX256.jpg",
+    "price": "42",
+    "description": "The adopted human daughter of the Nightborn vampire king, Oraya carved her place in a world designed to kill her. Her only chance to become something more than prey is entering the Kejari: a legendary tournament held by the goddess of death herself. But winning won’t be easy amongst the most vicious warriors from all three vampire houses. To survive, Oraya is forced to make an alliance with a mysterious rival. Everything about Raihn is dangerous. He is a ruthless vampire, an efficient killer, an enemy to her father’s crown… and her greatest competition. Yet, what terrifies Oraya most of all is that she finds herself oddly drawn to him.But there’s no room for compassion in the Kejari. War for the House of Night brews, shattering everything that Oraya thought she knew about her home. And Raihn may understand her more than anyone – but their blossoming attraction could be her downfall, in a kingdom where nothing is more deadly than love.",
+    "writter": "Carissa Broadbent",
+    "seller-name": "Dirk Maggs",
+    "seller-photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYmgPjaWJp57orfAURmv4nxvoUmSQmizRsrp16koaN6WERfsJ2okfqQMHWqkFBqcrYkqk&usqp=CAU",
+    "release-date": "September 03, 2009",
+    "discount": "",
+    "quantity": "30",
+    "advertise": false,
+    "status": "available"
   }
 ]
