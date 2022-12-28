@@ -1,18 +1,25 @@
+import React from "react";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 import { Box, Container, Grid, Link } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import AllProductCard from "../AllProductCard/AllProductCard";
 import ViewHeadlineIcon from "@mui/icons-material/ViewHeadline";
 import AppsOutlinedIcon from "@mui/icons-material/AppsOutlined";
-import './AllProduct.css'
+import "./AllProduct.css";
+
+
 
 const AllProduct = () => {
   const [allProduct, setAllProduct] = useState([]);
+  const [page, setPage] = useState(1);
+
 
   useEffect(() => {
-    fetch("books.json")
+    fetch("http://localhost:5000/products")
       .then((res) => res.json())
       .then((data) => setAllProduct(data));
-  }, []);
+  }, [page]);
   return (
     <Container maxWidth="xl">
       <div
@@ -57,6 +64,17 @@ const AllProduct = () => {
           ))}
         </Grid>
       </Box>
+      <Stack
+        spacing={2}
+        className="items-center justify-center align-middle 
+        h-[100px]"
+      >
+        <Pagination
+          count={5}
+          color="primary"
+          onChange={(e, value) => setPage(value)}
+        />
+      </Stack>
     </Container>
   );
 };
