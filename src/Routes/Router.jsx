@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Main from "../Layout/Main";
 import AllProduct from "../Pages/AllProduct/AllProduct";
+import Blog from "../Pages/Blog/Blog";
 import CartPage from "../Pages/CartPage/CartPage";
 import AllMail from "../Pages/Dashboard/AllMail/AllMail";
 import Chat from "../Pages/Dashboard/Chat/Chat";
@@ -45,6 +46,10 @@ export const router = createBrowserRouter([
       {
         path: "/wisthlist",
         element: <Whistlist></Whistlist>,
+      },
+      {
+        path:'/blog',
+        element:<Blog></Blog>
       },
       {
         path: "/payment",

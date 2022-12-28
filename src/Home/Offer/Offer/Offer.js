@@ -12,14 +12,6 @@ import { Link } from 'react-router-dom';
 const Offer = () => {
   const [books, setBooks] = useState([]);
 
-  const handelOffer = (offer = 30) => {
-    fetch(`http://localhost:5000/offer/${offer}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setBooks(data);
-      });
-  };
-
   useEffect(() => {
     fetch(`http://localhost:5000/offer/${30}`)
       .then((res) => res.json())
@@ -27,6 +19,14 @@ const Offer = () => {
         setBooks(data);
       });
   }, []);
+
+  const handelOffer = (offer) => {
+    fetch(`http://localhost:5000/offer/${offer}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setBooks(data);
+      });
+  };
 
   return (
     <Container className="offer mt-5 mb-5" maxWidth="xl">

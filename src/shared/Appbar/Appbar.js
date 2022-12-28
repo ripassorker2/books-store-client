@@ -8,7 +8,7 @@ const Appbar = () => {
     myFunction();
   };
   function myFunction() {
-    if (document.documentElement.scrollTop > 50) {
+    if (document.documentElement.scrollTop > 90) {
       document.getElementById("navlinks").classList.add("color-change");
     } else {
       document.getElementById("navlinks").classList.remove("color-change");
@@ -17,7 +17,7 @@ const Appbar = () => {
   const navItems = [
     {
       name: "Home",
-      link: "/home",
+      link: "/",
     },
     {
       name: "Pages",
