@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Main from "../Layout/Main";
 import AllProduct from "../Pages/AllProduct/AllProduct";
-import Checkout from "../Pages/Checkout/Checkout";
+import CartPage from "../Pages/CartPage/CartPage";
 import AllMail from "../Pages/Dashboard/AllMail/AllMail";
 import Chat from "../Pages/Dashboard/Chat/Chat";
 import Dashboard from "../Pages/Dashboard/Dashboard";
@@ -13,8 +13,10 @@ import Users from "../Pages/Dashboard/Users/Users";
 import VerifyAccount from "../Pages/Dashboard/VerifyAccount/VerifyAccount";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
+import MainCheckout from "../Pages/MainCheckout/MainCheckout";
 import ProductDetails from "../Pages/ProductDetails/ProductDetails";
 import Resistation from "../Pages/Resistation/Resistation";
+import Whistlist from "../Pages/Wishlist/Whistlist";
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +43,18 @@ export const router = createBrowserRouter([
         path: "/resistation",
         element: <Resistation />,
       },
+      {
+        path:'/addtocart',
+        element:<CartPage></CartPage>
+      },
+      {
+        path:'/wisthlist',
+        element:<Whistlist></Whistlist>
+      },
+      {
+        path:'/payment',
+        element:<MainCheckout></MainCheckout>
+      }
     ],
   },
 
