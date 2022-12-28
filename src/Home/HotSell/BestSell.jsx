@@ -47,7 +47,7 @@ const BestSell = () => {
           }}
           className="mySwiper"
         >
-          {books.slice(1, 5).map((book, index) => (
+          {books.slice(9, 29).map((book, index) => (
             <SwiperSlide key={index}>
               <HotSellCard book={book} />
             </SwiperSlide>

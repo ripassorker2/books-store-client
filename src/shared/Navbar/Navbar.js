@@ -174,9 +174,9 @@ export default function Navbar(props) {
                   <Link to={"/login"}>
                     <button className="mx-2 lg:mx-4 text-lg ">Sign In</button>
                   </Link>
-                  <Link to={"/resistation"}>
+                  {/* <Link to={"/resistation"}>
                     <button className="mx-2 lg:mx-4 text-lg ">Sign Up</button>
-                  </Link>
+                  </Link> */}
                 </>
               )}
             </div>
