@@ -1,6 +1,5 @@
 import React from "react";
 import Banner from "../../Home/Banner/Banner";
-import AddBook from "../../Home/HotSell/AddBook/AddBook";
 import HotsellTabs from "../../Home/HotSell/HotSellTabs";
 import Offer from "../../Home/Offer/Offer/Offer";
 import Product from "../../Home/Product/Product";
@@ -14,7 +13,6 @@ const Home = () => {
   return (
     <div>
       <Banner></Banner>
-      <AddBook />
       <Offer></Offer>
       <Services></Services>
       <HotsellTabs />
@@ -22,7 +20,6 @@ const Home = () => {
       <MainCheckout />
       <CartPage></CartPage>
       <Whistlist></Whistlist>
-
       <Subscription />
     </div>
   );
