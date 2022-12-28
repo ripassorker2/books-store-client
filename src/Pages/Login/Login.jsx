@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
 const Login = () => {
-  const { signin, setLoading, signInWithGoogle } = useContext(AuthContext);
+  const { loginUser, setLoading, signInWithGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -15,7 +15,7 @@ const Login = () => {
     const password = event.target.password.value;
     console.log(email, password);
 
-    signin(email, password)
+    loginUser(email, password)
       .then((result) => {
         toast.success("Login successful.....!");
         navigate(from, { replace: true });
