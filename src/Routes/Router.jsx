@@ -12,7 +12,9 @@ import ReportedItem from "../Pages/Dashboard/ReportedItem/ReportedItem";
 import Users from "../Pages/Dashboard/Users/Users";
 import VerifyAccount from "../Pages/Dashboard/VerifyAccount/VerifyAccount";
 import Home from "../Pages/Home/Home";
+import Login from "../Pages/Login/Login";
 import ProductDetails from "../Pages/ProductDetails/ProductDetails";
+import Resistation from "../Pages/Resistation/Resistation";
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +32,14 @@ export const router = createBrowserRouter([
       {
         path: "/details",
         element: <ProductDetails></ProductDetails>,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/resistation",
+        element: <Resistation />,
       },
     ],
   },
