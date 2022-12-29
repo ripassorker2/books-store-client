@@ -4,7 +4,6 @@ import Main from "../Layout/Main";
 import AddToCartPage from "../Pages/AddToCartPage/AddToCartPage";
 import AllProduct from "../Pages/AllProduct/AllProduct";
 import Blog from "../Pages/Blog/Blog";
-import CartPage from "../Pages/CartPage/CartPage";
 import AllMail from "../Pages/Dashboard/AllMail/AllMail";
 import Chat from "../Pages/Dashboard/Chat/Chat";
 import Dashboard from "../Pages/Dashboard/Dashboard";
