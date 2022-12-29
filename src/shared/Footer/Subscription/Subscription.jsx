@@ -15,8 +15,7 @@ const Subscription = () => {
           </div>
           <div className=" mt-3  flex  flex-row  ">
             <input
-              type="text"
-              className=" text-gray-600  md:w-[340px]  p-2  rounded-l-2xl"
+              className=" text-gray-600  md:w-[340px] focus:outline-none  p-2  rounded-l-2xl"
               placeholder="Enter your email here"
             />
             <button

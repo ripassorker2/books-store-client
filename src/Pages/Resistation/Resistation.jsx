@@ -74,9 +74,9 @@ const Resistation = () => {
       <h1 className="text-red-600 pt-5 text-center font-semibold text-4xl">
         {" "}
       </h1>
-      <form onSubmit={handleResister} className="bg-white rounded px-8 pt-6 pb-2">
-        <div className="mb-4 mt-3">
-          <label className="block text-gray-700 text-sm mb-2" for="username">
+      <form onSubmit={handleResister} class="bg-white rounded px-8 pt-6 pb-2">
+        <div class="mb-4 mt-3">
+          <label class="block text-gray-700 text-sm mb-2" for="username">
             Full Name
           </label>
           <input
@@ -88,8 +88,8 @@ const Resistation = () => {
             required
           />
         </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm mb-2" for="email">
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm mb-2" for="email">
             Email
           </label>
           <input
@@ -101,7 +101,10 @@ const Resistation = () => {
             required
           />
         </div>
-        <label htmlFor="email" className="block mb-2 text-sm">
+        <label
+          htmlhtmlFor="email"
+          className="block mb-2 font-semibold text-gray-500 text-sm"
+        >
           Select profile type
         </label>
         <fieldset className=" flex">
@@ -117,7 +120,7 @@ const Resistation = () => {
             />
             <label
               for="country-option-2"
-              className="text-sm  text-gray-900 ml-2 block"
+              class="text-sm  text-gray-900 ml-2 block"
             >
               Buyer
             </label>
@@ -135,14 +138,14 @@ const Resistation = () => {
             />
             <label
               for="country-option-3"
-              className="text-sm font-medium text-gray-900 ml-2 block"
+              class="text-sm font-medium text-gray-900 ml-2 block"
             >
               Seller
             </label>
           </div>
         </fieldset>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm mb-2" for="password">
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm mb-2" for="password">
             Password
           </label>
           <input
@@ -156,7 +159,7 @@ const Resistation = () => {
         </div>
         <div className="flex items-center justify-between">
           <button
-            className="bg-purple-600 w-full hover:bg-purple-700 text-white font-bold py-3 px-4 
+            class="bg-red-600 w-full hover:bg-red-700 text-white font-bold py-3 px-4 
             rounded duration-300 "
             type="submit"
           >
@@ -194,7 +197,7 @@ const Resistation = () => {
               fill="#EB4335"
             />
           </svg>
-          <p className="text-base font-medium ml-4 text-gray-700">
+          <p className="text-base font-semibold ml-4 text-gray-500">
             Continue with Google
           </p>
         </button>

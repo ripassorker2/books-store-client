@@ -6,27 +6,27 @@ import Login from "./Login";
 const LoginTabs = () => {
   const [openTab, setOpenTab] = useState(1);
   return (
-    <div className="my-8 md:mt mt-14">
+    <div className="my-8 md:mt-8 mt-14">
       <div className="container mx-auto ">
         <div className="flex  justify-center px-4 max-w-screen-xl m-auto ">
           <ul className="flex justify-end  space-x-2 no-underline mb-3  ">
             <li className="-mr-4">
-              <Link
+              <button
                 onClick={() => setOpenTab(1)}
                 className="inline-block  bg-red-600 w-full  text-white 
                 font-bold py-3 px-6 rounded duration-300"
               >
                 Login
-              </Link>
+              </button>
             </li>
             <li>
-              <Link
+              <button
                 onClick={() => setOpenTab(2)}
-                className="inline-block w-full bg-purple-600 text-white 
-                font-bold py-3 px-6 rounded duration-300  "
+                className="inline-block bg-red-600 w-full text-white 
+                font-bold py-3 px-6 rounded duration-300 "
               >
                 Resister
-              </Link>
+              </button>
             </li>
           </ul>
         </div>

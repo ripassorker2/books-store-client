@@ -1,22 +1,17 @@
-import { HeartBroken } from "@mui/icons-material";
-import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState } from "react";
 import ProductReview from "./ProductReview";
 import ReletedProducts from "./ReletedProducts";
+import { BsFillSuitHeartFill } from "react-icons/bs";
 
 const ProductDetails = () => {
-   const { pathname } = useLocation();
-
-   useEffect(() => {
-     window.scrollTo(0, 0);
-   }, [pathname]);
-
+  const [quantity, setQuantity] = useState(0);
   return (
     <div>
       <div className="px-4 py-16 mx-auto max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
         <div className="flex flex-col items-center justify-between lg:flex-row">
           <div className="relative lg:w-1/2  mb-4">
-            <img name="details"
+            <img
+              name="details"
               className="object-cover w-full h-60 rounded shadow-lg  md:h-96"
               src="https://booktrib.com/wp-content/uploads/2022/11/Desert-Star-Michael-Connelly-1-scaled-1.jpg"
               alt=""
@@ -45,19 +40,25 @@ const ProductDetails = () => {
                   Price: $54.00
                 </p>
                 <button className="border ml-16 mt-3 px-3 border-gray-400 rounded-lg py-1">
-                  <HeartBroken className="inline-block text-red-500 " />
+                  <BsFillSuitHeartFill className="inline-block text-red-500 " />
                 </button>
               </div>
               <p className="text-red-500 text-sm py-1">In stock: 65</p>
             </div>
             <div>
-              <button className="border md:px-4 px-3 border-gray-400  text-xl md:py-2 py-1 ">
+              <button
+                onClick={() => setQuantity(quantity - 1)}
+                className="border md:px-4 px-3 border-gray-400  text-xl md:py-2 py-1 "
+              >
                 -
               </button>
               <button className="border md:px-4 px-3 border-gray-400  text-xl md:py-2 py-1">
-                1
+                {quantity}
               </button>
-              <button className="border md:px-4 px-3 border-gray-400  text-xl md:py-2 py-1 ">
+              <button
+                onClick={() => setQuantity(quantity + 1)}
+                className="border md:px-4 px-3 border-gray-400  text-xl md:py-2 py-1 "
+              >
                 +
               </button>
               <button className="md:px-6 px-4 md:py-3 py-2 md:ml-10 ml-5 text-gray-100 bg-red-600 hover:bg-purple-600  md:text-base text-sm font-semibold rounded-md duration-300 ">
@@ -67,10 +68,9 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
-    
-        <ProductReview />
-        <ReletedProducts />
-      
+
+      <ProductReview />
+      <ReletedProducts />
     </div>
   );
 };
