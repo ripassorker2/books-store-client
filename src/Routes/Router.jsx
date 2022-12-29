@@ -16,7 +16,7 @@ import VerifyAccount from "../Pages/Dashboard/VerifyAccount/VerifyAccount";
 import Home from "../Pages/Home/Home";
 import LoginTabs from "../Pages/Login/LoginTabs";
 import MainCheckout from "../Pages/MainCheckout/MainCheckout";
-import Details from "../Pages/ProductDetails/Details";
+import ProductDetails from "../Pages/ProductDetails/ProductDetails";
 import Whistlist from "../Pages/Wishlist/Whistlist";
 
 export const router = createBrowserRouter([
@@ -30,16 +30,20 @@ export const router = createBrowserRouter([
       },
       {
         path: "/category/:id",
-        loader: ({ params }) => fetch(`http://localhost:5000/cetegory/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/cetegory/${params.id}`),
         element: <Category></Category>,
       },
       {
         path: "/allproducts",
         element: <AllProduct></AllProduct>,
       },
+
       {
-        path: "/detailsPage",
-        element: <Details></Details>,
+        path: "/detailsPage/:id",
+        element: <ProductDetails></ProductDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/products/${params.id}`),
       },
       {
         path: "/login",
@@ -54,8 +58,8 @@ export const router = createBrowserRouter([
         element: <Whistlist></Whistlist>,
       },
       {
-        path: '/blog',
-        element: <Blog></Blog>
+        path: "/blog",
+        element: <Blog></Blog>,
       },
       {
         path: "/payment",
