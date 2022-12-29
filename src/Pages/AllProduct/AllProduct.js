@@ -8,18 +8,17 @@ import ViewHeadlineIcon from "@mui/icons-material/ViewHeadline";
 import AppsOutlinedIcon from "@mui/icons-material/AppsOutlined";
 import "./AllProduct.css";
 
-
-
 const AllProduct = () => {
   const [allProduct, setAllProduct] = useState([]);
   const [page, setPage] = useState(1);
-
 
   useEffect(() => {
     fetch("http://localhost:5000/products")
       .then((res) => res.json())
       .then((data) => setAllProduct(data));
   }, [page]);
+
+
   return (
     <Container maxWidth="xl">
       <div
