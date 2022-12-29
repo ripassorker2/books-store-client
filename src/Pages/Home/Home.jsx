@@ -5,7 +5,6 @@ import Offer from "../../Home/Offer/Offer/Offer";
 import Product from "../../Home/Product/Product";
 import Services from "../../Home/Servecs/Servecs";
 import Subscription from "../../shared/Footer/Subscription/Subscription";
-import AddToCartPage from "../AddToCartPage/AddToCartPage";
 
 const Home = () => {
   return (
@@ -15,7 +14,6 @@ const Home = () => {
       <Services></Services>
       <HotsellTabs />
       <Product></Product>
-      <AddToCartPage></AddToCartPage>
       <Subscription />
     </div>
   );

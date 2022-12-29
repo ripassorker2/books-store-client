@@ -2,9 +2,13 @@ import { DeleteForeverOutlined } from "@mui/icons-material";
 import React from "react";
 import { Link } from "react-router-dom";
 import "./AddToCart.css";
+import { MdDelete } from "react-icons/md";
+
+
 const AddToCartPage = () => {
+
   return (
-    <div className="p-2 md:p-0">
+    <div className="p-2">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-5">
         <div className="border cart-container">
           <div className="p-2">
@@ -26,7 +30,9 @@ const AddToCartPage = () => {
                 <span className="mr-3 cursor-pointer">+</span>
               </div>
               <div className="py-2 text-2xl flex justify-end">
-                <DeleteForeverOutlined className="cursor-pointer"></DeleteForeverOutlined>
+                <button className="bg-[#fc3333] text-white w-10 h-10 rounded-full flex justify-center items-center">
+                  <MdDelete className="h-8 w-8" />
+                </button>
               </div>
             </div>
           </div>
@@ -51,7 +57,9 @@ const AddToCartPage = () => {
                 <span className="mr-3 cursor-pointer">+</span>
               </div>
               <div className="py-2 text-2xl flex justify-end">
-                <DeleteForeverOutlined className="cursor-pointer"></DeleteForeverOutlined>
+                <button className="bg-[#fc3333] text-white w-10 h-10 rounded-full flex justify-center items-center">
+                  <MdDelete className="h-8 w-8" />
+                </button>
               </div>
             </div>
           </div>
