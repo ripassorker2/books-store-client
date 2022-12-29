@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Main from "../Layout/Main";
+import AddToCartPage from "../Pages/AddToCartPage/AddToCartPage";
 import AllProduct from "../Pages/AllProduct/AllProduct";
 import Blog from "../Pages/Blog/Blog";
 import CartPage from "../Pages/CartPage/CartPage";
@@ -41,7 +42,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/addtocart",
-        element: <CartPage></CartPage>,
+        element: <AddToCartPage></AddToCartPage>,
       },
       {
         path: "/wisthlist",
