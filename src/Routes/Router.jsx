@@ -16,7 +16,7 @@ import VerifyAccount from "../Pages/Dashboard/VerifyAccount/VerifyAccount";
 import Home from "../Pages/Home/Home";
 import LoginTabs from "../Pages/Login/LoginTabs";
 import MainCheckout from "../Pages/MainCheckout/MainCheckout";
-import ProductDetails from "../Pages/ProductDetails/ProductDetails";
+import Details from "../Pages/ProductDetails/Details";
 import Whistlist from "../Pages/Wishlist/Whistlist";
 
 export const router = createBrowserRouter([
@@ -33,8 +33,8 @@ export const router = createBrowserRouter([
         element: <AllProduct></AllProduct>,
       },
       {
-        path: "/details",
-        element: <ProductDetails></ProductDetails>,
+        path: "/detailsPage",
+        element: <Details></Details>,
       },
       {
         path: "/login",

@@ -52,9 +52,9 @@ const Appbar = () => {
         </div>
         <div>
           <div className="text-end">
-            {navItems?.map((item) => (
-              <Link key={item} to={`${item?.link}`}>
-                <button className="mr-4 mt-2 ">{item?.name}</button>
+            {navItems?.map((item, i) => (
+              <Link key={i} to={`${item?.link}`}>
+                <button className="mx-4 mt-2 ">{item?.name}</button>
               </Link>
             ))}
           </div>

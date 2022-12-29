@@ -157,7 +157,7 @@ export default function Dashboard() {
             { name: "Orders", link: "/dashboard/dashboard/orders" },
             { name: "Users", link: "/dashboard/dashboard/users" },
           ]?.map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
+            <ListItem key={index} disablePadding sx={{ display: "block" }}>
               <Link to={`${text?.link}`}>
                 <ListItemButton
                   sx={{
