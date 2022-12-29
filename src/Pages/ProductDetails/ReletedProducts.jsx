@@ -21,21 +21,21 @@ const ReletedProducts = () => {
       </ul>
       <div className="grid lg:grid-cols-5 md:grid-cols-3 gap-5  sm:grid-cols-2 ">
         {books?.slice(1, 6).map((book, index) => (
-          <>
+       
             <div
               key={index}
-              class="flex  md:h-64 h-56 w-full hover:border- hover:shadow-xl  duration-300  border  relative"
+              className="flex  md:h-64 h-56 w-full hover:border- hover:shadow-xl  duration-300  border  relative"
             >
-              <div class="  bg-white ">
+              <div className="  bg-white ">
                 <div className="flex justify-center w-full ">
                   <img
-                    class=" h-32 w-full inline-block object-fill  cover-full"
+                    className=" h-32 w-full inline-block object-fill  cover-full"
                     src={book?.photo}
                     alt=""
                   />
                 </div>
-                <div class="p-4 text-start">
-                  <h5 class="text-gray-700 text-base font-semibold mb-2">
+                <div className="p-4 text-start">
+                  <h5 className="text-gray-700 text-base font-semibold mb-2">
                     {book?.title}
                   </h5>
                   <div className="flex ">
@@ -49,7 +49,7 @@ const ReletedProducts = () => {
                 </div>
               </div>
             </div>
-          </>
+          
         ))}
       </div>
     </div>

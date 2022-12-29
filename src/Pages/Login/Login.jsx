@@ -40,20 +40,17 @@ const Login = () => {
   };
 
   return (
-    <div class="w-full max-w-md shadow-xl rounded-lg m-auto border-2 -mt-14">
+    <div className="w-full max-w-md shadow-xl rounded-lg m-auto border-2 -mt-14">
       <h1 className="text-red-600 text-center pt-5 font-semibold text-4xl">
         {" "}
       </h1>
       <form onSubmit={handleSubmit} class="bg-white rounded px-8 pt-6 pb-2">
         <div class="mb-4 mt-3">
-          <label
-            class="block text-gray-500 font-semibold text-sm mb-2"
-            htmlFor="email"
-          >
+          <label class="block text-gray-700 text-sm mb-2" for="email">
             Email
           </label>
           <input
-            class=" border rounded w-full py-3 focus:outline-gray-600 px-3
+            className=" border rounded w-full py-3 focus:outline-gray-600 px-3
              text-gray-700 leading-tight border-gray-500 "
             id="email"
             type="email"
@@ -62,14 +59,11 @@ const Login = () => {
           />
         </div>
         <div class="mb-1">
-          <label
-            class="block text-gray-500 font-semibold text-sm mb-2"
-            htmlFor="password"
-          >
+          <label class="block text-gray-700 text-sm mb-2" for="password">
             Password
           </label>
           <input
-            class=" border rounded w-full py-3 focus:outline-gray-600 px-3
+            className=" border rounded w-full py-3 focus:outline-gray-600 px-3
              text-gray-700 leading-tight border-gray-500 "
             id="password"
             type="password"
@@ -80,9 +74,9 @@ const Login = () => {
         <p className="pb-1 text-blue-600 text-right font-semibold text-sm hover:underline">
           Forget Password?
         </p>
-        <div class="flex items-center justify-between">
+        <div className="flex items-center justify-between">
           <button
-            class="bg-red-600 w-full hover:bg-red-700  text-white font-bold py-3 px-4
+            class="bg-red-600 w-full hover:bg-red-700 text-white font-bold py-3 px-4
              rounded duration-300 "
             type="submit"
           >

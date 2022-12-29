@@ -127,14 +127,14 @@ export default function Navbar(props) {
               </Link>
             </div>
             <div>
-              <div class=" flex  flex-row">
+              <div className=" flex  flex-row">
                 <input
                   type="text"
-                  class=" text-gray-600  md:w-[340px] p-2  rounded-l-2xl"
+                  className=" text-gray-600  md:w-[340px] p-2  rounded-l-2xl"
                   placeholder="Find your product"
                 />
                 <button
-                  class=" p-2  w-1/3  rounded-r-2xl  text-white hover:bg-purple-600 duration-300 bg-red-600"
+                  className=" p-2  w-1/3  rounded-r-2xl  text-white hover:bg-purple-600 duration-300 bg-red-600"
                   type="button"
                 >
                   <SearchIcon></SearchIcon>

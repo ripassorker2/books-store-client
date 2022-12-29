@@ -8,8 +8,6 @@ import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -33,19 +31,21 @@ function AppbarTop(props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        BOOK STORE
-      </Typography>
+      <Link>
+        <Typography variant="h6" sx={{ my: 2 }}>
+          BOOK STORE
+        </Typography>
+      </Link>
       <Box sx={{ mb: 2 }}>
         <AppbarDropDown></AppbarDropDown>
       </Box>
 
       <Divider />
       <List>
-        {navItems?.map((item) => (
-          <List>
+        {navItems?.map((item, i) => (
+          <List key={i}>
             <ListItem disablePadding>
-              <Link key={item} to={`${item?.link}`}>
+              <Link to={`${item?.link}`}>
                 <button className="mx-6">{item?.name}</button>
               </Link>
             </ListItem>
@@ -82,12 +82,12 @@ function AppbarTop(props) {
             BOOK STORE
           </Typography>
           <Box className="top-nav-links">
-            <Link sx={{ color: "#fff" }} className="mx-3 lg:mx-4 text-xl ">
+            <Link to="/wisthlist" sx={{ color: "#fff" }} className="mx-3 lg:mx-4 text-xl ">
               <Badge color="secondary" badgeContent={99}>
                 <FavoriteBorder></FavoriteBorder>
               </Badge>
             </Link>
-            <Link sx={{ color: "#fff" }} className="mx-3 lg:mx-4 text-xl ">
+            <Link to="/addtocart" sx={{ color: "#fff" }} className="mx-3 lg:mx-4 text-xl ">
               <Badge color="secondary" badgeContent={99}>
                 <ShoppingCartCheckoutOutlined></ShoppingCartCheckoutOutlined>
               </Badge>

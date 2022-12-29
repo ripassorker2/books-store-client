@@ -4,14 +4,14 @@ import ReletedProducts from "./ReletedProducts";
 import { BsFillSuitHeartFill } from "react-icons/bs";
 
 const ProductDetails = () => {
-  const [quantity, setQuantity] = useState(1);
-
+  const [quantity, setQuantity] = useState(0);
   return (
-    <>
+    <div>
       <div className="px-4 py-16 mx-auto max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
         <div className="flex flex-col items-center justify-between lg:flex-row">
           <div className="relative lg:w-1/2  mb-4">
             <img
+              name="details"
               className="object-cover w-full h-60 rounded shadow-lg  md:h-96"
               src="https://booktrib.com/wp-content/uploads/2022/11/Desert-Star-Michael-Connelly-1-scaled-1.jpg"
               alt=""
@@ -68,9 +68,10 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
+
       <ProductReview />
       <ReletedProducts />
-    </>
+    </div>
   );
 };
 
