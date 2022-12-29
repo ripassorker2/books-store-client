@@ -4,6 +4,7 @@ import Main from "../Layout/Main";
 import AddToCartPage from "../Pages/AddToCartPage/AddToCartPage";
 import AllProduct from "../Pages/AllProduct/AllProduct";
 import Blog from "../Pages/Blog/Blog";
+import Category from "../Pages/Category/Category";
 import AllMail from "../Pages/Dashboard/AllMail/AllMail";
 import Chat from "../Pages/Dashboard/Chat/Chat";
 import Dashboard from "../Pages/Dashboard/Dashboard";
@@ -28,6 +29,11 @@ export const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
+        path: "/category/:id",
+        loader: ({ params }) => fetch(`http://localhost:5000/cetegory/${params.id}`),
+        element: <Category></Category>,
+      },
+      {
         path: "/allproducts",
         element: <AllProduct></AllProduct>,
       },
@@ -48,8 +54,8 @@ export const router = createBrowserRouter([
         element: <Whistlist></Whistlist>,
       },
       {
-        path:'/blog',
-        element:<Blog></Blog>
+        path: '/blog',
+        element: <Blog></Blog>
       },
       {
         path: "/payment",

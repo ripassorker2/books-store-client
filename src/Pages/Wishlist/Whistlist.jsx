@@ -29,7 +29,7 @@ const Whistlist = () => {
           />
         </div>
         <div className="mt-3 lg:mt-0 flex items-center">
-          <p className="text-blue-400 px-2 lg:px-0">New Book</p>
+          <p className="text-blue-400 font-bold px-2 lg:px-0">New Book</p>
         </div>
         <div className="px-2 mt-3 lg:mt-0 flex items-center">
           <span className="text-red-600 font-semibold mr-3">
@@ -37,10 +37,10 @@ const Whistlist = () => {
           </span>
         </div>
         <div className="px-2 mt-3 lg:mt-0 flex items-center">
-          <p className="text-lime-500 text-lg">In Stock</p>
+          <p className="text-lime-500 font-bold text-lg">In Stock</p>
         </div>
         <div className="text-blue-400 mt-3 lg:mt-0 flex items-center">
-          <button>
+          <button className="font-bold">
             <ShoppingCartCheckoutOutlined></ShoppingCartCheckoutOutlined>
             <span>Add to Cart</span>
           </button>
@@ -58,7 +58,7 @@ const Whistlist = () => {
           />
         </div>
         <div className="mt-3 lg:mt-0 flex items-center">
-          <p className="text-blue-400 px-2 lg:px-0 flex items-center">New Book</p>
+          <p className="text-blue-400 font-bold px-2 lg:px-0 flex items-center">New Book</p>
         </div>
         <div className="px-2 mt-3 lg:mt-0 flex items-center">
           <span className="text-red-600 font-semibold mr-3">
@@ -66,10 +66,10 @@ const Whistlist = () => {
           </span>
         </div>
         <div className="px-2 mt-3 lg:mt-0 flex items-center">
-          <p className="text-lime-500 text-lg">In Stock</p>
+          <p className="text-lime-500 font-bold text-lg">In Stock</p>
         </div>
         <div className="text-blue-400 mt-3 lg:mt-0 flex items-center">
-          <button>
+          <button className="font-bold">
             <ShoppingCartCheckoutOutlined></ShoppingCartCheckoutOutlined>
             <span>Add to Cart</span>
           </button>
