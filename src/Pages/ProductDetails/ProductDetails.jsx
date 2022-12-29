@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProductReview from "./ProductReview";
 import ReletedProducts from "./ReletedProducts";
 import { BsFillSuitHeartFill } from "react-icons/bs";
+import { useLocation } from "react-router-dom";
 
 const ProductDetails = () => {
   const [quantity, setQuantity] = useState(0);
+   const { pathname } = useLocation();
+
+   useEffect(() => {
+     window.scrollTo(0, 0);
+   }, [pathname]);
   return (
     <div>
+     
       <div className="px-4 py-16 mx-auto max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
         <div className="flex flex-col items-center justify-between lg:flex-row">
           <div className="relative lg:w-1/2  mb-4">
