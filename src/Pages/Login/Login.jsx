@@ -46,7 +46,10 @@ const Login = () => {
       </h1>
       <form onSubmit={handleSubmit} class="bg-white rounded px-8 pt-6 pb-2">
         <div class="mb-4 mt-3">
-          <label class="block text-gray-700 text-sm mb-2" for="email">
+          <label
+            class="block text-gray-500 font-semibold text-sm mb-2"
+            htmlFor="email"
+          >
             Email
           </label>
           <input
@@ -59,7 +62,10 @@ const Login = () => {
           />
         </div>
         <div class="mb-1">
-          <label class="block text-gray-700 text-sm mb-2" for="password">
+          <label
+            class="block text-gray-500 font-semibold text-sm mb-2"
+            htmlFor="password"
+          >
             Password
           </label>
           <input
@@ -71,12 +77,12 @@ const Login = () => {
             required
           />
         </div>
-        <p className="pb-1 text-blue-600 text-right text-sm hover:underline">
+        <p className="pb-1 text-blue-600 text-right font-semibold text-sm hover:underline">
           Forget Password?
         </p>
         <div class="flex items-center justify-between">
           <button
-            class="bg-red-600 w-full hover:bg-red-700 text-white font-bold py-3 px-4
+            class="bg-red-600 w-full hover:bg-red-700  text-white font-bold py-3 px-4
              rounded duration-300 "
             type="submit"
           >
@@ -88,7 +94,7 @@ const Login = () => {
       <div className="px-8 pb-3">
         <button
           onClick={handleGoogleSignin}
-          className="py-3.5 px-4 border rounded-lg flex justify-center  border-purple-700 
+          className="py-3.5 px-4 border rounded-lg flex justify-center font-semibold  border-purple-700 
           items-center w-full my-3"
         >
           <svg
@@ -116,7 +122,7 @@ const Login = () => {
               fill="#EB4335"
             />
           </svg>
-          <p className="text-base font-medium ml-4 text-gray-700">
+          <p className="text-base font-semibold ml-4 text-gray-500">
             Continue with Google
           </p>
         </button>

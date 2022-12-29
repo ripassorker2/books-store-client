@@ -76,7 +76,10 @@ const Resistation = () => {
       </h1>
       <form onSubmit={handleResister} class="bg-white rounded px-8 pt-6 pb-2">
         <div class="mb-4 mt-3">
-          <label class="block text-gray-700 text-sm mb-2" for="username">
+          <label
+            class="block text-gray-500 font-semibold text-sm mb-2"
+            htmlFor="username"
+          >
             Full Name
           </label>
           <input
@@ -89,7 +92,10 @@ const Resistation = () => {
           />
         </div>
         <div class="mb-4">
-          <label class="block text-gray-700 text-sm mb-2" for="email">
+          <label
+            class="block text-gray-500 font-semibold text-sm mb-2"
+            htmlFor="email"
+          >
             Email
           </label>
           <input
@@ -101,7 +107,10 @@ const Resistation = () => {
             required
           />
         </div>
-        <label htmlFor="email" className="block mb-2 text-sm">
+        <label
+          htmlhtmlFor="email"
+          className="block mb-2 font-semibold text-gray-500 text-sm"
+        >
           Select profile type
         </label>
         <fieldset class=" flex">
@@ -116,7 +125,7 @@ const Resistation = () => {
               required
             />
             <label
-              for="country-option-2"
+              htmlFor="country-option-2"
               class="text-sm  text-gray-900 ml-2 block"
             >
               Buyer
@@ -134,7 +143,7 @@ const Resistation = () => {
               required
             />
             <label
-              for="country-option-3"
+              htmlFor="country-option-3"
               class="text-sm font-medium text-gray-900 ml-2 block"
             >
               Seller
@@ -142,7 +151,10 @@ const Resistation = () => {
           </div>
         </fieldset>
         <div class="mb-4">
-          <label class="block text-gray-700 text-sm mb-2" for="password">
+          <label
+            class="block text-gray-500 font-semibold text-sm mb-2"
+            htmlFor="password"
+          >
             Password
           </label>
           <input
@@ -156,7 +168,7 @@ const Resistation = () => {
         </div>
         <div class="flex items-center justify-between">
           <button
-            class="bg-purple-600 w-full hover:bg-purple-700 text-white font-bold py-3 px-4 
+            class="bg-red-600 w-full hover:bg-red-700 text-white font-bold py-3 px-4 
             rounded duration-300 "
             type="submit"
           >
@@ -194,7 +206,7 @@ const Resistation = () => {
               fill="#EB4335"
             />
           </svg>
-          <p className="text-base font-medium ml-4 text-gray-700">
+          <p className="text-base font-semibold ml-4 text-gray-500">
             Continue with Google
           </p>
         </button>
