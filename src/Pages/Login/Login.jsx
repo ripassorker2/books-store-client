@@ -5,6 +5,7 @@ import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
 const Login = () => {
   const { loginUser, setLoading, signInWithGoogle } = useContext(AuthContext);
+
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -29,8 +30,7 @@ const Login = () => {
   const handleGoogleSignin = () => {
     signInWithGoogle()
       .then((result) => {
-        const user = result.user;
-        console.log(user);
+        navigate(from, { replace: true });
         toast.success("Login succesfully....!");
       })
       .catch((err) => {
@@ -40,13 +40,16 @@ const Login = () => {
   };
 
   return (
-    <div className="w-full max-w-md shadow-xl rounded-lg m-auto border-2 -mt-14">
+    <div className="w-full max-w-md shadow-xl rounded-lg m-auto border-2 -mt-10">
       <h1 className="text-red-600 text-center pt-5 font-semibold text-4xl">
         {" "}
       </h1>
       <form onSubmit={handleSubmit} class="bg-white rounded px-8 pt-6 pb-2">
         <div class="mb-4 mt-3">
-          <label class="block text-gray-700 text-sm mb-2" for="email">
+          <label
+            class="block text-gray-600 font-semibold text-sm mb-2"
+            for="email"
+          >
             Email
           </label>
           <input
@@ -59,7 +62,10 @@ const Login = () => {
           />
         </div>
         <div class="mb-1">
-          <label class="block text-gray-700 text-sm mb-2" for="password">
+          <label
+            class="block text-gray-600 font-semibold text-sm mb-2"
+            for="password"
+          >
             Password
           </label>
           <input

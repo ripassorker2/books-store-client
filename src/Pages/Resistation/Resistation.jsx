@@ -6,26 +6,19 @@ import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 const Resistation = () => {
   const { createUser, updateUserProfile, setLoading, signInWithGoogle } =
     useContext(AuthContext);
-
   const navigate = useNavigate();
-
   const handleResister = (event) => {
     event.preventDefault();
 
     const name = event.target.name.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
-    const photo = event.target.photo.value;
     const role = event.target.role.value;
 
     createUser(email, password)
       .then((result) => {
-        const user = result.user;
-        // saveUserInDB(name, email, role);
-        updateUserProfile(name).then((data) => {
-          console.log(user);
-          navigate("/");
-        });
+        saveUserInDB(name, email, role);
+        updateUserProfile(name).then((data) => {});
       })
       .catch((err) => {
         toast.error(err.message);
@@ -37,8 +30,8 @@ const Resistation = () => {
     signInWithGoogle()
       .then((result) => {
         const user = result.user;
-        console.log(user);
-        toast.success("Login succesfully....!");
+        const role = "buyer";
+        saveUserInDB(user.displayName, user.email, role);
       })
       .catch((err) => {
         toast.error(err.message);
@@ -46,37 +39,40 @@ const Resistation = () => {
       });
   };
 
-  // const saveUserInDB = (name, email, role) => {
-  //   const user = {
-  //     name: name,
-  //     email: email,
-  //     role: role,
-  //   };
-  //   fetch(`http://localhost:5000/user?email=${email}`, {
-  //     method: "PUT",
-  //     headers: {
-  //       "content-type": "application/json",
-  //     },
-  //     body: JSON.stringify(user),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       if (data.acknowledged) {
-  //         console.log(data);
-  //         toast.success("Created user succesfully...!");
-  //       }
-  //     })
-  //     .catch((error) => console.error(error));
-  // };
+  const saveUserInDB = (name, email, role) => {
+    const user = {
+      name: name,
+      email: email,
+      role: role,
+    };
+    fetch(`http://localhost:5000/user/email=${email}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          toast.success("Resister succesfully..!");
+          navigate("/");
+        }
+      })
+      .catch((error) => console.error(error));
+  };
 
   return (
-    <div className="w-full max-w-md shadow-xl rounded-lg m-auto border-2 -mt-14">
+    <div className="w-full max-w-md shadow-xl rounded-lg m-auto border-2 -mt-10">
       <h1 className="text-red-600 pt-5 text-center font-semibold text-4xl">
         {" "}
       </h1>
       <form onSubmit={handleResister} class="bg-white rounded px-8 pt-6 pb-2">
         <div class="mb-4 mt-3">
-          <label class="block text-gray-700 text-sm mb-2" for="username">
+          <label
+            class="block text-gray-600 font-semibold text-sm mb-2"
+            for="username"
+          >
             Full Name
           </label>
           <input
@@ -89,7 +85,10 @@ const Resistation = () => {
           />
         </div>
         <div class="mb-4">
-          <label class="block text-gray-700 text-sm mb-2" for="email">
+          <label
+            class="block text-gray-600 font-semibold text-sm mb-2"
+            for="email"
+          >
             Email
           </label>
           <input
@@ -145,7 +144,10 @@ const Resistation = () => {
           </div>
         </fieldset>
         <div class="mb-4">
-          <label class="block text-gray-700 text-sm mb-2" for="password">
+          <label
+            class="block text-gray-600 font-semibold text-sm mb-2"
+            for="password"
+          >
             Password
           </label>
           <input
