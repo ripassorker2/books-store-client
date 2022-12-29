@@ -54,7 +54,7 @@ const Appbar = () => {
           <div className="text-end">
             {navItems?.map((item) => (
               <Link key={item} to={`${item?.link}`}>
-                <button className="mx-4 mt-2 ">{item?.name}</button>
+                <button className="mr-4 mt-2 ">{item?.name}</button>
               </Link>
             ))}
           </div>
