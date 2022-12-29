@@ -29,7 +29,7 @@ const AllProductCard = ({ products }) => {
           >
             ${price}.00
           </p>
-          <Link to="/detailsPage">
+          <Link to={`/detailsPage/${products._id}`}>
             <button
               className="px-2 py-1 absolute bottom-4 left-4  
           text-gray-100 bg-red-600 hover:bg-purple-600  

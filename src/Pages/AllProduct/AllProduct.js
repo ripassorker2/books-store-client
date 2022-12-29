@@ -8,18 +8,17 @@ import ViewHeadlineIcon from "@mui/icons-material/ViewHeadline";
 import AppsOutlinedIcon from "@mui/icons-material/AppsOutlined";
 import "./AllProduct.css";
 
-
-
 const AllProduct = () => {
   const [allProduct, setAllProduct] = useState([]);
   const [page, setPage] = useState(1);
-
 
   useEffect(() => {
     fetch("http://localhost:5000/products")
       .then((res) => res.json())
       .then((data) => setAllProduct(data));
   }, [page]);
+
+
   return (
     <Container maxWidth="xl">
       <div
@@ -58,7 +57,7 @@ const AllProduct = () => {
       <Box>
         <Grid className="card-img" container spacing={2}>
           {allProduct.map((products, i) => (
-            <Grid key={i} item sx={12} sm={6} md={3} lg={3} xl={3}>
+            <Grid key={i} item xs={12} sm={6} md={3} lg={3} xl={3}>
               <AllProductCard products={products} />
             </Grid>
           ))}

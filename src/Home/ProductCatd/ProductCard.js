@@ -24,7 +24,7 @@ const ProductCard = ({ products }) => {
       </CardContent>
       <CardActions>
         <div className="flex justify-end">
-          <Link to="/detailsPage">
+          <Link to={`/detailsPage/${products._id}`}>
             <button
               className="px-2 py-1 absolute bottom-4 left-4  
           text-gray-100 bg-red-600 hover:bg-purple-600  
