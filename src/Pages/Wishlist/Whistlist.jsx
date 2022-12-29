@@ -1,81 +1,252 @@
-import { ShoppingCartCheckoutOutlined } from "@mui/icons-material";
-import { Container } from "@mui/material";
+import { Delete, ShoppingCartCheckoutOutlined } from "@mui/icons-material";
 import React from "react";
-import "./wishlist.css";
-import { MdDelete } from "react-icons/md";
+import { toast } from "react-hot-toast";
 
 const Whistlist = () => {
+  const handleDelete = (id) => {
+    const aggre = window.confirm("Are sure ?You want to delete this?");
+    if (aggre) {
+      fetch(`https://resale-laptop-server.vercel.app/buyerOrSeller/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount) {
+            toast.success("Succesfully deleted this buyer !!");
+          }
+        })
+        .catch((err) => console.error(err));
+    }
+  };
 
   return (
-    <Container maxWidth="xl my-4">
-      <h1 className="text-4xl font-semibold text-center pb-5">Wishlist</h1>
-      <div className="wishlist-container text-center lg:text-left">
-        <div className="bg-zinc-300 "></div>
-        <div className="bg-zinc-300 p-2 lg:p-1">PRODUCT NAME</div>
-        <div className="bg-zinc-300 p-2 lg:p-1">UNIT PRICE</div>
-        <div className="bg-zinc-300 p-2 lg:p-1">STOCK STATUS</div>
-        <div className="bg-zinc-300 "></div>
-      </div>
+    <div className="max-w-screen-xl mx-auto ">
+      <h1 className="text-4xl font-semibold text-red-500 text-center pb-5">
+        Wishlist
+      </h1>
+      <div className="flex md:justify-around justify-between items-center border rounded border-purple-600 sm:p-4 p-2 mx-2 my-5">
+        <div className=" flex items-center justify-center">
+          <img
+            src="https://m.media-amazon.com/images/I/51cYMEm5asL._SL500_.jpg"
+            className="h-[50px] w-14 sm:w-24 sm:h-24 rounded-md "
+            alt=""
+          />
+        </div>
 
-      <div className="wishlist-container p-3 border-b">
-        <div className="flex justify-between lg:justify-around items-center flex-row-reverse lg:flex-row px-2">
-          <button className="bg-[#fc3333] text-white w-10 h-10 rounded-full flex justify-center items-center">
-            <MdDelete className="h-8 w-8" />
-          </button>
+        <p className="text-gray-700 sm:font-semibold sm:w-auto w-24 sm:text-base text-sm sm: px-1">
+          New Book New Book
+        </p>
+        <p className="text-red-600 sm:font-semibold sm:text-base text-sm sm: px-1">
+          $76.00
+        </p>
+
+        <p className="text-gray-700 sm:font-semibold sm:text-base text-sm px-1 hidden md:block">
+          In stock
+        </p>
+
+        <div className="flex items-center">
+          <p className="font-semibold sm:h-auto h-5 text-red-600 ">
+            <Delete className=" inline-block" />
+            <span className="ml-2 hidden sm:inline-block text-red-600">
+              Delete
+            </span>
+          </p>
+        </div>
+        <div className="flex items-center">
+          <p className="font-semibold sm:h-auto h-5 text-purple-600 hover:text-purple-700">
+            <ShoppingCartCheckoutOutlined />
+            <span className="ml-2 hidden sm:inline-block text-gray-700">
+              Add to Cart
+            </span>
+          </p>
+        </div>
+      </div>
+      <div className="flex md:justify-around justify-between items-center border rounded border-purple-600 sm:p-4 p-2 mx-2 my-5">
+        <div className=" flex items-center justify-center">
           <img
             src="https://m.media-amazon.com/images/I/51cYMEm5asL._SL500_.jpg"
-            className="h-[50px]"
+            className="h-[50px] w-14 sm:w-24 sm:h-24 rounded-md "
             alt=""
           />
         </div>
-        <div className="mt-3 lg:mt-0 flex items-center">
-          <p className="text-blue-400 font-bold px-2 lg:px-0">New Book</p>
+
+        <p className="text-gray-700 sm:font-semibold sm:w-auto w-24 sm:text-base text-sm sm: px-1">
+          New Book New Book
+        </p>
+        <p className="text-red-600 sm:font-semibold sm:text-base text-sm sm: px-1">
+          $76.00
+        </p>
+
+        <p className="text-gray-700 sm:font-semibold sm:text-base text-sm px-1 hidden md:block">
+          In stock
+        </p>
+
+        <div className="flex items-center">
+          <p className="font-semibold sm:h-auto h-5 text-red-600 ">
+            <Delete className=" inline-block" />
+            <span className="ml-2 hidden sm:inline-block text-red-600">
+              Delete
+            </span>
+          </p>
         </div>
-        <div className="px-2 mt-3 lg:mt-0 flex items-center">
-          <span className="text-red-600 font-semibold mr-3">
-            $760.00
-          </span>
-        </div>
-        <div className="px-2 mt-3 lg:mt-0 flex items-center">
-          <p className="text-lime-500 font-bold text-lg">In Stock</p>
-        </div>
-        <div className="text-blue-400 mt-3 lg:mt-0 flex items-center">
-          <button className="font-bold">
-            <ShoppingCartCheckoutOutlined></ShoppingCartCheckoutOutlined>
-            <span>Add to Cart</span>
-          </button>
+        <div className="flex items-center">
+          <p className="font-semibold sm:h-auto h-5 text-purple-600 hover:text-purple-700">
+            <ShoppingCartCheckoutOutlined />
+            <span className="ml-2 hidden sm:inline-block text-gray-700">
+              Add to Cart
+            </span>
+          </p>
         </div>
       </div>
-      <div className="wishlist-container p-3 border-b">
-        <div className="flex justify-between lg:justify-around items-center flex-row-reverse lg:flex-row px-2">
-          <button className="bg-[#fc3333] text-white w-10 h-10 rounded-full flex justify-center items-center">
-            <MdDelete className="h-8 w-8" />
-          </button>
+      <div className="flex md:justify-around justify-between items-center border rounded border-purple-600 sm:p-4 p-2 mx-2 my-5">
+        <div className=" flex items-center justify-center">
           <img
             src="https://m.media-amazon.com/images/I/51cYMEm5asL._SL500_.jpg"
-            className="h-[50px]"
+            className="h-[50px] w-14 sm:w-24 sm:h-24 rounded-md "
             alt=""
           />
         </div>
-        <div className="mt-3 lg:mt-0 flex items-center">
-          <p className="text-blue-400 font-bold px-2 lg:px-0 flex items-center">New Book</p>
+
+        <p className="text-gray-700 sm:font-semibold sm:w-auto w-24 sm:text-base text-sm sm: px-1">
+          New Book New Book
+        </p>
+        <p className="text-red-600 sm:font-semibold sm:text-base text-sm sm: px-1">
+          $76.00
+        </p>
+
+        <p className="text-gray-700 sm:font-semibold sm:text-base text-sm px-1 hidden md:block">
+          In stock
+        </p>
+
+        <div className="flex items-center">
+          <p className="font-semibold sm:h-auto h-5 text-red-600 ">
+            <Delete className=" inline-block" />
+            <span className="ml-2 hidden sm:inline-block text-red-600">
+              Delete
+            </span>
+          </p>
         </div>
-        <div className="px-2 mt-3 lg:mt-0 flex items-center">
-          <span className="text-red-600 font-semibold mr-3">
-            $760.00
-          </span>
-        </div>
-        <div className="px-2 mt-3 lg:mt-0 flex items-center">
-          <p className="text-lime-500 font-bold text-lg">In Stock</p>
-        </div>
-        <div className="text-blue-400 mt-3 lg:mt-0 flex items-center">
-          <button className="font-bold">
-            <ShoppingCartCheckoutOutlined></ShoppingCartCheckoutOutlined>
-            <span>Add to Cart</span>
-          </button>
+        <div className="flex items-center">
+          <p className="font-semibold sm:h-auto h-5 text-purple-600 hover:text-purple-700">
+            <ShoppingCartCheckoutOutlined />
+            <span className="ml-2 hidden sm:inline-block text-gray-700">
+              Add to Cart
+            </span>
+          </p>
         </div>
       </div>
-    </Container>
+      <div className="flex md:justify-around justify-between items-center border rounded border-purple-600 sm:p-4 p-2 mx-2 my-5">
+        <div className=" flex items-center justify-center">
+          <img
+            src="https://m.media-amazon.com/images/I/51cYMEm5asL._SL500_.jpg"
+            className="h-[50px] w-14 sm:w-24 sm:h-24 rounded-md "
+            alt=""
+          />
+        </div>
+
+        <p className="text-gray-700 sm:font-semibold sm:w-auto w-24 sm:text-base text-sm sm: px-1">
+          New Book New Book
+        </p>
+        <p className="text-red-600 sm:font-semibold sm:text-base text-sm sm: px-1">
+          $76.00
+        </p>
+
+        <p className="text-gray-700 sm:font-semibold sm:text-base text-sm px-1 hidden md:block">
+          In stock
+        </p>
+
+        <div className="flex items-center">
+          <p className="font-semibold sm:h-auto h-5 text-red-600 ">
+            <Delete className=" inline-block" />
+            <span className="ml-2 hidden sm:inline-block text-red-600">
+              Delete
+            </span>
+          </p>
+        </div>
+        <div className="flex items-center">
+          <p className="font-semibold sm:h-auto h-5 text-purple-600 hover:text-purple-700">
+            <ShoppingCartCheckoutOutlined />
+            <span className="ml-2 hidden sm:inline-block text-gray-700">
+              Add to Cart
+            </span>
+          </p>
+        </div>
+      </div>
+      <div className="flex md:justify-around justify-between items-center border rounded border-purple-600 sm:p-4 p-2 mx-2 my-5">
+        <div className=" flex items-center justify-center">
+          <img
+            src="https://m.media-amazon.com/images/I/51cYMEm5asL._SL500_.jpg"
+            className="h-[50px] w-14 sm:w-24 sm:h-24 rounded-md "
+            alt=""
+          />
+        </div>
+
+        <p className="text-gray-700 sm:font-semibold sm:w-auto w-24 sm:text-base text-sm sm: px-1">
+          New Book New Book
+        </p>
+        <p className="text-red-600 sm:font-semibold sm:text-base text-sm sm: px-1">
+          $76.00
+        </p>
+
+        <p className="text-gray-700 sm:font-semibold sm:text-base text-sm px-1 hidden md:block">
+          In stock
+        </p>
+
+        <div className="flex items-center">
+          <p className="font-semibold sm:h-auto h-5 text-red-600 ">
+            <Delete className=" inline-block" />
+            <span className="ml-2 hidden sm:inline-block text-red-600">
+              Delete
+            </span>
+          </p>
+        </div>
+        <div className="flex items-center">
+          <p className="font-semibold sm:h-auto h-5 text-purple-600 hover:text-purple-700">
+            <ShoppingCartCheckoutOutlined />
+            <span className="ml-2 hidden sm:inline-block text-gray-700">
+              Add to Cart
+            </span>
+          </p>
+        </div>
+      </div>
+      <div className="flex md:justify-around justify-between items-center border rounded border-purple-600 sm:p-4 p-2 mx-2 my-5">
+        <div className=" flex items-center justify-center">
+          <img
+            src="https://m.media-amazon.com/images/I/51cYMEm5asL._SL500_.jpg"
+            className="h-[50px] w-14 sm:w-24 sm:h-24 rounded-md "
+            alt=""
+          />
+        </div>
+
+        <p className="text-gray-700 sm:font-semibold sm:w-auto w-24 sm:text-base text-sm sm: px-1">
+          New Book New Book
+        </p>
+        <p className="text-red-600 sm:font-semibold sm:text-base text-sm sm: px-1">
+          $76.00
+        </p>
+
+        <p className="text-gray-700 sm:font-semibold sm:text-base text-sm px-1 hidden md:block">
+          In stock
+        </p>
+
+        <div className="flex items-center">
+          <p className="font-semibold sm:h-auto h-5 text-red-600 ">
+            <Delete className=" inline-block" />
+            <span className="ml-2 hidden sm:inline-block text-red-600">
+              Delete
+            </span>
+          </p>
+        </div>
+        <div className="flex items-center">
+          <p className="font-semibold sm:h-auto h-5 text-purple-600 hover:text-purple-700">
+            <ShoppingCartCheckoutOutlined />
+            <span className="ml-2 hidden sm:inline-block text-gray-700">
+              Add to Cart
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
   );
 };
 
