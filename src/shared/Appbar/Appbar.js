@@ -20,12 +20,8 @@ const Appbar = () => {
       link: "/",
     },
     {
-      name: "Pages",
-      link: "/pages",
-    },
-    {
       name: "Shop",
-      link: "/shop",
+      link: "/allproducts",
     },
     {
       name: "Blog",
