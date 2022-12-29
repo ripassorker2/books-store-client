@@ -70,17 +70,17 @@ const Resistation = () => {
   // };
 
   return (
-    <div class="w-full max-w-md shadow-xl rounded-lg m-auto border-2 -mt-14">
+    <div className="w-full max-w-md shadow-xl rounded-lg m-auto border-2 -mt-14">
       <h1 className="text-red-600 pt-5 text-center font-semibold text-4xl">
         {" "}
       </h1>
-      <form onSubmit={handleResister} class="bg-white rounded px-8 pt-6 pb-2">
-        <div class="mb-4 mt-3">
-          <label class="block text-gray-700 text-sm mb-2" for="username">
+      <form onSubmit={handleResister} className="bg-white rounded px-8 pt-6 pb-2">
+        <div className="mb-4 mt-3">
+          <label className="block text-gray-700 text-sm mb-2" for="username">
             Full Name
           </label>
           <input
-            class=" border rounded w-full py-3 focus:outline-gray-600 px-3
+            className=" border rounded w-full py-3 focus:outline-gray-600 px-3
              text-gray-700 leading-tight border-gray-500 "
             id="name"
             type="text"
@@ -88,12 +88,12 @@ const Resistation = () => {
             required
           />
         </div>
-        <div class="mb-4">
-          <label class="block text-gray-700 text-sm mb-2" for="email">
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm mb-2" for="email">
             Email
           </label>
           <input
-            class=" border rounded w-full py-3 focus:outline-gray-600 px-3
+            className=" border rounded w-full py-3 focus:outline-gray-600 px-3
              text-gray-700 leading-tight border-gray-500 "
             id="email"
             type="email"
@@ -104,49 +104,49 @@ const Resistation = () => {
         <label htmlFor="email" className="block mb-2 text-sm">
           Select profile type
         </label>
-        <fieldset class=" flex">
-          <div class="flex items-center mr-4 mb-4">
+        <fieldset className=" flex">
+          <div className="flex items-center mr-4 mb-4">
             <input
               type="radio"
               name="role"
               value="Buyer"
-              class="h-3 w-3 border-gray-300"
+              className="h-3 w-3 border-gray-300"
               aria-labelledby="country-option-2"
               aria-describedby="country-option-2"
               required
             />
             <label
               for="country-option-2"
-              class="text-sm  text-gray-900 ml-2 block"
+              className="text-sm  text-gray-900 ml-2 block"
             >
               Buyer
             </label>
           </div>
 
-          <div class="flex items-center mb-4">
+          <div className="flex items-center mb-4">
             <input
               type="radio"
               name="role"
               value="Seller"
-              class="h-3 w-3 border-gray-300"
+              className="h-3 w-3 border-gray-300"
               aria-labelledby="country-option-3"
               aria-describedby="country-option-3"
               required
             />
             <label
               for="country-option-3"
-              class="text-sm font-medium text-gray-900 ml-2 block"
+              className="text-sm font-medium text-gray-900 ml-2 block"
             >
               Seller
             </label>
           </div>
         </fieldset>
-        <div class="mb-4">
-          <label class="block text-gray-700 text-sm mb-2" for="password">
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm mb-2" for="password">
             Password
           </label>
           <input
-            class=" border rounded w-full py-3 focus:outline-gray-600 px-3 
+            className=" border rounded w-full py-3 focus:outline-gray-600 px-3 
             text-gray-700 leading-tight border-gray-500 "
             id="password"
             type="password"
@@ -154,9 +154,9 @@ const Resistation = () => {
             required
           />
         </div>
-        <div class="flex items-center justify-between">
+        <div className="flex items-center justify-between">
           <button
-            class="bg-purple-600 w-full hover:bg-purple-700 text-white font-bold py-3 px-4 
+            className="bg-purple-600 w-full hover:bg-purple-700 text-white font-bold py-3 px-4 
             rounded duration-300 "
             type="submit"
           >
