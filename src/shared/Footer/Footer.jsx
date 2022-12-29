@@ -2,32 +2,32 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer class="text-white dark:bg-gray-900 mt-5">
-      <div class="container p-6 mx-auto">
-        <div class="lg:flex gap-x-3">
-          <div class="w-full lg:w-2/5 mx-auto ">
-            <div class="px-6 md:m-auto lg:text-start text-center ">
+    <footer className="text-white dark:bg-gray-900 mt-5">
+      <div className="container p-6 mx-auto">
+        <div className="lg:flex gap-x-3">
+          <div className="w-full lg:w-2/5 mx-auto ">
+            <div className="px-6 md:m-auto lg:text-start text-center ">
               <div className="">
                 <a
                   href="/"
-                  class="text-2xl  font-serif font-bold text-red-600  hover:text-red-700 duration-200"
+                  className="text-2xl  font-serif font-bold text-red-600  hover:text-red-700 duration-200"
                 >
                   Book Store
                 </a>
               </div>
 
-              <p class=" mt-2 text-gray-300  dark:text-gray-300 pr-5">
+              <p className=" mt-2 text-gray-300  dark:text-gray-300 pr-5">
                 Join 31,000+ users and never miss out on new books.
               </p>
 
-              <div class="flex lg:justify-start justify-center mt-6 -mx-2">
+              <div className="flex lg:justify-start justify-center mt-6 -mx-2">
                 <a
                   href="/"
-                  class="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-red-600 "
+                  className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-red-600 "
                   aria-label="Reddit"
                 >
                   <svg
-                    class="w-7 h-7 fill-current"
+                    className="w-7 h-7 fill-current"
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -38,11 +38,11 @@ const Footer = () => {
 
                 <a
                   href="/"
-                  class="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-red-600"
+                  className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-red-600"
                   aria-label="Facebook"
                 >
                   <svg
-                    class="w-7 h-7 fill-current"
+                    className="w-7 h-7 fill-current"
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -53,11 +53,11 @@ const Footer = () => {
 
                 <a
                   href="/"
-                  class="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-red-600"
+                  className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-red-600"
                   aria-label="Github"
                 >
                   <svg
-                    class="w-7 h-7 fill-current"
+                    className="w-7 h-7 fill-current"
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -69,98 +69,98 @@ const Footer = () => {
             </div>
           </div>
 
-          <div class="mt-6 lg:mt-0 lg:flex-1">
-            <div class="grid grid-cols-1 gap-6  md:grid-cols-4 lg:grid-cols-4">
+          <div className="mt-6 lg:mt-0 lg:flex-1">
+            <div className="grid grid-cols-1 gap-6  md:grid-cols-4 lg:grid-cols-4">
               <div>
-                <h3 class=" font-semibold text-lg text-red-600">About</h3>
+                <h3 className=" font-semibold text-lg text-red-600">About</h3>
                 <a
                   href="/"
-                  class="block mt-2 text-sm text-gray-300 hover:underline"
+                  className="block mt-2 text-sm text-gray-300 hover:underline"
                 >
                   Company
                 </a>
                 <a
                   href="/"
-                  class="block mt-2 text-sm text-gray-300 hover:underline"
+                  className="block mt-2 text-sm text-gray-300 hover:underline"
                 >
                   Community
                 </a>
                 <a
                   href="/"
-                  class="block mt-2 text-sm text-gray-300 hover:underline"
+                  className="block mt-2 text-sm text-gray-300 hover:underline"
                 >
                   Teams
                 </a>
               </div>
 
               <div>
-                <h3 class="font-semibold text-lg text-red-600">Blog</h3>
+                <h3 className="font-semibold text-lg text-red-600">Blog</h3>
                 <a
                   href="/"
-                  class="block mt-2 text-sm text-gray-300 hover:underline"
+                  className="block mt-2 text-sm text-gray-300 hover:underline"
                 >
                   Tec
                 </a>
                 <a
                   href="/"
-                  class="block mt-2 text-sm text-gray-300 hover:underline"
+                  className="block mt-2 text-sm text-gray-300 hover:underline"
                 >
                   Music
                 </a>
                 <a
                   href="/"
-                  class="block mt-2 text-sm text-gray-300 hover:underline"
+                  className="block mt-2 text-sm text-gray-300 hover:underline"
                 >
                   Videos
                 </a>
               </div>
 
               <div>
-                <h3 class="font-semibold text-lg text-red-600">Books</h3>
+                <h3 className="font-semibold text-lg text-red-600">Books</h3>
                 <a
                   href="/"
-                  class="block mt-2 text-sm text-gray-300 hover:underline"
+                  className="block mt-2 text-sm text-gray-300 hover:underline"
                 >
                   Action and Adventure
                 </a>
                 <a
                   href="/"
-                  class="block mt-2 text-sm text-gray-300 hover:underline"
+                  className="block mt-2 text-sm text-gray-300 hover:underline"
                 >
                   Classics
                 </a>
                 <a
                   href="/"
-                  class="block mt-2 text-sm text-gray-300 hover:underline"
+                  className="block mt-2 text-sm text-gray-300 hover:underline"
                 >
                   Detective and Mystery
                 </a>
                 <a
                   href="/"
-                  class="block mt-2 text-sm text-gray-300 hover:underline"
+                  className="block mt-2 text-sm text-gray-300 hover:underline"
                 >
                   Comic Book
                 </a>
                 <a
                   href="/"
-                  class="block mt-2 text-sm text-gray-300 hover:underline"
+                  className="block mt-2 text-sm text-gray-300 hover:underline"
                 >
                   Fantasy
                 </a>
                 <a
                   href="/"
-                  class="block mt-2 text-sm text-gray-300 hover:underline"
+                  className="block mt-2 text-sm text-gray-300 hover:underline"
                 >
                   Horror
                 </a>
               </div>
 
               <div>
-                <h3 class="font-semibold text-lg text-red-600">Contact</h3>
-                <span class="block mt-2 text-sm text-gray-300 hover:underline">
+                <h3 className="font-semibold text-lg text-red-600">Contact</h3>
+                <span className="block mt-2 text-sm text-gray-300 hover:underline">
                   +1 526 654 8965
                 </span>
-                <span class="block mt-2 text-sm text-gray-300 hover:underline">
+                <span className="block mt-2 text-sm text-gray-300 hover:underline">
                   example@email.com
                 </span>
               </div>
@@ -168,10 +168,10 @@ const Footer = () => {
           </div>
         </div>
 
-        <hr class="h-px my-6 bg-gray-200 border-none dark:bg-gray-600" />
+        <hr className="h-px my-6 bg-gray-200 border-none dark:bg-gray-600" />
 
         <div>
-          <p class="text-center text-gray-300 dark:text-gray-300">
+          <p className="text-center text-gray-300 dark:text-gray-300">
             © Book Store 2023 - All rights reserved
           </p>
         </div>
