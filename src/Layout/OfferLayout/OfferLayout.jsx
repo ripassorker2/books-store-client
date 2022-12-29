@@ -1,9 +1,13 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 
 const OfferLayout = () => {
     return (
         <div>
-            <h1>Offer layout</h1>
+            <div>
+                limit offer
+            </div>
+            <Outlet></Outlet>
         </div>
     );
 };

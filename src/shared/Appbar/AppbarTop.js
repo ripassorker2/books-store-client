@@ -33,9 +33,11 @@ function AppbarTop(props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        BOOK STORE
-      </Typography>
+      <Link>
+        <Typography variant="h6" sx={{ my: 2 }}>
+          BOOK STORE
+        </Typography>
+      </Link>
       <Box sx={{ mb: 2 }}>
         <AppbarDropDown></AppbarDropDown>
       </Box>
@@ -82,12 +84,12 @@ function AppbarTop(props) {
             BOOK STORE
           </Typography>
           <Box className="top-nav-links">
-            <Link sx={{ color: "#fff" }} className="mx-3 lg:mx-4 text-xl ">
+            <Link to="/wisthlist" sx={{ color: "#fff" }} className="mx-3 lg:mx-4 text-xl ">
               <Badge color="secondary" badgeContent={99}>
                 <FavoriteBorder></FavoriteBorder>
               </Badge>
             </Link>
-            <Link sx={{ color: "#fff" }} className="mx-3 lg:mx-4 text-xl ">
+            <Link to="/addtocart" sx={{ color: "#fff" }} className="mx-3 lg:mx-4 text-xl ">
               <Badge color="secondary" badgeContent={99}>
                 <ShoppingCartCheckoutOutlined></ShoppingCartCheckoutOutlined>
               </Badge>

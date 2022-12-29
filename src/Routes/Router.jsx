@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Main from "../Layout/Main";
 import AllProduct from "../Pages/AllProduct/AllProduct";
+import Blog from "../Pages/Blog/Blog";
 import CartPage from "../Pages/CartPage/CartPage";
 import AllMail from "../Pages/Dashboard/AllMail/AllMail";
 import Chat from "../Pages/Dashboard/Chat/Chat";
@@ -12,10 +13,9 @@ import ReportedItem from "../Pages/Dashboard/ReportedItem/ReportedItem";
 import Users from "../Pages/Dashboard/Users/Users";
 import VerifyAccount from "../Pages/Dashboard/VerifyAccount/VerifyAccount";
 import Home from "../Pages/Home/Home";
-import Login from "../Pages/Login/Login";
+import LoginTabs from "../Pages/Login/LoginTabs";
 import MainCheckout from "../Pages/MainCheckout/MainCheckout";
 import ProductDetails from "../Pages/ProductDetails/ProductDetails";
-import Resistation from "../Pages/Resistation/Resistation";
 import Whistlist from "../Pages/Wishlist/Whistlist";
 
 export const router = createBrowserRouter([
@@ -37,24 +37,24 @@ export const router = createBrowserRouter([
       },
       {
         path: "/login",
-        element: <Login />,
+        element: <LoginTabs />,
       },
       {
-        path: "/resistation",
-        element: <Resistation />,
+        path: "/addtocart",
+        element: <CartPage></CartPage>,
       },
       {
-        path:'/addtocart',
-        element:<CartPage></CartPage>
+        path: "/wisthlist",
+        element: <Whistlist></Whistlist>,
       },
       {
-        path:'/wisthlist',
-        element:<Whistlist></Whistlist>
+        path:'/blog',
+        element:<Blog></Blog>
       },
       {
-        path:'/payment',
-        element:<MainCheckout></MainCheckout>
-      }
+        path: "/payment",
+        element: <MainCheckout></MainCheckout>,
+      },
     ],
   },
 

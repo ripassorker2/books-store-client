@@ -8,7 +8,7 @@ const Main = () => {
   return (
     <div>
       <Appbar></Appbar>
-      <AddToCartPage></AddToCartPage>
+
       <Outlet></Outlet>
       <Footer></Footer>
     </div>
