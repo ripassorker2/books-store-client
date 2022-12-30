@@ -25,14 +25,14 @@ const AllProductCard = ({ products }) => {
         <div className="flex justify-end">
           <p
             className="text-end md:text-lg text-red-600 
-          absolute  bottom-4 right-4"
+          absolute  bottom-4 left-4"
           >
             ${price}.00
           </p>
           <Link to={`/detailsPage/${products._id}`}>
             <button
-              className="px-2 py-1 absolute bottom-4 left-4  
-          text-gray-100 bg-red-600 hover:bg-purple-600  
+              className="px-4 py-1 absolute bottom-4 right-4  
+          text-gray-100 bg-[#fc3333] hover:bg-purple-600  
           text-sm font-semibold rounded-md duration-300 "
             >
               Details

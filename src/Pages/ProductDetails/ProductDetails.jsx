@@ -67,7 +67,7 @@ const ProductDetails = () => {
         </div>
       </div>
 
-      <ProductReview />
+      <ProductReview details={details} />
       <ReletedProducts />
     </div>
   );
