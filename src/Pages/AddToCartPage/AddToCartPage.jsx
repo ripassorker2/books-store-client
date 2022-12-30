@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./AddToCart.css";
 import { MdDelete } from "react-icons/md";
-
+import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
+import useCartProducts from "../../Hooks/useCartProducts";
 
 const AddToCartPage = () => {
+  const { user } = useContext(AuthContext);
+  const [cartProducts, isLoading, refetch] = useCartProducts(user?.email);
+  console.log(cartProducts);
 
   return (
     <div className="p-2">

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const ProductReview = () => {
   return (
     <div className="max-w-screen-xl px-5 m-auto">
-      <div>
+      <from>
         <ul className="offer-ul flex text-gray-800 no-underline my-2">
           <li className="">
             <Link>Create Review</Link>
@@ -25,14 +25,18 @@ const ProductReview = () => {
           id="riview"
           rows="2"
           onResize={"none"}
+          required
           placeholder="Write here your review"
         ></textarea>
         <div>
-          <button className="md:px-6 px-4 md:py-3 py-2 mt-1 md:text-base text-sm text-gray-100 bg-red-600 hover:bg-purple-600  font-semibold rounded-md duration-300 ">
+          <button
+            type="submit"
+            className="md:px-6 px-4 md:py-3 py-2 mt-1 md:text-base text-sm text-gray-100 bg-red-600 hover:bg-purple-600  font-semibold rounded-md duration-300 "
+          >
             Submit
           </button>
         </div>
-      </div>
+      </from>
 
       <ul className="offer-ul mt-6 flex text-gray-800 no-underline mb-2">
         <li className="">
