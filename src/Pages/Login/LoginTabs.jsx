@@ -5,7 +5,7 @@ import Login from "./Login";
 const LoginTabs = () => {
   const [openTab, setOpenTab] = useState(1);
   const [active, setActive] = useState(true);
-  console.log(active);
+
   return (
     <div className="my-8 md:mt-8 mt-14">
       <div className="container mx-auto ">
