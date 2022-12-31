@@ -1,9 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Main from "../Layout/Main";
+import AddToCartPage from "../Pages/AddToCartPage/AddToCartPage";
 import AllProduct from "../Pages/AllProduct/AllProduct";
 import Blog from "../Pages/Blog/Blog";
-import CartPage from "../Pages/CartPage/CartPage";
+import Category from "../Pages/Category/Category";
 import AddProduct from "../Pages/Dashboard/AddProduct/AddProduct";
 import Buyer from "../Pages/Dashboard/Buyer/Buyer";
 import Charts from "../Pages/Dashboard/Charts/Charts";
@@ -27,12 +28,21 @@ export const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
+        path: "/category/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/cetegory/${params.id}`),
+        element: <Category></Category>,
+      },
+      {
         path: "/allproducts",
         element: <AllProduct></AllProduct>,
       },
+
       {
-        path: "/details",
+        path: "/detailsPage/:id",
         element: <ProductDetails></ProductDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/products/${params.id}`),
       },
       {
         path: "/login",
@@ -40,7 +50,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/addtocart",
-        element: <CartPage></CartPage>,
+        element: <AddToCartPage></AddToCartPage>,
       },
       {
         path: "/wisthlist",

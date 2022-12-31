@@ -6,26 +6,19 @@ import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 const Resistation = () => {
   const { createUser, updateUserProfile, setLoading, signInWithGoogle } =
     useContext(AuthContext);
-
   const navigate = useNavigate();
-
   const handleResister = (event) => {
     event.preventDefault();
 
     const name = event.target.name.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
-    const photo = event.target.photo.value;
     const role = event.target.role.value;
 
     createUser(email, password)
       .then((result) => {
-        const user = result.user;
-        // saveUserInDB(name, email, role);
-        updateUserProfile(name).then((data) => {
-          console.log(user);
-          navigate("/");
-        });
+        saveUserInDB(name, email, role);
+        updateUserProfile(name).then((data) => {});
       })
       .catch((err) => {
         toast.error(err.message);
@@ -37,8 +30,8 @@ const Resistation = () => {
     signInWithGoogle()
       .then((result) => {
         const user = result.user;
-        console.log(user);
-        toast.success("Login succesfully....!");
+        const role = "buyer";
+        saveUserInDB(user.displayName, user.email, role);
       })
       .catch((err) => {
         toast.error(err.message);
@@ -46,41 +39,44 @@ const Resistation = () => {
       });
   };
 
-  // const saveUserInDB = (name, email, role) => {
-  //   const user = {
-  //     name: name,
-  //     email: email,
-  //     role: role,
-  //   };
-  //   fetch(`http://localhost:5000/user?email=${email}`, {
-  //     method: "PUT",
-  //     headers: {
-  //       "content-type": "application/json",
-  //     },
-  //     body: JSON.stringify(user),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       if (data.acknowledged) {
-  //         console.log(data);
-  //         toast.success("Created user succesfully...!");
-  //       }
-  //     })
-  //     .catch((error) => console.error(error));
-  // };
+  const saveUserInDB = (name, email, role) => {
+    const user = {
+      name: name,
+      email: email,
+      role: role,
+    };
+    fetch(`http://localhost:5000/user/email=${email}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          toast.success("Resister succesfully..!");
+          navigate("/");
+        }
+      })
+      .catch((error) => console.error(error));
+  };
 
   return (
-    <div class="w-full max-w-md shadow-xl rounded-lg m-auto border-2 -mt-14">
+    <div className="w-full max-w-md shadow-xl rounded-lg m-auto border-2 -mt-10">
       <h1 className="text-red-600 pt-5 text-center font-semibold text-4xl">
         {" "}
       </h1>
       <form onSubmit={handleResister} class="bg-white rounded px-8 pt-6 pb-2">
         <div class="mb-4 mt-3">
-          <label class="block text-gray-700 text-sm mb-2" for="username">
+          <label
+            class="block text-gray-600 font-semibold text-sm mb-2"
+            for="username"
+          >
             Full Name
           </label>
           <input
-            class=" border rounded w-full py-3 focus:outline-gray-600 px-3
+            className=" border rounded w-full py-3 focus:outline-gray-600 px-3
              text-gray-700 leading-tight border-gray-500 "
             id="name"
             type="text"
@@ -89,11 +85,14 @@ const Resistation = () => {
           />
         </div>
         <div class="mb-4">
-          <label class="block text-gray-700 text-sm mb-2" for="email">
+          <label
+            class="block text-gray-600 font-semibold text-sm mb-2"
+            for="email"
+          >
             Email
           </label>
           <input
-            class=" border rounded w-full py-3 focus:outline-gray-600 px-3
+            className=" border rounded w-full py-3 focus:outline-gray-600 px-3
              text-gray-700 leading-tight border-gray-500 "
             id="email"
             type="email"
@@ -101,16 +100,19 @@ const Resistation = () => {
             required
           />
         </div>
-        <label htmlFor="email" className="block mb-2 text-sm">
+        <label
+          htmlhtmlFor="email"
+          className="block mb-2 font-semibold text-gray-500 text-sm"
+        >
           Select profile type
         </label>
-        <fieldset class=" flex">
-          <div class="flex items-center mr-4 mb-4">
+        <fieldset className=" flex">
+          <div className="flex items-center mr-4 mb-4">
             <input
               type="radio"
               name="role"
               value="Buyer"
-              class="h-3 w-3 border-gray-300"
+              className="h-3 w-3 border-gray-300"
               aria-labelledby="country-option-2"
               aria-describedby="country-option-2"
               required
@@ -123,12 +125,12 @@ const Resistation = () => {
             </label>
           </div>
 
-          <div class="flex items-center mb-4">
+          <div className="flex items-center mb-4">
             <input
               type="radio"
               name="role"
               value="Seller"
-              class="h-3 w-3 border-gray-300"
+              className="h-3 w-3 border-gray-300"
               aria-labelledby="country-option-3"
               aria-describedby="country-option-3"
               required
@@ -142,11 +144,14 @@ const Resistation = () => {
           </div>
         </fieldset>
         <div class="mb-4">
-          <label class="block text-gray-700 text-sm mb-2" for="password">
+          <label
+            class="block text-gray-600 font-semibold text-sm mb-2"
+            for="password"
+          >
             Password
           </label>
           <input
-            class=" border rounded w-full py-3 focus:outline-gray-600 px-3 
+            className=" border rounded w-full py-3 focus:outline-gray-600 px-3 
             text-gray-700 leading-tight border-gray-500 "
             id="password"
             type="password"
@@ -154,9 +159,9 @@ const Resistation = () => {
             required
           />
         </div>
-        <div class="flex items-center justify-between">
+        <div className="flex items-center justify-between">
           <button
-            class="bg-purple-600 w-full hover:bg-purple-700 text-white font-bold py-3 px-4 
+            class="bg-red-600 w-full hover:bg-red-700 text-white font-bold py-3 px-4 
             rounded duration-300 "
             type="submit"
           >
@@ -194,7 +199,7 @@ const Resistation = () => {
               fill="#EB4335"
             />
           </svg>
-          <p className="text-base font-medium ml-4 text-gray-700">
+          <p className="text-base font-semibold ml-4 text-gray-500">
             Continue with Google
           </p>
         </button>

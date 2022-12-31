@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
 import { Link } from 'react-router-dom';
 
+
 const OfferCard = ({ book }) => {
     return (
       <Card
@@ -24,11 +25,10 @@ const OfferCard = ({ book }) => {
           <CardActions className="flex justify-between">
             <p className="price fw-bold">${book?.price}.00</p>
             <Link
+              to={`/detailsPage/${book?._id}`}
               className="bg-[#fc3333] text-white hover:bg-purple-600 
               duration-300 text-sm font-semibold px-4 py-1 rounded-md"
               size="small"
-              to="/details"
-              href="#dis"
             >
               Details
             </Link>

@@ -7,7 +7,7 @@ const Product = () => {
   const [product, setProduct] = useState([]);
 
   useEffect(() => {
-    fetch("books.json")
+    fetch("http://localhost:5000/products")
       .then((res) => res.json())
       .then((data) => setProduct(data));
 
@@ -23,8 +23,8 @@ const Product = () => {
       </Box>
       <Box className="mt-2">
         <Grid className="card-img" container spacing={2}>
-          {product.map((products) => (
-            <Grid key={products._id} item sx={12} sm={6} md={3} lg={3} xl={3}>
+          {product.slice(0, 8).map((products, i) => (
+            <Grid key={i} item xs={12} sm={6} md={3} lg={3} xl={3}>
               <ProductCard products={products} />
             </Grid>
           ))}

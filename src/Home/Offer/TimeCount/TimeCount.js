@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Display from './Display';
 
 const TimeCount = () => {
-    const endTime = new Date("december 30, 2022 00:00:00").getTime();
+    const endTime = new Date("january 8, 2023 00:00:00").getTime();
     const [currentTime, setcurrentTime] = useState(new Date().getTime());
     const gap = endTime - currentTime; 
 

@@ -9,11 +9,13 @@ import { Box, Container, Grid } from "@mui/material";
 
 const Services = () => {
   return (
-    <Container className="offer-container">
+    <Container className="offer-container hidden">
       <Box sx={{ width: "100%" }}>
         <Grid container spacing={2}>
-          <Grid item sm={4} xs={12} xl={2} md={2} lg={2}>
-            <div className="flex border items-center py-6 justify-center">
+          <Grid className="hidden md:block" item sm={4} xs={12} xl={2} md={2} lg={2}>
+            <div
+              className="flex border items-center py-6 justify-center"
+            >
               <DirectionsCarIcon
                 style={{ width: "50px", height: "50px", color: "#fc3333" }}
               />
@@ -23,7 +25,7 @@ const Services = () => {
               </div>
             </div>
           </Grid>
-          <Grid item sm={4} xs={12} xl={2} md={2} lg={2}>
+          <Grid className="hidden md:block" item sm={4} xs={12} xl={2} md={2} lg={2}>
             <div className="flex border items-center py-6 justify-center">
               <PeopleAltIcon
                 style={{ width: "50px", height: "50px", color: "#fc3333" }}
@@ -34,7 +36,7 @@ const Services = () => {
               </div>
             </div>
           </Grid>
-          <Grid item sm={4} xs={12} xl={2} md={2} lg={2}>
+          <Grid className="hidden md:block" item sm={4} xs={12} xl={2} md={2} lg={2}>
             <div className="flex border items-center py-6 justify-center">
               <PaidIcon
                 style={{ width: "50px", height: "50px", color: "#fc3333" }}
@@ -45,7 +47,7 @@ const Services = () => {
               </div>
             </div>
           </Grid>
-          <Grid item sm={4} xs={12} xl={2} md={2} lg={2}>
+          <Grid className="hidden md:block" item sm={4} xs={12} xl={2} md={2} lg={2}>
             <div className="flex border items-center py-6 justify-center">
               <UTurnRightIcon
                 style={{ width: "50px", height: "50px", color: "#fc3333" }}
@@ -56,7 +58,7 @@ const Services = () => {
               </div>
             </div>
           </Grid>
-          <Grid item sm={4} xs={12} xl={2} md={2} lg={2}>
+          <Grid className="hidden md:block" item sm={4} xs={12} xl={2} md={2} lg={2}>
             <div className="flex border items-center py-6 justify-center">
               <HeadsetMicIcon
                 style={{ width: "50px", height: "50px", color: "#fc3333" }}
@@ -67,7 +69,7 @@ const Services = () => {
               </div>
             </div>
           </Grid>
-          <Grid item sm={4} xs={12} xl={2} md={2} lg={2}>
+          <Grid className="hidden md:block" item sm={4} xs={12} xl={2} md={2} lg={2}>
             <div className="flex border items-center py-6 justify-center">
               <AdUnitsIcon
                 style={{ width: "50px", height: "50px", color: "#fc3333" }}

@@ -8,8 +8,6 @@ import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -44,10 +42,10 @@ function AppbarTop(props) {
 
       <Divider />
       <List>
-        {navItems?.map((item) => (
-          <List>
+        {navItems?.map((item, i) => (
+          <List key={i}>
             <ListItem disablePadding>
-              <Link key={item} to={`${item?.link}`}>
+              <Link to={`${item?.link}`}>
                 <button className="mx-6">{item?.name}</button>
               </Link>
             </ListItem>

@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import AppbarDropDown from "./AppbarDropDown";
 import AppbarTop from "./AppbarTop";
 
 const Appbar = () => {
+  const { user, logout } = useContext(AuthContext);
+  const [cetegoris, setCetegoris] = React.useState([]);
+
+  React.useEffect(() => {
+    fetch("http://localhost:5000/cetegoris")
+      .then((res) => res.json())
+      .then((data) => setCetegoris(data));
+  }, []);
+
+  const userLogOut = () => {
+    logout();
+  };
+
   window.onscroll = function () {
     myFunction();
   };
@@ -20,12 +34,8 @@ const Appbar = () => {
       link: "/",
     },
     {
-      name: "Pages",
-      link: "/pages",
-    },
-    {
       name: "Shop",
-      link: "/shop",
+      link: "/allproducts",
     },
     {
       name: "Blog",
@@ -34,10 +44,6 @@ const Appbar = () => {
     {
       name: "Dashboard",
       link: "/dashboard/dashboard",
-    },
-    {
-      name: "Singup/Login",
-      link: "/login",
     },
   ];
   return (
@@ -57,33 +63,32 @@ const Appbar = () => {
               All Category
             </option>
             {/* dynamic */}
-            <option value="dog">
-              <Link>Dog</Link>
-            </option>
-            <option value="cat">
-              <Link>Cat</Link>
-            </option>
-            <option value="hamster">
-              <Link>Hamster</Link>
-            </option>
-            <option value="parrot">
-              <Link>Parrot</Link>
-            </option>
-            <option value="spider">
-              <Link>Spider</Link>
-            </option>
-            <option value="goldfish">
-              <Link>Goldfish</Link>
-            </option>
+            {cetegoris?.map((category) => (
+              <option value={category?.id} key={category.id}>
+                <Link to={`/category/${category?.id}`}>
+                  {category.category}
+                </Link>
+              </option>
+            ))}
           </select>
         </div>
         <div>
           <div className="text-end">
-            {navItems?.map((item) => (
-              <Link key={item} to={`${item?.link}`}>
-                <button className="mr-4 mt-2 ">{item?.name}</button>
+            {navItems?.map((item, i) => (
+              <Link key={i} to={`${item?.link}`}>
+                <button className="mx-4 mt-2 ">{item?.name}</button>
               </Link>
             ))}
+
+            {user?.uid ? (
+              <button onClick={userLogOut} className="mx-4 mt-2 ">
+                LogOut
+              </button>
+            ) : (
+              <Link to="/login">
+                <button className="mx-4 mt-2 ">Sign In</button>
+              </Link>
+            )}
           </div>
         </div>
       </div>
