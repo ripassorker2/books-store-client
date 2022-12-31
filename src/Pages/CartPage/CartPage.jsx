@@ -7,13 +7,12 @@ import Loader from "../../utility/Loader/Loader";
 
 const CartPage = () => {
   const { user } = useContext(AuthContext);
-  console.log(user);
-  const [cartProducts, isLoading] = useCartProducts(user?.email);
+  const [cartProducts, loading] = useCartProducts(user?.email);
   console.log(cartProducts);
 
   return (
     <Container maxWidth="xl my-4">
-      {isLoading ? (
+      {/* {loading ? (
         <Loader />
       ) : (
         <>
@@ -108,7 +107,7 @@ const CartPage = () => {
             </div>
           </div>
         </>
-      )}
+      )} */}
     </Container>
   );
 };

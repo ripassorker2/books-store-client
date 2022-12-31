@@ -1,24 +1,27 @@
 import React, { useContext } from "react";
-import { Delete, ShoppingCartCheckoutOutlined } from "@mui/icons-material";
+import { ShoppingCartCheckoutOutlined } from "@mui/icons-material";
 import { toast } from "react-hot-toast";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
+import { MdDelete } from "react-icons/md";
+import useCartProducts from "../../Hooks/useCartProducts";
 
-const WhistListCard = ({ product, refetch }) => {
+const WhistListCard = ({ product, setRefresh }) => {
   const { user } = useContext(AuthContext);
-  const { _id, title, price, status, photo, category, quantity, description } =
-    product;
+  const { _id, title, price, status, photo, category, description } = product;
+
+  const [setRefreshCart] = useCartProducts(user?.email);
 
   const handleDelete = (id) => {
     const aggre = window.confirm("Are sure ?You want to remove this?");
     if (aggre) {
-      fetch(`http://localhost:5000/whisList/${id}`, {
+      fetch(`http://localhost:5000/whislist/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
         .then((data) => {
           if (data.deletedCount) {
             toast.success("Succesfully Removed!!");
-            refetch();
+            setRefresh(true);
           }
         })
         .catch((err) => console.error(err));
@@ -32,14 +35,14 @@ const WhistListCard = ({ product, refetch }) => {
       photo,
       category,
       price,
-      quantity,
+      quantity: 1,
       description,
       status,
       email: user?.email,
       name: user?.displayName,
     };
 
-    fetch(`http://localhost:5000/addtoCart`, {
+    fetch(`http://localhost:5000/cart`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -50,6 +53,7 @@ const WhistListCard = ({ product, refetch }) => {
       .then((data) => {
         if (data.acknowledged) {
           toast.success("The book is added in cart");
+          setRefreshCart(true);
         }
       });
   };
@@ -76,17 +80,14 @@ const WhistListCard = ({ product, refetch }) => {
       </p>
 
       <div className="flex items-center">
-        <p
+        <button
           onClick={() => handleDelete(_id)}
-          className="font-semibold sm:h-auto h-5 text-red-600 "
+          className="bg-[#fc3333]  text-white sm:w-10 sm:h-10 h-6 w-6 rounded-full flex justify-center items-center"
         >
-          <Delete className=" inline-block" />
-          <span className="ml-2 hidden sm:inline-block text-red-600">
-            Delete
-          </span>
-        </p>
+          <MdDelete className="h-8 w-8" />
+        </button>
       </div>
-      <div className="flex items-center">
+      <div className="flex items-center mb-2 sm:mb-0">
         <p
           onClick={handleAddToCart}
           className="font-semibold sm:h-auto h-5 text-purple-600 hover:text-purple-700"

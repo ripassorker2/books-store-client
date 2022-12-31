@@ -19,11 +19,18 @@ import {
   ShoppingCartCheckoutOutlined,
 } from "@mui/icons-material";
 import AppbarDropDown from "./AppbarDropDown";
+import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
+import useWishListProducts from "../../Hooks/useWhisListProducts";
+import useCartProducts from "../../Hooks/useCartProducts";
 const drawerWidth = 260;
 
 function AppbarTop(props) {
+  const { user } = React.useContext(AuthContext);
   const { window, navItems } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const [whislistProduct] = useWishListProducts(user?.email);
+  const [cartProducts] = useCartProducts(user?.email);
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -33,7 +40,7 @@ function AppbarTop(props) {
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Link>
         <Typography variant="h6" sx={{ my: 2 }}>
-          BOOK STORE
+          <Link to={"/"}> BOOK STORE</Link>
         </Typography>
       </Link>
       <Box sx={{ mb: 2 }}>
@@ -79,7 +86,7 @@ function AppbarTop(props) {
             sx={{ flexGrow: 1 }}
             className="page-title"
           >
-            BOOK STORE
+            <Link to={"/"}> BOOK STORE</Link>
           </Typography>
           <Box className="top-nav-links">
             <Link
@@ -87,7 +94,7 @@ function AppbarTop(props) {
               sx={{ color: "#fff" }}
               className="mx-3 lg:mx-4 text-xl "
             >
-              <Badge color="secondary" badgeContent={99}>
+              <Badge color="secondary" badgeContent={whislistProduct?.length}>
                 <FavoriteBorder></FavoriteBorder>
               </Badge>
             </Link>
@@ -96,7 +103,7 @@ function AppbarTop(props) {
               sx={{ color: "#fff" }}
               className="mx-3 lg:mx-4 text-xl "
             >
-              <Badge color="secondary" badgeContent={99}>
+              <Badge color="secondary" badgeContent={cartProducts?.length}>
                 <ShoppingCartCheckoutOutlined></ShoppingCartCheckoutOutlined>
               </Badge>
             </Link>

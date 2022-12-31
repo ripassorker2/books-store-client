@@ -5,12 +5,17 @@ import { BsFillSuitHeartFill } from "react-icons/bs";
 import { useLoaderData, useLocation } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import { toast } from "react-hot-toast";
+import useWishListProducts from "../../Hooks/useWhisListProducts";
+import useCartProducts from "../../Hooks/useCartProducts";
 
 const ProductDetails = () => {
   const { user } = useContext(AuthContext);
   const details = useLoaderData();
   const { _id, photo, title, category, description, price, status } = details;
   const { pathname } = useLocation();
+
+  const [setRefresh] = useWishListProducts(user?.email);
+  const [setRefreshCart] = useCartProducts(user?.email);
 
   const handleAddWhisList = () => {
     const wishListData = {
@@ -26,7 +31,7 @@ const ProductDetails = () => {
       wishlist: true,
     };
 
-    fetch(`http://localhost:5000/addWhisList`, {
+    fetch(`http://localhost:5000/whislist`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -36,6 +41,7 @@ const ProductDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         toast.success("The book is added to wishlist");
+        setRefresh(true);
       });
   };
 
@@ -47,12 +53,13 @@ const ProductDetails = () => {
       category,
       price,
       description,
+      quantity: 1,
       status,
       email: user?.email,
       name: user?.displayName,
     };
 
-    fetch(`http://localhost:5000/addtoCart`, {
+    fetch(`http://localhost:5000/cart`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -62,6 +69,7 @@ const ProductDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         toast.success("The book is added in cart");
+        setRefreshCart(true);
       });
   };
 
@@ -102,24 +110,9 @@ const ProductDetails = () => {
               <p className="text-red-500 text-sm py-1">{status}</p>
             </div>
             <div>
-              {/* <button
-                onClick={() => setQuantity(quantities - 1)}
-                className="border md:px-4 px-3 border-gray-400  text-xl md:py-2 py-1 "
-              >
-                -
-              </button>
-              <button className="border md:px-4 px-3 border-gray-400  text-xl md:py-2 py-1">
-                {quantity}
-              </button>
-              <button
-                onClick={() => setQuantity(quantity + 1)}
-                className="border md:px-4 px-3 border-gray-400  text-xl md:py-2 py-1 "
-              >
-                +
-              </button> */}
               <button
                 onClick={handleAddToCart}
-                className="md:px-6 px-4 md:py-3 py-2 text-gray-100 bg-red-600 hover:bg-purple-600  md:text-base text-sm font-semibold rounded-md duration-300 "
+                className="md:px-6 px-4 md:py-3 py-2 text-gray-100 bg-red-600 hover:bg-red-700  md:text-base text-sm font-semibold rounded-md duration-300 "
               >
                 Add to cart
               </button>
@@ -128,7 +121,7 @@ const ProductDetails = () => {
         </div>
       </div>
 
-      <ProductReview />
+      <ProductReview details={details} />
       <ReletedProducts />
     </div>
   );
