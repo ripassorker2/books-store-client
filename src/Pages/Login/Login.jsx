@@ -30,8 +30,9 @@ const Login = () => {
   const handleGoogleSignin = () => {
     signInWithGoogle()
       .then((result) => {
-        navigate(from, { replace: true });
-        toast.success("Login succesfully....!");
+        const user = result.user;
+        const role = "buyer";
+        saveUserInDB(user.displayName, user.email, role);
       })
       .catch((err) => {
         toast.error(err.message);
@@ -39,16 +40,39 @@ const Login = () => {
       });
   };
 
+  const saveUserInDB = (name, email, role) => {
+    const user = {
+      name: name,
+      email: email,
+      role: role,
+    };
+    fetch(`http://localhost:5000/user/email=${email}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          toast.success("Login succesfully....!");
+          navigate(from, { replace: true });
+        }
+      })
+      .catch((error) => console.error(error));
+  };
+
   return (
     <div className="w-full max-w-md shadow-xl rounded-lg m-auto border-2 -mt-10">
       <h1 className="text-red-600 text-center pt-5 font-semibold text-4xl">
         {" "}
       </h1>
-      <form onSubmit={handleSubmit} class="bg-white rounded px-8 pt-6 pb-2">
-        <div class="mb-4 mt-3">
+      <form onSubmit={handleSubmit} className="bg-white rounded px-8 pt-6 pb-2">
+        <div className="mb-4 mt-3">
           <label
-            class="block text-gray-600 font-semibold text-sm mb-2"
-            for="email"
+            className="block text-gray-600 font-semibold text-sm mb-2"
+            htmlFor="email"
           >
             Email
           </label>
@@ -61,10 +85,10 @@ const Login = () => {
             required
           />
         </div>
-        <div class="mb-1">
+        <div className="mb-1">
           <label
-            class="block text-gray-600 font-semibold text-sm mb-2"
-            for="password"
+            className="block text-gray-600 font-semibold text-sm mb-2"
+            htmlFor="password"
           >
             Password
           </label>
@@ -82,7 +106,7 @@ const Login = () => {
         </p>
         <div className="flex items-center justify-between">
           <button
-            class="bg-red-600 w-full hover:bg-red-700 text-white font-bold py-3 px-4
+            className="bg-red-600 w-full hover:bg-red-700 text-white font-bold py-3 px-4
              rounded duration-300 "
             type="submit"
           >

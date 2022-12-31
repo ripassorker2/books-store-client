@@ -1,11 +1,15 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
+import useCartProducts from "../../Hooks/useCartProducts";
+import useWishListProducts from "../../Hooks/useWhisListProducts";
 import AppbarDropDown from "./AppbarDropDown";
 import AppbarTop from "./AppbarTop";
 
 const Appbar = () => {
   const { user, logout } = useContext(AuthContext);
+  const [setRefresh] = useWishListProducts(user?.email);
+  const [setRefreshCart, refreshCart] = useCartProducts(user?.email);
   const [cetegoris, setCetegoris] = React.useState([]);
 
   React.useEffect(() => {
@@ -13,10 +17,6 @@ const Appbar = () => {
       .then((res) => res.json())
       .then((data) => setCetegoris(data));
   }, []);
-
-  const userLogOut = () => {
-    logout();
-  };
 
   window.onscroll = function () {
     myFunction();
@@ -28,6 +28,7 @@ const Appbar = () => {
       document.getElementById("navlinks").classList.remove("color-change");
     }
   }
+
   const navItems = [
     {
       name: "Home",
@@ -46,6 +47,13 @@ const Appbar = () => {
       link: "/dashboard/dashboard",
     },
   ];
+
+  const userLogOut = () => {
+    logout();
+    setRefresh(true);
+    setRefreshCart(!refreshCart);
+  };
+
   return (
     <div className="appbar-container" id="navbar">
       <div className="appbar-top">

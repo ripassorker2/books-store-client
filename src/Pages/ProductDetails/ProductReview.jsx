@@ -9,7 +9,6 @@ const ProductReview = ({ details }) => {
   const { user } = useContext(AuthContext);
   const [dataLoad, setDataLoad] = useState(false);
 
-
   const handlePlaceReview = (event) => {
     event.preventDefault();
 
@@ -18,8 +17,6 @@ const ProductReview = ({ details }) => {
     const images = user?.photoURL;
     const email = user?.email;
     const message = form.message.value;
-   
-
 
     const review = {
       id: details._id,
@@ -40,7 +37,7 @@ const ProductReview = ({ details }) => {
       .then((data) => {
         if (data.acknowledged) {
           toast.success("Successfully");
-          setDataLoad(!dataLoad)
+          setDataLoad(!dataLoad);
           form.reset();
         }
       })
@@ -58,7 +55,7 @@ const ProductReview = ({ details }) => {
   }, [details, dataLoad]);
   return (
     <div className="max-w-screen-xl px-5 m-auto">
-      <div>
+      <from>
         <ul className="offer-ul flex text-gray-800 no-underline my-2">
           <li className="">
             <Link>Create Review</Link>
@@ -77,6 +74,7 @@ const ProductReview = ({ details }) => {
             focus:outline-gray-500 focus:outline-1
           md:w-[40%] h-20 rounded-md"
             name="message"
+            required
             placeholder="Write here your review"
           />
           <div>
@@ -91,7 +89,7 @@ const ProductReview = ({ details }) => {
             </button>
           </div>
         </form>
-      </div>
+      </from>
       <ul className="offer-ul mt-6 flex text-gray-800 no-underline mb-2">
         <li className="">
           <Link>Reviews</Link>

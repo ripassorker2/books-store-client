@@ -143,12 +143,20 @@ export default function Navbar(props) {
             </div>
 
             <div className="text-end hidden md:block">
-              <Link to="/wisthlist" sx={{ color: "#fff" }} className="mx-2 lg:mx-4 text-xl ">
+              <Link
+                to="/wisthlist"
+                sx={{ color: "#fff" }}
+                className="mx-2 lg:mx-4 text-xl "
+              >
                 <Badge color="secondary" badgeContent={99}>
                   <FavoriteBorder></FavoriteBorder>
                 </Badge>
               </Link>
-              <Link to="/addtocart" sx={{ color: "#fff" }} className="mx-2 lg:mx-4 text-xl ">
+              <Link
+                to="/addtocart"
+                sx={{ color: "#fff" }}
+                className="mx-2 lg:mx-4 text-xl "
+              >
                 <Badge color="secondary" badgeContent={99}>
                   <ShoppingCartCheckoutOutlined></ShoppingCartCheckoutOutlined>
                 </Badge>
