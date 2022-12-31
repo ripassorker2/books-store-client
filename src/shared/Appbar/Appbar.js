@@ -6,10 +6,17 @@ import AppbarTop from "./AppbarTop";
 
 const Appbar = () => {
   const { user, logout } = useContext(AuthContext);
+  const [cetegoris, setCetegoris] = React.useState([]);
+
+  React.useEffect(() => {
+    fetch("http://localhost:5000/cetegoris")
+      .then((res) => res.json())
+      .then((data) => setCetegoris(data));
+  }, []);
 
   const userLogOut = () => {
-    logout()
-  }
+    logout();
+  };
 
   window.onscroll = function () {
     myFunction();
@@ -37,7 +44,7 @@ const Appbar = () => {
     {
       name: "Dashboard",
       link: "/dashboard/dashboard",
-    }
+    },
   ];
   return (
     <div className="appbar-container" id="navbar">
@@ -47,7 +54,23 @@ const Appbar = () => {
 
       <div className="appbar-links px-5 py-4" id="navlinks">
         <div>
-          <AppbarDropDown></AppbarDropDown>
+          <select
+            name="pets"
+            className="border rounded-md w-full py-4 px-4  cursor-pointer"
+            id="pet-select"
+          >
+            <option value="" className="cursor-pointer">
+              All Category
+            </option>
+            {/* dynamic */}
+            {cetegoris?.map((category) => (
+              <option value={category?.id} key={category.id}>
+                <Link to={`/category/${category?.id}`}>
+                  {category.category}
+                </Link>
+              </option>
+            ))}
+          </select>
         </div>
         <div>
           <div className="text-end">
@@ -57,15 +80,15 @@ const Appbar = () => {
               </Link>
             ))}
 
-            {
-              user?.uid ?
-                <button onClick={userLogOut} className="mx-4 mt-2 ">LogOut</button>
-                :
-                <Link to='/login'><button className="mx-4 mt-2 ">Sign In</button></Link>
-            }
-
-
-
+            {user?.uid ? (
+              <button onClick={userLogOut} className="mx-4 mt-2 ">
+                LogOut
+              </button>
+            ) : (
+              <Link to="/login">
+                <button className="mx-4 mt-2 ">Sign In</button>
+              </Link>
+            )}
           </div>
         </div>
       </div>

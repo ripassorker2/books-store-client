@@ -5,14 +5,13 @@ import AddToCartPage from "../Pages/AddToCartPage/AddToCartPage";
 import AllProduct from "../Pages/AllProduct/AllProduct";
 import Blog from "../Pages/Blog/Blog";
 import Category from "../Pages/Category/Category";
-import AllMail from "../Pages/Dashboard/AllMail/AllMail";
-import Chat from "../Pages/Dashboard/Chat/Chat";
+import AddProduct from "../Pages/Dashboard/AddProduct/AddProduct";
+import Buyer from "../Pages/Dashboard/Buyer/Buyer";
+import Charts from "../Pages/Dashboard/Charts/Charts";
 import Dashboard from "../Pages/Dashboard/Dashboard";
-import Orders from "../Pages/Dashboard/Orders/Orders";
-import Profile from "../Pages/Dashboard/Profile/Profile";
-import ReportedItem from "../Pages/Dashboard/ReportedItem/ReportedItem";
-import Users from "../Pages/Dashboard/Users/Users";
-import VerifyAccount from "../Pages/Dashboard/VerifyAccount/VerifyAccount";
+import MyBuyer from "../Pages/Dashboard/MyBuyer/MyBuyer";
+import MyProducts from "../Pages/Dashboard/MyProducts/MyProducts";
+import Seller from "../Pages/Dashboard/Seller/Seller";
 import Home from "../Pages/Home/Home";
 import LoginTabs from "../Pages/Login/LoginTabs";
 import MainCheckout from "../Pages/MainCheckout/MainCheckout";
@@ -77,32 +76,28 @@ export const router = createBrowserRouter([
         element: <Dashboard></Dashboard>,
         children: [
           {
-            path: "/dashboard/dashboard/profile",
-            element: <Profile></Profile>,
+            path: "/dashboard/dashboard",
+            element: <Charts></Charts>,
           },
           {
-            path: "/dashboard/dashboard/orders",
-            element: <Orders></Orders>,
+            path: "/dashboard/dashboard/buyer",
+            element: <Buyer></Buyer>,
           },
           {
-            path: "/dashboard/dashboard/users",
-            element: <Users></Users>,
+            path: "/dashboard/dashboard/seller",
+            element: <Seller></Seller>,
           },
           {
-            path: "/dashboard/dashboard/chat",
-            element: <Chat></Chat>,
+            path: "/dashboard/dashboard/myProducts",
+            element: <MyProducts></MyProducts>,
           },
           {
-            path: "/dashboard/dashboard/verify-account",
-            element: <VerifyAccount></VerifyAccount>,
+            path: "/dashboard/dashboard/myBuyer",
+            element: <MyBuyer></MyBuyer>,
           },
           {
-            path: "/dashboard/dashboard/all-mail",
-            element: <AllMail></AllMail>,
-          },
-          {
-            path: "/dashboard/dashboard/reported-items",
-            element: <ReportedItem></ReportedItem>,
+            path: "/dashboard/dashboard/addProduct",
+            element: <AddProduct></AddProduct>,
           },
         ],
       },

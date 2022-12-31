@@ -8,21 +8,18 @@ import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import "./Appbar.css";
+
 import { Link } from "react-router-dom";
-import { Badge } from "@mui/material";
-import {
-  FavoriteBorder,
-  ShoppingCartCheckoutOutlined,
-} from "@mui/icons-material";
-import AppbarDropDown from "./AppbarDropDown";
+import "./Dashboard.css";
 const drawerWidth = 260;
 
-function AppbarTop(props) {
-  const { window, navItems } = props;
+function DashboardNavbar(props) {
+  const { window, dashboardNavItems } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -36,16 +33,13 @@ function AppbarTop(props) {
           BOOK STORE
         </Typography>
       </Link>
-      <Box sx={{ mb: 2 }}>
-        <AppbarDropDown></AppbarDropDown>
-      </Box>
 
       <Divider />
       <List>
-        {navItems?.map((item, i) => (
-          <List key={i}>
+        {dashboardNavItems?.map((item) => (
+          <List>
             <ListItem disablePadding>
-              <Link to={`${item?.link}`}>
+              <Link key={item} to={`${item?.link}`}>
                 <button className="mx-6">{item?.name}</button>
               </Link>
             </ListItem>
@@ -63,16 +57,23 @@ function AppbarTop(props) {
       <CssBaseline />
       <AppBar component="nav" className="navbar">
         <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1 }}
             className="menu-icon"
           >
-            <MenuIcon />
-          </IconButton>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2, display: { sm: "none" } }}
+              className="menu-icon"
+            >
+              <MenuIcon />
+            </IconButton>
+          </Typography>
           <Typography
             variant="h6"
             component="div"
@@ -81,26 +82,20 @@ function AppbarTop(props) {
           >
             BOOK STORE
           </Typography>
-          <Box className="top-nav-links">
-            <Link
-              to="/wisthlist"
-              sx={{ color: "#fff" }}
-              className="mx-3 lg:mx-4 text-xl "
-            >
-              <Badge color="secondary" badgeContent={99}>
-                <FavoriteBorder></FavoriteBorder>
-              </Badge>
+          <Typography component="div" className="dashboard-navlinks ">
+            <Link to="/">
+              <button className="mx-2 md:mx-6">Home</button>
             </Link>
-            <Link
-              to="/addtocart"
-              sx={{ color: "#fff" }}
-              className="mx-3 lg:mx-4 text-xl "
-            >
-              <Badge color="secondary" badgeContent={99}>
-                <ShoppingCartCheckoutOutlined></ShoppingCartCheckoutOutlined>
-              </Badge>
+            <Link to="/">
+              <button className="mx-2 md:mx-6">Pages</button>
             </Link>
-          </Box>
+            <Link to="/">
+              <button className="mx-2 md:mx-6">Shop</button>
+            </Link>
+            <Link to="/">
+              <button className="mx-2 md:mx-6">Blog</button>
+            </Link>
+          </Typography>
         </Toolbar>
       </AppBar>
       <Box component="nav">
@@ -126,8 +121,8 @@ function AppbarTop(props) {
   );
 }
 
-AppbarTop.propTypes = {
+DashboardNavbar.propTypes = {
   window: PropTypes.func,
 };
 
-export default AppbarTop;
+export default DashboardNavbar;
