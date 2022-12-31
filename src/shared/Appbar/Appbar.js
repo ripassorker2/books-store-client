@@ -48,7 +48,34 @@ const Appbar = () => {
 
       <div className="appbar-links px-5 py-4" id="navlinks">
         <div>
-          <AppbarDropDown></AppbarDropDown>
+          <select
+            name="pets"
+            className="border rounded-md w-full py-4 px-4  cursor-pointer"
+            id="pet-select"
+          >
+            <option value="" className="cursor-pointer">
+              All Category
+            </option>
+            {/* dynamic */}
+            <option value="dog">
+              <Link>Dog</Link>
+            </option>
+            <option value="cat">
+              <Link>Cat</Link>
+            </option>
+            <option value="hamster">
+              <Link>Hamster</Link>
+            </option>
+            <option value="parrot">
+              <Link>Parrot</Link>
+            </option>
+            <option value="spider">
+              <Link>Spider</Link>
+            </option>
+            <option value="goldfish">
+              <Link>Goldfish</Link>
+            </option>
+          </select>
         </div>
         <div>
           <div className="text-end">

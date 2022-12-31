@@ -1,0 +1,18 @@
+.container-dashboard {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+@media screen and (min-width: 768px) and (max-width: 930px) {
+  .container-dashboard {
+    grid-template-columns: 200px 1fr;
+  }
+}
+@media screen and (max-width: 767px) {
+  .container-dashboard {
+    grid-template-columns: 1fr;
+    overflow: scroll;
+  }
+  .links-container {
+    display: none;
+  }
+}
