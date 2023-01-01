@@ -5,6 +5,7 @@ import { toast } from "react-hot-toast";
 import { MdDelete } from "react-icons/md";
 import Loader from "../../../utility/Loader/Loader";
 import "../Dashboard.css";
+
 const Buyer = () => {
   const {
     data: buyers = [],
@@ -13,13 +14,21 @@ const Buyer = () => {
   } = useQuery({
     queryKey: ["buyers"],
     queryFn: () =>
-      fetch(`http://localhost:5000/buyer`).then((res) => res.json()),
+      fetch(`http://localhost:5000/buyer`, {
+        headers: {
+          authorization: `bearer ${localStorage.getItem("book-token")}`,
+        },
+      }).then((res) => res.json()),
   });
+
   const handleDelete = (id) => {
     const aggre = window.confirm("Are sure ?You want to remove this?");
     if (aggre) {
       fetch(`http://localhost:5000/buyer/${id}`, {
         method: "DELETE",
+        headers: {
+          authorization: `bearer ${localStorage.getItem("book-token")}`,
+        },
       })
         .then((res) => res.json())
         .then((data) => {
@@ -31,6 +40,7 @@ const Buyer = () => {
         .catch((err) => console.error(err));
     }
   };
+
   if (isLoading) {
     return <Loader />;
   }

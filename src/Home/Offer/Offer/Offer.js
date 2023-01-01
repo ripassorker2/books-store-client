@@ -13,6 +13,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper";
 
+
 const Offer = () => {
   const [books, setBooks] = useState([]);
 
@@ -97,7 +98,10 @@ const Offer = () => {
           </Grid>
 
           <Grid item xs={12} sm={8} xl={8}>
-            <ul className="flex justify-center md:justify-end lg:justify-end offer-ul no-underline">
+            <ul
+              className="flex justify-center md:justify-end 
+            lg:justify-end offer-ul no-underline"
+            >
               <li>
                 <Link onClick={() => handelOffer(30)} className="text-gray-60">
                   30%Offer
