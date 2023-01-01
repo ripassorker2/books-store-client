@@ -55,11 +55,17 @@
 
 
 .pagination{
-    margin: 0 auto;
+    margin-top: 20px;
     margin-bottom: 50px;
 }
 .pagination button{
+    background-color: darkgrey;
+    color: #fff;
+    border-radius: 50%;
+    width: 40px;
     margin-right: 10px;
+    font-weight: 700;
+    padding: 8px;
 }
 .pagination .selected{
     background: #d21e1e;

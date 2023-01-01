@@ -88,28 +88,19 @@ const AllProduct = () => {
           ))}
         </Grid>
       </Box>
-      <div className="pagination">
-        {[...Array(pages).keys()].map((number) => (
-          <button
-            key={number}
-            className={page === number ? "selected" : ""}
-            onClick={() => setPage(number)}
-          >
-            {number + 1}
-          </button>
-        ))}
+      <div className="pagination text-center">
+        
+          {[...Array(pages).keys()].map((number) => (
+            <button
+              key={number}
+              className={page === number ? "selected" : ""}
+              onClick={() => setPage(number)}
+            >
+              {number + 1}
+            </button>
+          ))}
+      
       </div>
-      {/* <Stack
-        spacing={2}
-        className="items-center justify-center align-middle 
-        h-[100px]"
-      >
-        <Pagination
-          count={5}
-          color="primary"
-          onChange={(e, value) => setPage(value)}
-        />
-      </Stack> */}
     </Container>
   );
 };
