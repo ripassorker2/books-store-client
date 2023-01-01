@@ -1,4 +1,5 @@
 import React from "react";
+import Payment from "../Payment/Payment";
 
 const MainCheckout = () => {
   return (
@@ -167,10 +168,8 @@ const MainCheckout = () => {
                             </tr>
                           </tbody>
                         </table>
-                        <div className="flex justify-end mt-4">
-                          <button className="inline-block md:px-6 px-4 md:py-3 py-2  text-gray-100 bg-red-600 hover:bg-purple-600  md:text-base text-sm font-semibold rounded-md duration-300 ">
-                            Place Order
-                          </button>
+                        <div>
+                          <Payment></Payment>
                         </div>
                       </div>
                     </div>
