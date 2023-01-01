@@ -72,6 +72,13 @@ const ProductDetails = () => {
       });
   };
 
+  const withoutUserAddCart = () => {
+    toast.error("You have to login frist for added this book in cart!!");
+  };
+  const withoutUserAddWhislist = () => {
+    toast.error("You have to login frist!!");
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
@@ -99,24 +106,46 @@ const ProductDetails = () => {
                 <p className="text-red-500 text-base py-1 font-semibold">
                   ${price}.00
                 </p>
-                <button
-                  onClick={handleAddWhisList}
-                  className="border ml-16 mt-3 px-3 border-gray-400 rounded-lg py-1"
-                  title="Whislist"
-                >
-                  <BsFillSuitHeartFill className="inline-block text-red-500 " />
-                </button>
+
+                {user?.uid ? (
+                  <button
+                    onClick={handleAddWhisList}
+                    className="border ml-16 mt-3 px-3 border-gray-400 rounded-lg py-1"
+                    title="Whislist"
+                  >
+                    <BsFillSuitHeartFill className="inline-block text-red-500 " />
+                  </button>
+                ) : (
+                  <button
+                    onClick={withoutUserAddWhislist}
+                    className="border ml-16 mt-3 px-3 border-gray-400 rounded-lg py-1"
+                    title="Whislist"
+                  >
+                    <BsFillSuitHeartFill className="inline-block text-red-500 " />
+                  </button>
+                )}
               </div>
               <p className="text-red-500 text-sm py-1">{status}</p>
             </div>
-            <div>
-              <button
-                onClick={handleAddToCart}
-                className="md:px-6 px-4 md:py-3 py-2 text-gray-100 bg-red-600 hover:bg-red-700  md:text-base text-sm font-semibold rounded-md duration-300 "
-              >
-                Add to cart
-              </button>
-            </div>
+            {user?.uid ? (
+              <div>
+                <button
+                  onClick={handleAddToCart}
+                  className="md:px-6 px-4 md:py-3 py-2 text-gray-100 bg-red-600 hover:bg-red-700  md:text-base text-sm font-semibold rounded-md duration-300 "
+                >
+                  Add to cart
+                </button>
+              </div>
+            ) : (
+              <div>
+                <button
+                  onClick={withoutUserAddCart}
+                  className="md:px-6 px-4 md:py-3 py-2 text-gray-100 bg-red-600 hover:bg-red-700  md:text-base text-sm font-semibold rounded-md duration-300 "
+                >
+                  Add to cart
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>

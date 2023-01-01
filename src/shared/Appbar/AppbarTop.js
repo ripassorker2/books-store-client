@@ -12,7 +12,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import "./Appbar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Badge } from "@mui/material";
 import {
   FavoriteBorder,
@@ -22,6 +22,7 @@ import AppbarDropDown from "./AppbarDropDown";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import useWishListProducts from "../../Hooks/useWhisListProducts";
 import useCartProducts from "../../Hooks/useCartProducts";
+import { toast } from "react-hot-toast";
 const drawerWidth = 260;
 
 function AppbarTop(props) {
@@ -34,6 +35,10 @@ function AppbarTop(props) {
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
+  };
+
+  const cartAndWhistlist = () => {
+    toast.error("Please login frist to visit this page !!");
   };
 
   const drawer = (
@@ -89,24 +94,52 @@ function AppbarTop(props) {
             <Link to={"/"}> BOOK STORE</Link>
           </Typography>
           <Box className="top-nav-links">
-            <Link
-              to="/wisthlist"
-              sx={{ color: "#fff" }}
-              className="mx-3 lg:mx-4 text-xl "
-            >
-              <Badge color="secondary" badgeContent={whislistProduct?.length}>
-                <FavoriteBorder></FavoriteBorder>
-              </Badge>
-            </Link>
-            <Link
-              to="/addtocart"
-              sx={{ color: "#fff" }}
-              className="mx-3 lg:mx-4 text-xl "
-            >
-              <Badge color="secondary" badgeContent={cartProducts?.length}>
-                <ShoppingCartCheckoutOutlined></ShoppingCartCheckoutOutlined>
-              </Badge>
-            </Link>
+            {user?.uid ? (
+              <>
+                <Link
+                  to="/wisthlist"
+                  sx={{ color: "#fff" }}
+                  className="mx-3 lg:mx-4 text-xl "
+                >
+                  <Badge
+                    color="secondary"
+                    badgeContent={whislistProduct?.length}
+                  >
+                    <FavoriteBorder></FavoriteBorder>
+                  </Badge>
+                </Link>
+                <Link
+                  to="/addtocart"
+                  sx={{ color: "#fff" }}
+                  className="mx-3 lg:mx-4 text-xl "
+                >
+                  <Badge color="secondary" badgeContent={cartProducts?.length}>
+                    <ShoppingCartCheckoutOutlined></ShoppingCartCheckoutOutlined>
+                  </Badge>
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link sx={{ color: "#fff" }} className="mx-3 lg:mx-4 text-xl ">
+                  <Badge
+                    onClick={cartAndWhistlist}
+                    color="secondary"
+                    badgeContent={0}
+                  >
+                    <FavoriteBorder></FavoriteBorder>
+                  </Badge>
+                </Link>
+                <Link sx={{ color: "#fff" }} className="mx-3 lg:mx-4 text-xl ">
+                  <Badge
+                    onClick={cartAndWhistlist}
+                    color="secondary"
+                    badgeContent={0}
+                  >
+                    <ShoppingCartCheckoutOutlined></ShoppingCartCheckoutOutlined>
+                  </Badge>
+                </Link>
+              </>
+            )}
           </Box>
         </Toolbar>
       </AppBar>

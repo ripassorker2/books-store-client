@@ -53,6 +53,11 @@ const ProductReview = ({ details }) => {
         setReviews(data);
       });
   }, [details, dataLoad]);
+
+  const withoutUserAddReview = () => {
+    toast.error("You have to login frist to create review!!");
+  };
+
   return (
     <div className="max-w-screen-xl px-5 m-auto">
       <from>
@@ -68,27 +73,49 @@ const ProductReview = ({ details }) => {
           <StarRate fontSize="14" className="text-red-500 inline-block ml-3 " />
           <StarRate fontSize="14" className="text-red-500 inline-block ml-3 " />
         </p>
-        <form onSubmit={(event) => handlePlaceReview(event)}>
-          <input
-            className="border resize-none p-3 border-gray-600 
+        {user?.uid ? (
+          <form onSubmit={(event) => handlePlaceReview(event)}>
+            <input
+              className="border resize-none p-3 border-gray-600 
+          focus:outline-gray-500 focus:outline-1
+        md:w-[40%] h-20 rounded-md"
+              name="message"
+              required
+              placeholder="Write here your review"
+            />
+            <div>
+              <button
+                type="submit"
+                value="submit"
+                className="md:px-6 px-4 md:py-3 py-2 mt-2 md:text-base 
+            text-sm text-gray-100 bg-red-600 hover:bg-red-600  
+            font-semibold rounded-md duration-300"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        ) : (
+          <div>
+            <input
+              className="border resize-none p-3 border-gray-600 
             focus:outline-gray-500 focus:outline-1
           md:w-[40%] h-20 rounded-md"
-            name="message"
-            required
-            placeholder="Write here your review"
-          />
-          <div>
-            <button
-              type="submit"
-              value="submit"
-              className="md:px-6 px-4 md:py-3 py-2 mt-2 md:text-base 
-              text-sm text-gray-100 bg-red-600 hover:bg-purple-600  
+              name="message"
+              placeholder="Write here your review"
+            />
+            <div>
+              <button
+                onClick={withoutUserAddReview}
+                className="md:px-6 px-4 md:py-3 py-2 mt-2 md:text-base 
+              text-sm text-gray-100 bg-red-600 hover:bg-red-600  
               font-semibold rounded-md duration-300"
-            >
-              Submit
-            </button>
+              >
+                Submit
+              </button>
+            </div>
           </div>
-        </form>
+        )}
       </from>
       <ul className="offer-ul mt-6 flex text-gray-800 no-underline mb-2">
         <li className="">

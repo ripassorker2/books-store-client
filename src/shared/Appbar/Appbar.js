@@ -8,8 +8,8 @@ import AppbarTop from "./AppbarTop";
 
 const Appbar = () => {
   const { user, logout } = useContext(AuthContext);
-  const [setRefresh] = useWishListProducts(user?.email);
-  const [setRefreshCart, refreshCart] = useCartProducts(user?.email);
+  // const [setRefresh] = useWishListProducts(user?.email);
+  // const [setRefreshCart, refreshCart] = useCartProducts(user?.email);
   const [cetegoris, setCetegoris] = React.useState([]);
 
   React.useEffect(() => {
@@ -42,16 +42,12 @@ const Appbar = () => {
       name: "Blog",
       link: "/blog",
     },
-    {
-      name: "Dashboard",
-      link: "/dashboard/dashboard",
-    },
   ];
 
   const userLogOut = () => {
     logout();
-    setRefresh(true);
-    setRefreshCart(!refreshCart);
+    // setRefresh(true);
+    // setRefreshCart(!refreshCart);
   };
 
   return (
@@ -89,9 +85,14 @@ const Appbar = () => {
             ))}
 
             {user?.uid ? (
-              <button onClick={userLogOut} className="mx-4 mt-2 ">
-                LogOut
-              </button>
+              <>
+                <Link to="/dashboard/dashboard">
+                  <button className="mx-4 mt-2 ">Dashboard</button>
+                </Link>
+                <button onClick={userLogOut} className="mx-4 mt-2 ">
+                  LogOut
+                </button>
+              </>
             ) : (
               <Link to="/login">
                 <button className="mx-4 mt-2 ">Sign In</button>
