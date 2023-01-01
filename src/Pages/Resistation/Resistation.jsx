@@ -1,12 +1,22 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
+import useToken from "../../Hooks/useToken";
 
 const Resistation = () => {
   const { createUser, updateUserProfile, setLoading, signInWithGoogle } =
     useContext(AuthContext);
+  const [currentUser, setCurrentUser] = useState("");
   const navigate = useNavigate();
+
+  const token = useToken(currentUser);
+  useEffect(() => {
+    if (token) {
+      return navigate("/");
+    }
+  });
+
   const handleResister = (event) => {
     event.preventDefault();
 
@@ -18,6 +28,7 @@ const Resistation = () => {
     createUser(email, password)
       .then((result) => {
         saveUserInDB(name, email, role);
+        setCurrentUser(email);
         updateUserProfile(name).then((data) => {});
       })
       .catch((err) => {
@@ -30,8 +41,9 @@ const Resistation = () => {
     signInWithGoogle()
       .then((result) => {
         const user = result.user;
-        const role = "buyer";
+        const role = "Buyer";
         saveUserInDB(user.displayName, user.email, role);
+        setCurrentUser(user?.email);
       })
       .catch((err) => {
         toast.error(err.message);
@@ -45,8 +57,8 @@ const Resistation = () => {
       email: email,
       role: role,
     };
-    fetch(`http://localhost:5000/user/email=${email}`, {
-      method: "PUT",
+    fetch(`http://localhost:5000/user`, {
+      method: "POST",
       headers: {
         "content-type": "application/json",
       },
@@ -56,7 +68,6 @@ const Resistation = () => {
       .then((data) => {
         if (data.acknowledged) {
           toast.success("Resister succesfully..!");
-          navigate("/");
         }
       })
       .catch((error) => console.error(error));

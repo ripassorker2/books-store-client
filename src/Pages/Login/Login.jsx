@@ -1,50 +1,35 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
+import useToken from "../../Hooks/useToken";
 
 const Login = () => {
   const { loginUser, setLoading, signInWithGoogle } = useContext(AuthContext);
+  const [currentUser, setCurrentUser] = useState("");
 
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
+  const token = useToken(currentUser);
+  useEffect(() => {
+    if (token) {
+      return navigate(from, { replace: true });
+    }
+  });
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
-    console.log(email, password);
 
     loginUser(email, password)
       .then((result) => {
         const user = result.user;
-
-        const currentUser = {
-          email: user.email,
-        };
-
-        console.log(currentUser);
-
-        // get jwt token
-        fetch("http://localhost:5000/jwt", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(currentUser),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            localStorage.setItem("books-token", data.token);
-            navigate(from, { replace: true });
-          });
+        setCurrentUser(user?.email);
       })
-      // .then((result) => {
-      //   toast.success("Login successful.....!");
-      //   navigate(from, { replace: true });
-      // })
+
       .catch((err) => {
         toast.error(err.message);
         setLoading(false);
@@ -55,8 +40,7 @@ const Login = () => {
     signInWithGoogle()
       .then((result) => {
         const user = result.user;
-        const role = "buyer";
-        saveUserInDB(user.displayName, user.email, role);
+        setCurrentUser(user?.email);
       })
       .catch((err) => {
         toast.error(err.message);
@@ -64,28 +48,28 @@ const Login = () => {
       });
   };
 
-  const saveUserInDB = (name, email, role) => {
-    const user = {
-      name: name,
-      email: email,
-      role: role,
-    };
-    fetch(`http://localhost:5000/user/email=${email}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(user),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.acknowledged) {
-          toast.success("Login succesfully....!");
-          navigate(from, { replace: true });
-        }
-      })
-      .catch((error) => console.error(error));
-  };
+  // const saveUserInDB = (name, email, role) => {
+  //   const user = {
+  //     name: name,
+  //     email: email,
+  //     role: role,
+  //   };
+  //   fetch(`http://localhost:5000/user/email=${email}`, {
+  //     method: "PUT",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify(user),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       if (data.acknowledged) {
+  //         toast.success("Login succesfully....!");
+  //         navigate(from, { replace: true });
+  //       }
+  //     })
+  //     .catch((error) => console.error(error));
+  // };
 
   return (
     <div className="w-full max-w-md shadow-xl rounded-lg m-auto border-2 -mt-10">
