@@ -8,8 +8,7 @@ import img from '../../../asete/asset 17.png'
 import TimeCount from '../TimeCount/TimeCount';
 import OfferCard from "../OfferCard/OfferCard";
 import { Link } from 'react-router-dom';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation, Pagination } from 'swiper';
+
 
 const Offer = () => {
   const [books, setBooks] = useState([]);
