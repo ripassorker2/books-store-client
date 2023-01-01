@@ -9,6 +9,14 @@ const AddToCartPage = () => {
   const { user } = useContext(AuthContext);
   const [cartProducts, loading, setRefreshCart] = useCartProducts(user?.email);
 
+  // let total = 0;
+  // let quantity = 0;
+  // for (const product of cartProducts) {
+  //   total = total + parseInt(product.price) * parseInt(product.quantity);
+  //   quantity = quantity + parseInt(product.quantity)
+  // };
+  // localStorage.setItem('total', total);
+
   if (loading) {
     return <Loader />;
   }
