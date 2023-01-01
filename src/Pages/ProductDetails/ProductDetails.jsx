@@ -16,7 +16,6 @@ const ProductDetails = () => {
 
   const [setRefresh] = useWishListProducts(user?.email);
   const [setRefreshCart] = useCartProducts(user?.email);
-
   const handleAddWhisList = () => {
     const wishListData = {
       id: _id,
@@ -103,6 +102,7 @@ const ProductDetails = () => {
                 <button
                   onClick={handleAddWhisList}
                   className="border ml-16 mt-3 px-3 border-gray-400 rounded-lg py-1"
+                  title="Whislist"
                 >
                   <BsFillSuitHeartFill className="inline-block text-red-500 " />
                 </button>

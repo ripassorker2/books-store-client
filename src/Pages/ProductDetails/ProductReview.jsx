@@ -81,7 +81,7 @@ const ProductReview = ({ details }) => {
             <button
               type="submit"
               value="submit"
-              className="md:px-6 px-4 md:py-3 py-2 mt-1 md:text-base 
+              className="md:px-6 px-4 md:py-3 py-2 mt-2 md:text-base 
               text-sm text-gray-100 bg-red-600 hover:bg-purple-600  
               font-semibold rounded-md duration-300"
             >

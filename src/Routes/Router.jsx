@@ -1,11 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
+import AddBook from "../Home/HotSell/AddBook/AddBook";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Main from "../Layout/Main";
 import AddToCartPage from "../Pages/AddToCartPage/AddToCartPage";
 import AllProduct from "../Pages/AllProduct/AllProduct";
 import Blog from "../Pages/Blog/Blog";
 import Category from "../Pages/Category/Category";
-import AddProduct from "../Pages/Dashboard/AddProduct/AddProduct";
 import Buyer from "../Pages/Dashboard/Buyer/Buyer";
 import Charts from "../Pages/Dashboard/Charts/Charts";
 import Dashboard from "../Pages/Dashboard/Dashboard";
@@ -97,7 +97,7 @@ export const router = createBrowserRouter([
           },
           {
             path: "/dashboard/dashboard/addProduct",
-            element: <AddProduct></AddProduct>,
+            element: <AddBook></AddBook>,
           },
         ],
       },
