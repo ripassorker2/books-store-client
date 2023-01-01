@@ -80,9 +80,11 @@ const Offer = () => {
                           <p>Available:20</p>
                         </div>
                         <div className="flex justify-center">
-                          <button className="w-[60%] h-10 mt-2text-gray-100 bg-red-600  hover:bg-purple-600 text-sm font-semibold rounded-md duration-300 ">
-                            Details
-                          </button>
+                          <Link to={`/detailsPage/${book._id}`} className="text-gray-100 bg-red-600  hover:bg-purple-600 text-sm font-semibold rounded-md duration-300 px-10 py-2 ">
+                            <button>
+                              Details
+                            </button>
+                          </Link>
                         </div>
                         <h1 className="text-xl  md:text-[19px] font-semibold my-6 lg:text-xl">
                           <span className="text-[#fc3333]">Hurry up!</span>{" "}
