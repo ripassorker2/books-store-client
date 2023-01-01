@@ -1,28 +1,42 @@
 import React from "react";
-import Pagination from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
-import { Box, Container, Grid, Link } from "@mui/material";
+import { Box, Container, Grid, Link, } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 import { useEffect, useState } from "react";
 import AllProductCard from "../AllProductCard/AllProductCard";
-import ViewHeadlineIcon from "@mui/icons-material/ViewHeadline";
-import AppsOutlinedIcon from "@mui/icons-material/AppsOutlined";
 import "./AllProduct.css";
 
+
 const AllProduct = () => {
+   const [query, setQuery] = useState("");
   const [allProduct, setAllProduct] = useState([]);
-  const [page, setPage] = useState(1);
+  const [count, setCount] = useState(0);
+  const [page, setPage] = useState(0);
+  // const [size, setSize] = useState(20);
+
+
+  
 
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch(
+      `http://localhost:5000/products?keyword=${query}&page=${page}&size=${20}`
+    )
       .then((res) => res.json())
-      .then((data) => setAllProduct(data));
-  }, [page]);
+      .then((data) => {
+        setAllProduct(data?.data);
+        setCount(data?.count);
+        
+      });
+  }, [page, query]);
+  const pages = Math.ceil(count / 20);
 
-
+  const handleSearch = (event) => {
+    const getSearch = event.target.value;
+    setQuery(getSearch);
+  };
   return (
     <Container maxWidth="xl">
       <div
-        className="flex md:justify-between justify-center px-4 
+        className="flex md:justify-around justify-between px-2 xl:px-2 
       bg-gray-200 py-6 mb-6 all-product"
       >
         <div className="hidden md:block">
@@ -33,22 +47,33 @@ const AllProduct = () => {
           </ul>
         </div>
         <div>
+          <div className="search">
+            <input
+              value={query}
+              onChange={(e) => handleSearch(e)}
+              type="text"
+              className="searchTerm"
+              placeholder="Search"
+            />
+            <button type="submit" className="searchButton">
+              <SearchIcon />
+            </button>
+          </div>
+        </div>
+        <div>
           <ul className="all-ul flex no-underline">
             <li>
-              <Link>Shot</Link>
-            </li>
-            <li className="ml-8 hidden md:block">
-              <Link>view</Link>
-            </li>
-            <li className="ml-5 hidden md:block">
-              <Link>
-                <AppsOutlinedIcon />
-              </Link>
-            </li>
-            <li className="ml-5 hidden md:block">
-              <Link>
-                <ViewHeadlineIcon />
-              </Link>
+              <select
+                name="names"
+                id="names"
+                className="dropdown xl:w-[140px] md:w-36 w-28 ml-1
+              font-semibold rounded-md"
+              >
+                <option value="price">View price</option>
+                <option value="low">10$-30</option>
+                <option value="medium">30$-50$</option>
+                <option value="high">50$-60</option>
+              </select>
             </li>
           </ul>
         </div>
@@ -63,7 +88,18 @@ const AllProduct = () => {
           ))}
         </Grid>
       </Box>
-      <Stack
+      <div className="pagination">
+        {[...Array(pages).keys()].map((number) => (
+          <button
+            key={number}
+            className={page === number ? "selected" : ""}
+            onClick={() => setPage(number)}
+          >
+            {number + 1}
+          </button>
+        ))}
+      </div>
+      {/* <Stack
         spacing={2}
         className="items-center justify-center align-middle 
         h-[100px]"
@@ -73,7 +109,7 @@ const AllProduct = () => {
           color="primary"
           onChange={(e, value) => setPage(value)}
         />
-      </Stack>
+      </Stack> */}
     </Container>
   );
 };
