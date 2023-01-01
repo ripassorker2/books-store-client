@@ -11,7 +11,6 @@ import BannerItem from './BannerItem';
 const Banner = () => {
   const [product, setProduct] = useState([]);
 
-
   useEffect(() => {
     fetch("category.json")
       .then((res) => res.json())
