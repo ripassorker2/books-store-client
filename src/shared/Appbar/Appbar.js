@@ -1,16 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import useCartProducts from "../../Hooks/useCartProducts";
 import useWishListProducts from "../../Hooks/useWhisListProducts";
-import AppbarDropDown from "./AppbarDropDown";
 import AppbarTop from "./AppbarTop";
+import { BsFillCaretDownFill } from "react-icons/bs";
 
 const Appbar = () => {
   const { user, logout } = useContext(AuthContext);
   const [setRefresh] = useWishListProducts(user?.email);
   const [setRefreshCart, refreshCart] = useCartProducts(user?.email);
   const [cetegoris, setCetegoris] = React.useState([]);
+  const [openCategory, setOpenCategory] = useState(false);
 
   React.useEffect(() => {
     fetch("http://localhost:5000/cetegoris")
@@ -61,7 +62,7 @@ const Appbar = () => {
       </div>
 
       <div className="appbar-links px-5 py-4" id="navlinks">
-        <div>
+        {/* <div>
           <select
             name="pets"
             className="border rounded-md w-full py-4 px-4  cursor-pointer"
@@ -70,7 +71,6 @@ const Appbar = () => {
             <option value="" className="cursor-pointer">
               All Category
             </option>
-            {/* dynamic */}
             {cetegoris?.map((category) => (
               <option value={category?.id} key={category.id}>
                 <Link to={`/category/${category?.id}`}>
@@ -79,6 +79,14 @@ const Appbar = () => {
               </option>
             ))}
           </select>
+        </div> */}
+        <div className="relative">
+          <p onClick={() => setOpenCategory(!openCategory)} className='w-36 flex justify-between items-center category-list-button'>All Category <span><BsFillCaretDownFill /></span></p>
+          <ul className={`toggle-category w-52 absolute z-[999999] ${openCategory ? 'block' : 'hidden'}`}>
+            {
+              cetegoris.map(category => <li className="mt-2" key={category.id}><Link onClick={() => setOpenCategory(!openCategory)} to={`category/${category.id}`}>{category.category}</Link></li>)
+            }
+          </ul>
         </div>
         <div>
           <div className="text-end">

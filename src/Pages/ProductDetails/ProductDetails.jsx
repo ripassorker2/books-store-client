@@ -66,7 +66,7 @@ const ProductDetails = () => {
       body: JSON.stringify(cartData),
     })
       .then((res) => res.json())
-      .then((data) => {
+      .then(() => {
         toast.success("The book is added in cart");
         setRefreshCart(true);
       });
