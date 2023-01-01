@@ -16,7 +16,7 @@ const HotSell = () => {
         setBooks(data);
       });
   };
-  // best sell data load 
+  // best sell data load
 
   useEffect(() => {
     fetch("http://localhost:5000/trendsell")
@@ -25,7 +25,7 @@ const HotSell = () => {
         setBooks(data);
       });
   }, []);
-  // trending sell data load default 
+  // trending sell data load default
 
   return (
     <>
@@ -33,17 +33,26 @@ const HotSell = () => {
         <div className=" max-w-screen-xl  m-auto border p-2">
           <ul className="flex justify-center md:justify-end lg:justify-end offer-ul no-underline">
             <li>
-              <Link onClick={()=> bookData('trendsell')} className="text-gray-60">
+              <Link
+                onClick={() => bookData("trendsell")}
+                className="text-gray-60"
+              >
                 Trending Sell
               </Link>
             </li>
             <li className="ml-5">
-              <Link onClick={()=> bookData('hotsell')}  className=" text-gray-600">
+              <Link
+                onClick={() => bookData("hotsell")}
+                className=" text-gray-600"
+              >
                 Hot Sell
               </Link>
             </li>
             <li className="ml-5">
-              <Link onClick={()=> bookData('bestsell')} className=" text-gray-600">
+              <Link
+                onClick={() => bookData("bestsell")}
+                className=" text-gray-600"
+              >
                 Best Sell
               </Link>
             </li>
@@ -69,7 +78,11 @@ const HotSell = () => {
                 slidesPerView: 4,
                 spaceBetween: 20,
               },
-              1024: {
+              980: {
+                slidesPerView: 5,
+                spaceBetween: 20,
+              },
+              1025: {
                 slidesPerView: 6,
                 spaceBetween: 20,
               },

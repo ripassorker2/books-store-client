@@ -7,25 +7,50 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import "./myproduct.css";
 import OfferMenu from "./ProductMenu";
-export default function ProductCard() {
+import { toast } from "react-hot-toast";
+
+export default function ProductCard({ product, refetch }) {
+  //
+  const handleDelete = (id) => {
+    const aggre = window.confirm("Are sure ?You want to delete this?");
+    if (aggre) {
+      fetch(`http://localhost:5000/product/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount) {
+            toast.success("Succesfully delete this product!!");
+            refetch();
+          }
+        })
+        .catch((err) => console.error(err));
+    }
+  };
+
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
         alt="green iguana"
-        height="140"
-        image="https://images.penguinrandomhouse.com/cover/700jpg/9780593551998"
+        className="h-48"
+        image={product.photo}
       />
       <CardContent>
         <Typography className="card-info">
-          <h1>Lizard</h1>
-          <span>Available</span>
+          <h1>{product.title}</h1>
+          <span className="capitalize">{product.status}</span>
         </Typography>
       </CardContent>
       <CardActions className="card-btn">
         <OfferMenu></OfferMenu>
         <button className="btn">Mega Offer</button>
-        <button className="delete-btn">Delete</button>
+        <button
+          onClick={() => handleDelete(product?._id)}
+          className="delete-btn"
+        >
+          Delete
+        </button>
       </CardActions>
     </Card>
   );

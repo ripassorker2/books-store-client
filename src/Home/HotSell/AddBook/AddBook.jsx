@@ -1,41 +1,91 @@
-import React, { useReducer } from "react";
+import React, { useContext } from "react";
+import { toast } from "react-hot-toast";
+import { AuthContext } from "../../../Context/AuthProvider/AuthProvider";
 
 const AddBook = () => {
-  const initialState = {
-    sellerName: "",
-    sellerEmail: "",
-    category: "",
-    title: "",
-    photo: "",
-    price: "",
-    discount: "",
-    quantity: "",
-    description: "",
-    releaseDate: "",
-    writter: "",
-    advertise: false,
-    status: "available",
-  };
-
-  const reducer = (state, action) => {
-    console.log(action);
-    switch (action.type) {
-      case "input":
-        return {
-          ...state,
-          [action.payload.name]: action.payload.value,
-        };
-
-      default:
-        return state;
-    }
-  };
-
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const { user } = useContext(AuthContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(initialState);
+    const form = event.target;
+    const category = form.category.value;
+    const title = form.title.value;
+    const price = form.price.value;
+    const discount = form.discount.value;
+    const description = form.description.value;
+    const releaseDate = form.releaseDate.value;
+    const writter = form.writter.value;
+
+    const image = form.photo.files[0];
+    const formData = new FormData();
+    formData.append("image", image);
+    const url = `https://api.imgbb.com/1/upload?key=4aa60d42eb38dc3e5b32647ce905d2e8`;
+
+    let categoryId;
+
+    switch (category) {
+      case "Action and Adventure":
+        categoryId = 1;
+        break;
+      case "Classics":
+        categoryId = 2;
+        break;
+      case "Comic Book":
+        categoryId = 3;
+        break;
+      case "Detective and Mystery":
+        categoryId = 4;
+        break;
+      case "Fantasy":
+        categoryId = 5;
+        break;
+      case "Horror":
+        categoryId = 6;
+        break;
+
+      default:
+        categoryId = 1;
+    }
+
+    fetch(url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((imageData) => {
+        const photo = imageData.data.display_url;
+        const productData = {
+          sellerName: user?.displayName,
+          sellerEmail: user?.email,
+          sellerPhoto: user?.photoURL,
+          category,
+          id: categoryId,
+          title,
+          photo,
+          price,
+          discount,
+          description,
+          releaseDate,
+          writter,
+          advertise: false,
+          status: "available",
+        };
+
+        fetch(`http://localhost:5000/addProduct`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(productData),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.acknowledged) {
+              toast.success("Product added successfully");
+              form.reset();
+            }
+          });
+      });
   };
 
   return (
@@ -48,16 +98,9 @@ const AddBook = () => {
           <div className="md:col-span-2 text-gray-700">
             <label for="name">Seller Name</label>
             <input
-              onBlur={(event) => {
-                dispatch({
-                  type: "input",
-                  payload: {
-                    name: event.target.name,
-                    value: event.target.value,
-                  },
-                });
-              }}
               type="text"
+              defaultValue={user?.displayName}
+              disabled
               name="sellerName"
               className="h-10 border border-gray-400 mt-1 rounded px-4 w-full bg-gray-50 focus:outline-gray-400"
               placeholder="Enter Your Name"
@@ -70,6 +113,8 @@ const AddBook = () => {
             <input
               type="email"
               name="sellerEmail"
+              defaultValue={user?.email}
+              disabled
               className="h-10 border border-gray-400 mt-1 rounded px-4 w-full bg-gray-50 focus:outline-gray-400"
               placeholder="example@gmail.com"
               required
@@ -108,15 +153,15 @@ const AddBook = () => {
           <div className="md:col-span-2 text-gray-700">
             <label for="number">Book Photo</label>
             <input
-              type="picture"
+              type="file"
               name="photo"
-              className="h-10 border  border-gray-400 mt-1 rounded px-4 w-full bg-gray-50 focus:outline-gray-400"
+              className="h-10 border  border-gray-400 mt-1 pt-[6px] rounded px-4 w-full bg-gray-50 focus:outline-gray-400"
               placeholder="Your Book Photo"
               required
             />
           </div>
 
-          <div className="md:col-span-1 text-gray-700">
+          <div className="md:col-span-3 text-gray-700">
             <label for="address">Book Price</label>
             <input
               type="number"
@@ -127,7 +172,7 @@ const AddBook = () => {
             />
           </div>
 
-          <div className="md:col-span-2 text-gray-700">
+          <div className="md:col-span-3 text-gray-700">
             <label for="address">Discount</label>
             <select
               name="discount"
@@ -137,22 +182,12 @@ const AddBook = () => {
               <option disabled selected>
                 Select discount parcentige
               </option>
-              <option>30%</option>
-              <option>40%</option>
-              <option>60%</option>
+              <option>30</option>
+              <option>40</option>
+              <option>60</option>
             </select>
           </div>
-
-          <div className="md:col-span-2 text-gray-700">
-            <label for="city">Book Quantity</label>
-            <input
-              type="number"
-              name="quantity"
-              className="h-10 border border-gray-400 mt-1 rounded px-4 w-full bg-gray-50 focus:outline-gray-400"
-              placeholder="Quantity"
-            />
-          </div>
-          <div className="md:col-span-3">
+          <div className="md:col-span-2">
             <label for="zipcode">Description</label>
             <textarea
               className="h-10 border border-gray-400 mt-1 pt-2 rounded px-4 w-full bg-gray-50 focus:outline-gray-400"
@@ -161,16 +196,17 @@ const AddBook = () => {
             ></textarea>
           </div>
 
-          <div className="md:col-span-3 text-gray-700">
+          <div className="md:col-span-2 text-gray-700">
             <label for="state">Release Date </label>
             <input
+              type="date"
               name="releaseDate"
               placeholder="Release Date"
               className="h-10 border border-gray-400 mt-1 rounded px-4 w-full bg-gray-50 focus:outline-gray-400"
               required
             />
           </div>
-          <div className="md:col-span-2 text-gray-700">
+          <div className="md:col-span-3 text-gray-700">
             <label for="country">Author Name </label>
             <input
               name="writter"

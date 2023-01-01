@@ -25,6 +25,25 @@
 .page-title {
   display: block !important;
 }
+
+.category-list-button {
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid gray
+}
+
+.toggle-category {
+  padding: 10px;
+  border-radius: 5px;
+  top: 40px;
+  background-color: #dedbdb;
+}
+
+.toggle-category li a{
+  display: block;
+}
+
 @media screen and (max-width: 767px) {
   .appbar-links {
     display: none;

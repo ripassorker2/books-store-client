@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const BannerItem = ({ products }) => {
-  const { picture, category } = products;
+  const { picture, category, id } = products;
   return (
     <>
       <div className="first_slide">
@@ -11,8 +12,9 @@ const BannerItem = ({ products }) => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. os
             perferendis minus in hic deserunt qui fugit illo{" "}
           </p>
-
-          <button>View Collection</button>
+          <Link to={`category/${products.id}`}>
+            <button>View Collection</button>
+          </Link>
         </div>
         <div className="slide-img">
           <img className='slider_img' src={picture} alt="img" />
