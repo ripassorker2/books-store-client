@@ -1,0 +1,30 @@
+.card-info {
+  display: flex;
+  align-items: center;
+}
+.card-info h1 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-right: 10px;
+}
+.card-info span {
+  font-size: 10px;
+  color: green;
+  font-weight: 600;
+}
+.card-btn {
+  display: flex;
+  justify-content: space-between;
+}
+.btn {
+  background-color: rgb(92, 92, 155);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.delete-btn {
+  background-color: red;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}

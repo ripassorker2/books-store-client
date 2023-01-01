@@ -1,18 +1,80 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import ProductReview from "./ProductReview";
 import ReletedProducts from "./ReletedProducts";
 import { BsFillSuitHeartFill } from "react-icons/bs";
 import { useLoaderData, useLocation } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
+import { toast } from "react-hot-toast";
+import useWishListProducts from "../../Hooks/useWhisListProducts";
+import useCartProducts from "../../Hooks/useCartProducts";
 
 const ProductDetails = () => {
+  const { user } = useContext(AuthContext);
   const details = useLoaderData();
-  const { photo, title, category, description, price, status } = details;
-  const [quantity, setQuantity] = useState(0);
-   const { pathname } = useLocation();
+  const { _id, photo, title, category, description, price, status } = details;
+  const { pathname } = useLocation();
 
-   useEffect(() => {
-     window.scrollTo(0, 0);
-   }, [pathname]);
+  const [setRefresh] = useWishListProducts(user?.email);
+  const [setRefreshCart] = useCartProducts(user?.email);
+  const handleAddWhisList = () => {
+    const wishListData = {
+      id: _id,
+      title,
+      photo,
+      category,
+      price,
+      description,
+      status,
+      email: user?.email,
+      name: user?.displayName,
+      wishlist: true,
+    };
+
+    fetch(`http://localhost:5000/whislist`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(wishListData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        toast.success("The book is added to wishlist");
+        setRefresh(true);
+      });
+  };
+
+  const handleAddToCart = () => {
+    const cartData = {
+      id: _id,
+      title,
+      photo,
+      category,
+      price,
+      description,
+      quantity: 1,
+      status,
+      email: user?.email,
+      name: user?.displayName,
+    };
+
+    fetch(`http://localhost:5000/cart`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(cartData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        toast.success("The book is added in cart");
+        setRefreshCart(true);
+      });
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
     <div>
       <div className="px-4 py-16 mx-auto max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
@@ -35,9 +97,13 @@ const ProductDetails = () => {
               <p className="text-sm text-gray-600">{description}</p>
               <div className="flex  items-center">
                 <p className="text-red-500 text-base py-1 font-semibold">
-                  {price}
+                  ${price}.00
                 </p>
-                <button className="border ml-16 mt-3 px-3 border-gray-400 rounded-lg py-1">
+                <button
+                  onClick={handleAddWhisList}
+                  className="border ml-16 mt-3 px-3 border-gray-400 rounded-lg py-1"
+                  title="Whislist"
+                >
                   <BsFillSuitHeartFill className="inline-block text-red-500 " />
                 </button>
               </div>
@@ -45,21 +111,9 @@ const ProductDetails = () => {
             </div>
             <div>
               <button
-                onClick={() => setQuantity(quantity - 1)}
-                className="border md:px-4 px-3 border-gray-400  text-xl md:py-2 py-1 "
+                onClick={handleAddToCart}
+                className="md:px-6 px-4 md:py-3 py-2 text-gray-100 bg-red-600 hover:bg-red-700  md:text-base text-sm font-semibold rounded-md duration-300 "
               >
-                -
-              </button>
-              <button className="border md:px-4 px-3 border-gray-400  text-xl md:py-2 py-1">
-                {quantity}
-              </button>
-              <button
-                onClick={() => setQuantity(quantity + 1)}
-                className="border md:px-4 px-3 border-gray-400  text-xl md:py-2 py-1 "
-              >
-                +
-              </button>
-              <button className="md:px-6 px-4 md:py-3 py-2 md:ml-10 ml-5 text-gray-100 bg-red-600 hover:bg-purple-600  md:text-base text-sm font-semibold rounded-md duration-300 ">
                 Add to cart
               </button>
             </div>

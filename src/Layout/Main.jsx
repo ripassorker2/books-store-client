@@ -6,8 +6,10 @@ import Footer from "../shared/Footer/Footer";
 const Main = () => {
   return (
     <div className="min-h-screen flex flex-col justify-between">
-      <Appbar></Appbar>
-      <Outlet></Outlet>
+      <div>
+        <Appbar></Appbar>
+        <Outlet></Outlet>
+      </div>
       <Footer></Footer>
     </div>
   );

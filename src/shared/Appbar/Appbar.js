@@ -1,15 +1,22 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
+import useCartProducts from "../../Hooks/useCartProducts";
+import useWishListProducts from "../../Hooks/useWhisListProducts";
 import AppbarDropDown from "./AppbarDropDown";
 import AppbarTop from "./AppbarTop";
 
 const Appbar = () => {
   const { user, logout } = useContext(AuthContext);
+  const [setRefresh] = useWishListProducts(user?.email);
+  const [setRefreshCart, refreshCart] = useCartProducts(user?.email);
+  const [cetegoris, setCetegoris] = React.useState([]);
 
-  const userLogOut = () => {
-    logout()
-  }
+  React.useEffect(() => {
+    fetch("http://localhost:5000/cetegoris")
+      .then((res) => res.json())
+      .then((data) => setCetegoris(data));
+  }, []);
 
   window.onscroll = function () {
     myFunction();
@@ -21,6 +28,7 @@ const Appbar = () => {
       document.getElementById("navlinks").classList.remove("color-change");
     }
   }
+
   const navItems = [
     {
       name: "Home",
@@ -37,8 +45,15 @@ const Appbar = () => {
     {
       name: "Dashboard",
       link: "/dashboard/dashboard",
-    }
+    },
   ];
+
+  const userLogOut = () => {
+    logout();
+    setRefresh(true);
+    setRefreshCart(!refreshCart);
+  };
+
   return (
     <div className="appbar-container" id="navbar">
       <div className="appbar-top">
@@ -47,7 +62,23 @@ const Appbar = () => {
 
       <div className="appbar-links px-5 py-4" id="navlinks">
         <div>
-          <AppbarDropDown></AppbarDropDown>
+          <select
+            name="pets"
+            className="border rounded-md w-full py-4 px-4  cursor-pointer"
+            id="pet-select"
+          >
+            <option value="" className="cursor-pointer">
+              All Category
+            </option>
+            {/* dynamic */}
+            {cetegoris?.map((category) => (
+              <option value={category?.id} key={category.id}>
+                <Link to={`/category/${category?.id}`}>
+                  {category.category}
+                </Link>
+              </option>
+            ))}
+          </select>
         </div>
         <div>
           <div className="text-end">
@@ -57,15 +88,15 @@ const Appbar = () => {
               </Link>
             ))}
 
-            {
-              user?.uid ?
-                <button onClick={userLogOut} className="mx-4 mt-2 ">LogOut</button>
-                :
-                <Link to='/login'><button className="mx-4 mt-2 ">Sign In</button></Link>
-            }
-
-
-
+            {user?.uid ? (
+              <button onClick={userLogOut} className="mx-4 mt-2 ">
+                LogOut
+              </button>
+            ) : (
+              <Link to="/login">
+                <button className="mx-4 mt-2 ">Sign In</button>
+              </Link>
+            )}
           </div>
         </div>
       </div>

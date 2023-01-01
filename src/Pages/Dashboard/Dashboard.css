@@ -17,11 +17,34 @@
   display: block !important;
   margin: 0 auto !important;
 }
+.menu-icon {
+  display: none !important;
+}
+.container-table-headers {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 1fr;
+}
+.container-table-data {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 1fr;
+}
+@media screen and (max-width: 980px) {
+  .container-table-data {
+    grid-template-columns: 1fr;
+    margin: 10px 0px;
+  }
+  .avatar-user {
+    margin: 0 auto !important;
+  }
+}
 @media screen and (max-width: 767px) {
   .dashboard-common-container {
     grid-template-columns: 1fr;
   }
   .profile-container {
     grid-template-columns: 1fr;
+  }
+  .menu-icon {
+    display: block !important;
   }
 }
