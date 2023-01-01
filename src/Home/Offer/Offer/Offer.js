@@ -53,8 +53,8 @@ const Offer = () => {
               modules={[Pagination, Navigation, Autoplay]}
               className="mySwiper mt-5 "
             >
-              {books?.map((book) => (
-                <SwiperSlide>
+              {books?.map((book, i) => (
+                <SwiperSlide key={i}>
                   <Box className="mega-offer md:px-2 flex flex-col justify-around items-center py-4">
                     <div>
                       <h2 className="text-2xl md:text-1xl md:p-0 lg:text-2xl xl:text-5xl text-[#fc3333] font-semibold">
