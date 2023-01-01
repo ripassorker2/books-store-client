@@ -17,6 +17,10 @@ import LoginTabs from "../Pages/Login/LoginTabs";
 import MainCheckout from "../Pages/MainCheckout/MainCheckout";
 import ProductDetails from "../Pages/ProductDetails/ProductDetails";
 import Whistlist from "../Pages/Wishlist/Whistlist";
+import AdminRouter from "./AdminRouter/AdminRouter";
+import BuyerRouter from "./BuyerRouter/BuyerRouter";
+import PrivetRouter from "./PrivetRouter/PrivetRouter";
+import SellerRouter from "./SellerRouter/SellerRouter";
 
 export const router = createBrowserRouter([
   {
@@ -50,11 +54,23 @@ export const router = createBrowserRouter([
       },
       {
         path: "/addtocart",
-        element: <AddToCartPage></AddToCartPage>,
+        element: (
+          <PrivetRouter>
+            <BuyerRouter>
+              <AddToCartPage />
+            </BuyerRouter>
+          </PrivetRouter>
+        ),
       },
       {
         path: "/wisthlist",
-        element: <Whistlist></Whistlist>,
+        element: (
+          <PrivetRouter>
+            <BuyerRouter>
+              <Whistlist />
+            </BuyerRouter>
+          </PrivetRouter>
+        ),
       },
       {
         path: "/blog",
@@ -62,7 +78,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/payment",
-        element: <MainCheckout></MainCheckout>,
+        element: (
+          <PrivetRouter>
+            <MainCheckout></MainCheckout>,
+          </PrivetRouter>
+        ),
       },
     ],
   },
@@ -77,27 +97,61 @@ export const router = createBrowserRouter([
         children: [
           {
             path: "/dashboard/dashboard",
-            element: <Charts></Charts>,
+            element: (
+              <PrivetRouter>
+                <Charts></Charts>
+              </PrivetRouter>
+            ),
           },
           {
             path: "/dashboard/dashboard/buyer",
-            element: <Buyer></Buyer>,
+            element: (
+              <PrivetRouter>
+                <AdminRouter>
+                  <Buyer />
+                </AdminRouter>
+              </PrivetRouter>
+            ),
           },
           {
             path: "/dashboard/dashboard/seller",
-            element: <Seller></Seller>,
+            element: (
+              <PrivetRouter>
+                <AdminRouter>
+                  <Seller></Seller>
+                </AdminRouter>
+              </PrivetRouter>
+            ),
           },
           {
             path: "/dashboard/dashboard/myProducts",
-            element: <MyProducts></MyProducts>,
+            element: (
+              <PrivetRouter>
+                <SellerRouter>
+                  <MyProducts />
+                </SellerRouter>
+              </PrivetRouter>
+            ),
           },
           {
             path: "/dashboard/dashboard/myBuyer",
-            element: <MyBuyer></MyBuyer>,
+            element: (
+              <PrivetRouter>
+                <SellerRouter>
+                  <MyBuyer />
+                </SellerRouter>
+              </PrivetRouter>
+            ),
           },
           {
             path: "/dashboard/dashboard/addProduct",
-            element: <AddBook></AddBook>,
+            element: (
+              <PrivetRouter>
+                <SellerRouter>
+                  <AddBook />
+                </SellerRouter>
+              </PrivetRouter>
+            ),
           },
         ],
       },

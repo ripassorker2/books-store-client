@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
-import { toast } from "react-hot-toast";
 import { AuthContext } from "../../../Context/AuthProvider/AuthProvider";
 import Loader from "../../../utility/Loader/Loader";
 import ProductCard from "./ProductCard";
@@ -15,9 +14,11 @@ const MyProducts = () => {
   } = useQuery({
     queryKey: ["products"],
     queryFn: () =>
-      fetch(`http://localhost:5000/product/${user?.email}`).then((res) =>
-        res.json()
-      ),
+      fetch(`http://localhost:5000/product/${user?.email}`, {
+        headers: {
+          authorization: `bearer ${localStorage.getItem("book-token")}`,
+        },
+      }).then((res) => res.json()),
   });
 
   if (isLoading) {

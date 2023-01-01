@@ -13,13 +13,20 @@ const Seller = () => {
   } = useQuery({
     queryKey: ["sellers"],
     queryFn: () =>
-      fetch(`http://localhost:5000/seller`).then((res) => res.json()),
+      fetch(`http://localhost:5000/seller`, {
+        headers: {
+          authorization: `bearer ${localStorage.getItem("book-token")}`,
+        },
+      }).then((res) => res.json()),
   });
   const handleDelete = (id) => {
     const aggre = window.confirm("Are sure ?You want to remove this seller?");
     if (aggre) {
       fetch(`http://localhost:5000/seller/${id}`, {
         method: "DELETE",
+        headers: {
+          authorization: `bearer ${localStorage.getItem("book-token")}`,
+        },
       })
         .then((res) => res.json())
         .then((data) => {

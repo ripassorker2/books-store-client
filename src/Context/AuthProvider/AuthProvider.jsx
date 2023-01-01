@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { createContext } from "react";
 import {
- 
-  createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile,
-
+  createUserWithEmailAndPassword,
+  getAuth,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  sendEmailVerification,
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+  updateProfile,
 } from "firebase/auth";
 import app from "../../Firebase/Firebase.init";
 
@@ -45,7 +52,7 @@ const AuthProvider = ({ children }) => {
   //  Logout
   const logout = () => {
     setLoading(true);
-    localStorage.removeItem("user-token");
+    localStorage.removeItem("book-token");
     return signOut(auth);
   };
 
