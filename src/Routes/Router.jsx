@@ -34,7 +34,9 @@ export const router = createBrowserRouter([
       {
         path: "/category/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/cetegory/${params.id}`),
+          fetch(
+            `https://books-store-server-six.vercel.app/cetegory/${params.id}`
+          ),
         element: <Category></Category>,
       },
       {
@@ -46,7 +48,9 @@ export const router = createBrowserRouter([
         path: "/detailsPage/:id",
         element: <ProductDetails></ProductDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+          fetch(
+            `https://books-store-server-six.vercel.app/products/${params.id}`
+          ),
       },
       {
         path: "/login",

@@ -26,7 +26,7 @@ const ProductReview = ({ details }) => {
       message,
     };
 
-    fetch("http://localhost:5000/reviews", {
+    fetch("https://books-store-server-six.vercel.app/reviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -45,7 +45,10 @@ const ProductReview = ({ details }) => {
   };
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews/${details?._id}`, {})
+    fetch(
+      `https://books-store-server-six.vercel.app/reviews/${details?._id}`,
+      {}
+    )
       .then((res) => {
         return res.json();
       })

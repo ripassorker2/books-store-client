@@ -57,7 +57,7 @@ const Resistation = () => {
       email: email,
       role: role,
     };
-    fetch(`http://localhost:5000/user`, {
+    fetch(`https://books-store-server-six.vercel.app/user`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -5,7 +5,7 @@ const useRole = (email) => {
 
   useEffect(() => {
     if (email) {
-      fetch(`http://localhost:5000/user/${email}`)
+      fetch(`https://books-store-server-six.vercel.app/user/${email}`)
         .then((res) => res.json())
         .then((data) => {
           setIsRole(data?.role);

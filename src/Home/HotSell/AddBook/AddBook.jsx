@@ -71,7 +71,7 @@ const AddBook = () => {
           status: "available",
         };
 
-        fetch(`http://localhost:5000/addProduct`, {
+        fetch(`https://books-store-server-six.vercel.app/addProduct`, {
           method: "POST",
           headers: {
             "content-type": "application/json",

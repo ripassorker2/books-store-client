@@ -14,7 +14,7 @@ const Buyer = () => {
   } = useQuery({
     queryKey: ["buyers"],
     queryFn: () =>
-      fetch(`http://localhost:5000/buyer`, {
+      fetch(`https://books-store-server-six.vercel.app/buyer`, {
         headers: {
           authorization: `bearer ${localStorage.getItem("book-token")}`,
         },
@@ -24,7 +24,7 @@ const Buyer = () => {
   const handleDelete = (id) => {
     const aggre = window.confirm("Are sure ?You want to remove this?");
     if (aggre) {
-      fetch(`http://localhost:5000/buyer/${id}`, {
+      fetch(`https://books-store-server-six.vercel.app/buyer/${id}`, {
         method: "DELETE",
         headers: {
           authorization: `bearer ${localStorage.getItem("book-token")}`,

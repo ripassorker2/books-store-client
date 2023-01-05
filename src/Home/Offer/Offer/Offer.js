@@ -13,12 +13,11 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper";
 
-
 const Offer = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/offer/${30}`)
+    fetch(`https://books-store-server-six.vercel.app/offer/${30}`)
       .then((res) => res.json())
       .then((data) => {
         setBooks(data);
@@ -26,7 +25,7 @@ const Offer = () => {
   }, []);
 
   const handelOffer = (offer) => {
-    fetch(`http://localhost:5000/offer/${offer}`)
+    fetch(`https://books-store-server-six.vercel.app/offer/${offer}`)
       .then((res) => res.json())
       .then((data) => {
         setBooks(data);
@@ -80,10 +79,11 @@ const Offer = () => {
                           <p>Available:20</p>
                         </div>
                         <div className="flex justify-center">
-                          <Link to={`/detailsPage/${book._id}`} className="text-gray-100 bg-red-600  hover:bg-purple-600 text-sm font-semibold rounded-md duration-300 px-10 py-2 ">
-                            <button>
-                              Details
-                            </button>
+                          <Link
+                            to={`/detailsPage/${book._id}`}
+                            className="text-gray-100 bg-red-600  hover:bg-purple-600 text-sm font-semibold rounded-md duration-300 px-10 py-2 "
+                          >
+                            <button>Details</button>
                           </Link>
                         </div>
                         <h1 className="text-xl  md:text-[19px] font-semibold my-6 lg:text-xl">

@@ -10,7 +10,7 @@ const HotSell = () => {
   const [books, setBooks] = useState([]);
 
   const bookData = (keyword) => {
-    fetch(`http://localhost:5000/${keyword}`)
+    fetch(`https://books-store-server-six.vercel.app/${keyword}`)
       .then((res) => res.json())
       .then((data) => {
         setBooks(data);
@@ -19,7 +19,7 @@ const HotSell = () => {
   // best sell data load
 
   useEffect(() => {
-    fetch("http://localhost:5000/trendsell")
+    fetch("https://books-store-server-six.vercel.app/trendsell")
       .then((res) => res.json())
       .then((data) => {
         setBooks(data);

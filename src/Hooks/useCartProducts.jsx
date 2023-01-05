@@ -6,7 +6,7 @@ const useCartProducts = (email) => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     if (email) {
-      fetch(`http://localhost:5000/cart/${email}`)
+      fetch(`https://books-store-server-six.vercel.app/cart/${email}`)
         .then((res) => res.json())
         .then((data) => {
           if (data) {

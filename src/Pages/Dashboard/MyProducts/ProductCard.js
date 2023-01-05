@@ -13,7 +13,7 @@ export default function ProductCard({ product, refetch }) {
   const handleDelete = (id) => {
     const aggre = window.confirm("Are sure ?You want to delete this?");
     if (aggre) {
-      fetch(`http://localhost:5000/product/${id}`, {
+      fetch(`https://books-store-server-six.vercel.app/product/${id}`, {
         method: "DELETE",
         headers: {
           authorization: `bearer ${localStorage.getItem("book-token")}`,

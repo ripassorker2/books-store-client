@@ -30,7 +30,7 @@ const ProductDetails = () => {
       wishlist: true,
     };
 
-    fetch(`http://localhost:5000/whislist`, {
+    fetch(`https://books-store-server-six.vercel.app/whislist`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -58,7 +58,7 @@ const ProductDetails = () => {
       name: user?.displayName,
     };
 
-    fetch(`http://localhost:5000/cart`, {
+    fetch(`https://books-store-server-six.vercel.app/cart`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

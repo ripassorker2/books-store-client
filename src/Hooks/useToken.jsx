@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 
 const useToken = (email) => {
-  // console.log(email);
   const [token, setToken] = useState("");
   useEffect(() => {
     if (email) {
-      fetch(`http://localhost:5000/jwt/${email}`)
+      fetch(`https://books-store-server-six.vercel.app/jwt/${email}`)
         .then((res) => res.json())
         .then((data) => {
           if (data.token) {

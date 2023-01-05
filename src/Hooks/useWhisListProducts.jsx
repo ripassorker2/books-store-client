@@ -6,7 +6,7 @@ const useWishListProducts = (email) => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     if (email) {
-      fetch(`http://localhost:5000/whislist/${email}`)
+      fetch(`https://books-store-server-six.vercel.app/whislist/${email}`)
         .then((res) => res.json())
         .then((data) => {
           if (data) {

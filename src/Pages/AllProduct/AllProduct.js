@@ -1,30 +1,25 @@
 import React from "react";
-import { Box, Container, Grid, Link, } from "@mui/material";
+import { Box, Container, Grid, Link } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useEffect, useState } from "react";
 import AllProductCard from "../AllProductCard/AllProductCard";
 import "./AllProduct.css";
 
-
 const AllProduct = () => {
-   const [query, setQuery] = useState("");
+  const [query, setQuery] = useState("");
   const [allProduct, setAllProduct] = useState([]);
   const [count, setCount] = useState(0);
   const [page, setPage] = useState(0);
   // const [size, setSize] = useState(20);
 
-
-  
-
   useEffect(() => {
     fetch(
-      `http://localhost:5000/products?keyword=${query}&page=${page}&size=${20}`
+      `https://books-store-server-six.vercel.app/products?keyword=${query}&page=${page}&size=${20}`
     )
       .then((res) => res.json())
       .then((data) => {
         setAllProduct(data?.data);
         setCount(data?.count);
-        
       });
   }, [page, query]);
   const pages = Math.ceil(count / 20);
@@ -89,17 +84,15 @@ const AllProduct = () => {
         </Grid>
       </Box>
       <div className="pagination text-center">
-        
-          {[...Array(pages).keys()].map((number) => (
-            <button
-              key={number}
-              className={page === number ? "selected" : ""}
-              onClick={() => setPage(number)}
-            >
-              {number + 1}
-            </button>
-          ))}
-      
+        {[...Array(pages).keys()].map((number) => (
+          <button
+            key={number}
+            className={page === number ? "selected" : ""}
+            onClick={() => setPage(number)}
+          >
+            {number + 1}
+          </button>
+        ))}
       </div>
     </Container>
   );

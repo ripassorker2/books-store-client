@@ -14,7 +14,7 @@ const WhistListCard = ({ product, setRefresh }) => {
   const handleDelete = (id) => {
     const aggre = window.confirm("Are sure ?You want to remove this?");
     if (aggre) {
-      fetch(`http://localhost:5000/whislist/${id}`, {
+      fetch(`https://books-store-server-six.vercel.app/whislist/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -42,7 +42,7 @@ const WhistListCard = ({ product, setRefresh }) => {
       name: user?.displayName,
     };
 
-    fetch(`http://localhost:5000/cart`, {
+    fetch(`https://books-store-server-six.vercel.app/cart`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -86,13 +86,10 @@ function DashboardNavbar(props) {
             <Link to="/">
               <button className="mx-2 md:mx-6">Home</button>
             </Link>
-            <Link to="/">
-              <button className="mx-2 md:mx-6">Pages</button>
-            </Link>
-            <Link to="/">
+            <Link to="/allproducts">
               <button className="mx-2 md:mx-6">Shop</button>
             </Link>
-            <Link to="/">
+            <Link to="/blog">
               <button className="mx-2 md:mx-6">Blog</button>
             </Link>
           </Typography>

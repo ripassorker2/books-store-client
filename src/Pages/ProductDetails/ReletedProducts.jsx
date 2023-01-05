@@ -5,10 +5,10 @@ const ReletedProducts = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    fetch("books.json")
+    fetch("https://books-store-server-six.vercel.app/products")
       .then((res) => res.json())
       .then((data) => {
-        setBooks(data);
+        setBooks(data.data);
       });
   }, []);
 
@@ -20,36 +20,34 @@ const ReletedProducts = () => {
         </li>
       </ul>
       <div className="grid lg:grid-cols-5 md:grid-cols-3 gap-5  sm:grid-cols-2 ">
-        {books?.slice(1, 6).map((book, index) => (
-       
-            <div
-              key={index}
-              className="flex  md:h-64 h-56 w-full hover:border- hover:shadow-xl  duration-300  border  relative"
-            >
-              <div className="  bg-white ">
-                <div className="flex justify-center w-full ">
-                  <img
-                    className=" h-32 w-full inline-block object-fill  cover-full"
-                    src={book?.photo}
-                    alt=""
-                  />
-                </div>
-                <div className="p-4 text-start">
-                  <h5 className="text-gray-700 text-base font-semibold mb-2">
-                    {book?.title}
-                  </h5>
-                  <div className="flex ">
-                    <button className="px-2 py-1 absolute bottom-4 left-4  text-gray-100 bg-red-600 hover:bg-purple-600  text-sm font-semibold rounded-md duration-300 ">
-                      Details
-                    </button>
-                    <p className="text-end md:text-lg text-red-600 absolute  bottom-4 right-4">
-                      ${book?.price}.00
-                    </p>
-                  </div>
+        {books?.map((book, index) => (
+          <div
+            key={index}
+            className="flex  md:h-64 h-56 w-full hover:border- hover:shadow-xl  duration-300  border  relative"
+          >
+            <div className="  bg-white ">
+              <div className="flex justify-center w-full ">
+                <img
+                  className=" h-32 w-full inline-block object-fill  cover-full"
+                  src={book?.photo}
+                  alt=""
+                />
+              </div>
+              <div className="p-4 text-start">
+                <h5 className="text-gray-700 text-base font-semibold mb-2">
+                  {book?.title}
+                </h5>
+                <div className="flex ">
+                  <button className="px-2 py-1 absolute bottom-4 left-4  text-gray-100 bg-red-600 hover:bg-purple-600  text-sm font-semibold rounded-md duration-300 ">
+                    Details
+                  </button>
+                  <p className="text-end md:text-lg text-red-600 absolute  bottom-4 right-4">
+                    ${book?.price}.00
+                  </p>
                 </div>
               </div>
             </div>
-          
+          </div>
         ))}
       </div>
     </div>

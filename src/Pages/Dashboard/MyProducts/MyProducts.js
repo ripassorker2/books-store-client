@@ -14,11 +14,14 @@ const MyProducts = () => {
   } = useQuery({
     queryKey: ["products"],
     queryFn: () =>
-      fetch(`http://localhost:5000/product/${user?.email}`, {
-        headers: {
-          authorization: `bearer ${localStorage.getItem("book-token")}`,
-        },
-      }).then((res) => res.json()),
+      fetch(
+        `https://books-store-server-six.vercel.app/product/${user?.email}`,
+        {
+          headers: {
+            authorization: `bearer ${localStorage.getItem("book-token")}`,
+          },
+        }
+      ).then((res) => res.json()),
   });
 
   if (isLoading) {

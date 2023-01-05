@@ -14,7 +14,7 @@ const Appbar = () => {
   const [openCategory, setOpenCategory] = useState(false);
 
   React.useEffect(() => {
-    fetch("http://localhost:5000/cetegoris")
+    fetch("https://books-store-server-six.vercel.app/cetegoris")
       .then((res) => res.json())
       .then((data) => setCetegoris(data));
   }, []);
@@ -77,11 +77,30 @@ const Appbar = () => {
           </select>
         </div> */}
         <div className="relative">
-          <p onClick={() => setOpenCategory(!openCategory)} className='w-36 flex justify-between items-center category-list-button'>All Category <span><BsFillCaretDownFill /></span></p>
-          <ul className={`toggle-category w-52 absolute z-[999999] ${openCategory ? 'block' : 'hidden'}`}>
-            {
-              cetegoris.map(category => <li className="mt-2" key={category.id}><Link onClick={() => setOpenCategory(!openCategory)} to={`category/${category.id}`}>{category.category}</Link></li>)
-            }
+          <p
+            onClick={() => setOpenCategory(!openCategory)}
+            className="w-36 flex justify-between items-center category-list-button"
+          >
+            All Category{" "}
+            <span>
+              <BsFillCaretDownFill />
+            </span>
+          </p>
+          <ul
+            className={`toggle-category w-52 absolute z-[999999] ${
+              openCategory ? "block" : "hidden"
+            }`}
+          >
+            {cetegoris.map((category) => (
+              <li className="mt-2" key={category.id}>
+                <Link
+                  onClick={() => setOpenCategory(!openCategory)}
+                  to={`category/${category.id}`}
+                >
+                  {category.category}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
         <div>

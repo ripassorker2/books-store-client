@@ -11,9 +11,9 @@ export default function AppbarDropDown() {
   const [cetegoris, setCetegoris] = React.useState([]);
 
   React.useEffect(() => {
-    fetch('http://localhost:5000/cetegoris')
-      .then(res => res.json())
-      .then(data => setCetegoris(data))
+    fetch("https://books-store-server-six.vercel.app/cetegoris")
+      .then((res) => res.json())
+      .then((data) => setCetegoris(data));
   }, []);
 
   const handleChange = (event) => {
@@ -44,9 +44,11 @@ export default function AppbarDropDown() {
           label="All Category"
           onChange={handleChange}
         >
-          {
-            cetegoris.map(cete => <MenuItem key={cete?.id} value={cete?.id}><Link to={`/category/${cete?.id}`}>{cete?.category}</Link></MenuItem>)
-          }
+          {cetegoris.map((cete) => (
+            <MenuItem key={cete?.id} value={cete?.id}>
+              <Link to={`/category/${cete?.id}`}>{cete?.category}</Link>
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
     </div>

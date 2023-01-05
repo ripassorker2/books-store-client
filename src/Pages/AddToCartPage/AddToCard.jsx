@@ -1,26 +1,47 @@
-import React, { useState } from "react";
+import React from "react";
 import { toast } from "react-hot-toast";
 import { MdDelete } from "react-icons/md";
 
-const AddToCard = ({ product, setRefreshCart }) => {
-  const [quantities, setQuantities] = useState(1);
+const AddToCard = ({ product, refetch }) => {
   const { title, photo, price, _id, quantity } = product;
 
   const handleDelete = (id) => {
     const aggre = window.confirm("Are sure ?You want to remove this?");
     if (aggre) {
-      fetch(`http://localhost:5000/cart/${id}`, {
+      fetch(`https://books-store-server-six.vercel.app/cart/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
         .then((data) => {
           if (data.deletedCount) {
-            setRefreshCart(true);
+            refetch();
             toast.success("Succesfully Removed!!");
           }
         })
         .catch((err) => console.error(err));
     }
+  };
+
+  const handleIncrese = (id) => {
+    fetch(`https://books-store-server-six.vercel.app/increase/${id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then(() => {
+        refetch();
+      })
+      .catch((err) => console.error(err));
+  };
+
+  const handleDcrese = (id) => {
+    fetch(`https://books-store-server-six.vercel.app/decrease/${id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then(() => {
+        refetch();
+      })
+      .catch((err) => console.error(err));
   };
 
   return (
@@ -39,7 +60,7 @@ const AddToCard = ({ product, setRefreshCart }) => {
 
       <div className="p-2  mx-1 flex  justify-between">
         <button
-          onClick={() => setQuantities(quantities - 1)}
+          onClick={() => handleDcrese(_id)}
           className="border md:px-3 px-2 border-gray-400  sm:text-xl text-sm md:py-1 py-[1px] "
         >
           -
@@ -48,7 +69,7 @@ const AddToCard = ({ product, setRefreshCart }) => {
           {quantity}
         </button>
         <button
-          onClick={() => setQuantities(quantities + 1)}
+          onClick={() => handleIncrese(_id)}
           className="border md:px-3 px-2 border-gray-400  sm:text-xl text-sm md:py-1 py-[1px] "
         >
           +

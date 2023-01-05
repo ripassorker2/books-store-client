@@ -1,16 +1,15 @@
-import { Box, Container, Grid } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import ProductCard from '../ProductCatd/ProductCard';
+import { Box, Container, Grid } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import ProductCard from "../ProductCatd/ProductCard";
 
 const Product = () => {
   const [product, setProduct] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://books-store-server-six.vercel.app/products")
       .then((res) => res.json())
       .then((data) => setProduct(data?.data));
-
   }, []);
   return (
     <Container maxWidth="xl">
