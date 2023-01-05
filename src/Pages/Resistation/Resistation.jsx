@@ -27,8 +27,9 @@ const Resistation = () => {
 
     createUser(email, password)
       .then((result) => {
+        const user = result.user;
         saveUserInDB(name, email, role);
-        setCurrentUser(email);
+
         updateUserProfile(name).then((data) => {});
       })
       .catch((err) => {
@@ -43,7 +44,6 @@ const Resistation = () => {
         const user = result.user;
         const role = "Buyer";
         saveUserInDB(user.displayName, user.email, role);
-        setCurrentUser(user?.email);
       })
       .catch((err) => {
         toast.error(err.message);
@@ -68,6 +68,7 @@ const Resistation = () => {
       .then((data) => {
         if (data.acknowledged) {
           toast.success("Resister succesfully..!");
+          setCurrentUser(email);
         }
       })
       .catch((error) => console.error(error));

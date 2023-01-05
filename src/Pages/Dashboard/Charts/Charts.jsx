@@ -1,14 +1,8 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../../../Context/AuthProvider/AuthProvider";
-import useRole from "../../../Hooks/useRole";
+import React from "react";
 
 const Charts = () => {
-  const { user } = useContext(AuthContext);
-  const isRole = useRole(user?.email);
-  console.log(isRole);
-
   return (
-    <div>
+    <div className="flex justify-center items-center h-screen">
       <h1 className="font-semibold text-5xl text-center mt-4">Welcome</h1>
     </div>
   );

@@ -23,26 +23,32 @@ import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import useWishListProducts from "../../Hooks/useWhisListProducts";
 import useCartProducts from "../../Hooks/useCartProducts";
 import { toast } from "react-hot-toast";
+import useRole from "../../Hooks/useRole";
 const drawerWidth = 260;
 
 function AppbarTop(props) {
-  const { user } = React.useContext(AuthContext);
+  const { user, logout } = React.useContext(AuthContext);
   const { window, navItems } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [isRole] = useRole(user?.email);
 
   const [whislistProduct] = useWishListProducts(user?.email);
   const [cartProducts] = useCartProducts(user?.email);
+
+  const userLogOut = () => {
+    logout();
+  };
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
 
   const cartAndWhistlist = () => {
-    toast.error("Please login frist to visit this page !!");
+    toast.error("Please login with buyer account !!");
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+    <Box onClick={handleDrawerToggle}>
       <Link>
         <Typography variant="h6" sx={{ my: 2 }}>
           <Link to={"/"}> BOOK STORE</Link>
@@ -64,6 +70,25 @@ function AppbarTop(props) {
           </List>
         ))}
       </List>
+
+      <div className="flex flex-col justify-start ml-6">
+        {user?.uid ? (
+          <>
+            <Link to="/dashboard/dashboard">
+              <button>Dashboard</button>
+            </Link>
+            <Link>
+              <button onClick={userLogOut} className=" mt-2 ">
+                LogOut
+              </button>
+            </Link>
+          </>
+        ) : (
+          <Link to="/login">
+            <button>Sign In</button>
+          </Link>
+        )}
+      </div>
     </Box>
   );
 
@@ -94,7 +119,7 @@ function AppbarTop(props) {
             <Link to={"/"}> BOOK STORE</Link>
           </Typography>
           <Box className="top-nav-links">
-            {user?.uid ? (
+            {user?.uid && isRole === "Buyer" ? (
               <>
                 <Link
                   to="/wisthlist"

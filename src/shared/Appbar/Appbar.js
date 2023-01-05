@@ -47,8 +47,6 @@ const Appbar = () => {
 
   const userLogOut = () => {
     logout();
-    // setRefresh(true);
-    // setRefreshCart(!refreshCart);
   };
 
   return (
@@ -58,24 +56,6 @@ const Appbar = () => {
       </div>
 
       <div className="appbar-links px-5 py-4" id="navlinks">
-        {/* <div>
-          <select
-            name="pets"
-            className="border rounded-md w-full py-4 px-4  cursor-pointer"
-            id="pet-select"
-          >
-            <option value="" className="cursor-pointer">
-              All Category
-            </option>
-            {cetegoris?.map((category) => (
-              <option value={category?.id} key={category.id}>
-                <Link to={`/category/${category?.id}`}>
-                  {category.category}
-                </Link>
-              </option>
-            ))}
-          </select>
-        </div> */}
         <div className="relative">
           <p
             onClick={() => setOpenCategory(!openCategory)}

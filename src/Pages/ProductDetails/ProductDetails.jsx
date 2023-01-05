@@ -5,17 +5,16 @@ import { BsFillSuitHeartFill } from "react-icons/bs";
 import { useLoaderData, useLocation } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import { toast } from "react-hot-toast";
-import useWishListProducts from "../../Hooks/useWhisListProducts";
-import useCartProducts from "../../Hooks/useCartProducts";
+import useRole from "../../Hooks/useRole";
 
 const ProductDetails = () => {
   const { user } = useContext(AuthContext);
   const details = useLoaderData();
   const { _id, photo, title, category, description, price, status } = details;
   const { pathname } = useLocation();
-
-  const [setRefresh] = useWishListProducts(user?.email);
-  const [setRefreshCart] = useCartProducts(user?.email);
+  const [isRole] = useRole(user?.email);
+  console.log(user);
+  console.log(isRole);
   const handleAddWhisList = () => {
     const wishListData = {
       id: _id,
@@ -40,7 +39,6 @@ const ProductDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         toast.success("The book is added to wishlist");
-        setRefresh(true);
       });
   };
 
@@ -68,15 +66,14 @@ const ProductDetails = () => {
       .then((res) => res.json())
       .then(() => {
         toast.success("The book is added in cart");
-        setRefreshCart(true);
       });
   };
 
   const withoutUserAddCart = () => {
-    toast.error("You have to login frist for added this book in cart!!");
+    toast.error("You have to login frist with buyer account !!");
   };
   const withoutUserAddWhislist = () => {
-    toast.error("You have to login frist!!");
+    toast.error("You have to login frist with buyer account !!");
   };
 
   useEffect(() => {
@@ -107,7 +104,7 @@ const ProductDetails = () => {
                   ${price}.00
                 </p>
 
-                {user?.uid ? (
+                {user?.uid && isRole === "Buyer" ? (
                   <button
                     onClick={handleAddWhisList}
                     className="border ml-16 mt-3 px-3 border-gray-400 rounded-lg py-1"
@@ -127,7 +124,7 @@ const ProductDetails = () => {
               </div>
               <p className="text-red-500 text-sm py-1">{status}</p>
             </div>
-            {user?.uid ? (
+            {user?.uid && isRole === "Buyer" ? (
               <div>
                 <button
                   onClick={handleAddToCart}

@@ -3,11 +3,14 @@ import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
+import useRole from "../../Hooks/useRole";
 import Review from "./Review";
 
 const ProductReview = ({ details }) => {
   const { user } = useContext(AuthContext);
   const [dataLoad, setDataLoad] = useState(false);
+
+  const [isRole] = useRole(user?.email);
 
   const handlePlaceReview = (event) => {
     event.preventDefault();
@@ -58,7 +61,9 @@ const ProductReview = ({ details }) => {
   }, [details, dataLoad]);
 
   const withoutUserAddReview = () => {
-    toast.error("You have to login frist to create review!!");
+    toast.error(
+      "You have to login frist with buyer account to create review!!"
+    );
   };
 
   return (
@@ -76,7 +81,7 @@ const ProductReview = ({ details }) => {
           <StarRate fontSize="14" className="text-red-500 inline-block ml-3 " />
           <StarRate fontSize="14" className="text-red-500 inline-block ml-3 " />
         </p>
-        {user?.uid ? (
+        {user?.uid && isRole === "Buyer" ? (
           <form onSubmit={(event) => handlePlaceReview(event)}>
             <input
               className="border resize-none p-3 border-gray-600 
