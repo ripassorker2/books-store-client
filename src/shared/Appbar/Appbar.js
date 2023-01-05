@@ -1,17 +1,15 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
-import useCartProducts from "../../Hooks/useCartProducts";
-import useWishListProducts from "../../Hooks/useWhisListProducts";
 import AppbarTop from "./AppbarTop";
 import { BsFillCaretDownFill } from "react-icons/bs";
+import useRole from "../../Hooks/useRole";
 
 const Appbar = () => {
   const { user, logout } = useContext(AuthContext);
-  // const [setRefresh] = useWishListProducts(user?.email);
-  // const [setRefreshCart, refreshCart] = useCartProducts(user?.email);
   const [cetegoris, setCetegoris] = React.useState([]);
   const [openCategory, setOpenCategory] = useState(false);
+  const [isRole] = useRole(user?.email);
 
   React.useEffect(() => {
     fetch("https://books-store-server-six.vercel.app/cetegoris")
@@ -93,9 +91,11 @@ const Appbar = () => {
 
             {user?.uid ? (
               <>
-                <Link to="/dashboard/dashboard">
-                  <button className="mx-4 mt-2 ">Dashboard</button>
-                </Link>
+                {isRole !== "Buyer" && (
+                  <Link to="/dashboard/dashboard">
+                    <button className="mx-4 mt-2 ">Dashboard</button>
+                  </Link>
+                )}
                 <button onClick={userLogOut} className="mx-4 mt-2 ">
                   LogOut
                 </button>

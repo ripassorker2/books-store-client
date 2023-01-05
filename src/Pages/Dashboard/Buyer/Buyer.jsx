@@ -21,8 +21,10 @@ const Buyer = () => {
       }).then((res) => res.json()),
   });
 
+  console.log(buyers);
+
   const handleDelete = (id) => {
-    const aggre = window.confirm("Are sure ?You want to remove this?");
+    const aggre = window.confirm("Are sure ?You want to delete this buyer?");
     if (aggre) {
       fetch(`https://books-store-server-six.vercel.app/buyer/${id}`, {
         method: "DELETE",
@@ -45,47 +47,55 @@ const Buyer = () => {
     return <Loader />;
   }
   return (
-    <div>
-      <h1 className="text-3xl font-semibold mb-4">Buyer</h1>
-      <div>
-        <div className="container-table-headers">
-          <p className="border p-3">Photo</p>
-          <p className="border p-3">Name</p>
-          <p className="border p-3">Email</p>
-          <p className="border p-3">Delete</p>
+    <>
+      {buyers.lenght <= 0 ? (
+        <div className="flex justify-center items-center min-h-fit pt-20">
+          <p className="text-4xl font-semibold text-red-600">No data to show</p>
         </div>
-        {/* data */}
-
-        {buyers?.map((buyer) => (
-          <>
-            <div className=" container-table-data  ">
-              <div className="border p-3">
-                <Avatar
-                  alt="Remy Sharp"
-                  src="/static/images/avatar/1.jpg"
-                  className="avatar-user"
-                />
-              </div>
-              <div className="border p-3 ">
-                <p>{buyer?.name}</p>
-                <span className="text-sm text-green-800 font-semibold">
-                  {buyer.role}
-                </span>
-              </div>
-              <div className="border p-3 ">{buyer?.email}</div>
-              <div className="border p-3 ">
-                <button
-                  onClick={() => handleDelete(buyer?._id)}
-                  className="bg-[#fc3333]  text-white sm:w-10 sm:h-10 h-6 w-6 rounded-full flex justify-center items-center"
-                >
-                  <MdDelete className="h-8 w-8" />
-                </button>
-              </div>
+      ) : (
+        <div>
+          <h1 className="text-3xl font-semibold mb-4">Buyer</h1>
+          <div>
+            <div className="container-table-headers">
+              <p className="border p-3">Photo</p>
+              <p className="border p-3">Name</p>
+              <p className="border p-3">Email</p>
+              <p className="border p-3">Delete</p>
             </div>
-          </>
-        ))}
-      </div>
-    </div>
+            {/* data */}
+
+            {buyers?.map((buyer) => (
+              <>
+                <div className=" container-table-data  ">
+                  <div className="border p-3">
+                    <Avatar
+                      alt="Remy Sharp"
+                      src="/static/images/avatar/1.jpg"
+                      className="avatar-user"
+                    />
+                  </div>
+                  <div className="border p-3 ">
+                    <p>{buyer?.name}</p>
+                    <span className="text-sm text-green-800 font-semibold">
+                      {buyer.role}
+                    </span>
+                  </div>
+                  <div className="border p-3 ">{buyer?.email}</div>
+                  <div className="border p-3 ">
+                    <button
+                      onClick={() => handleDelete(buyer?._id)}
+                      className="bg-[#fc3333]  text-white sm:w-10 sm:h-10 h-6 w-6 rounded-full flex justify-center items-center"
+                    >
+                      <MdDelete className="h-8 w-8" />
+                    </button>
+                  </div>
+                </div>
+              </>
+            ))}
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

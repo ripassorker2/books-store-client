@@ -13,14 +13,14 @@ const ReletedProducts = () => {
   }, []);
 
   return (
-    <div className="py-16 mx-auto max-w-screen-xl px-4">
+    <div className="py-8 mx-auto max-w-screen-xl px-4">
       <ul className="offer-ul flex no-underline mb-3">
         <li>
-          <Link>Releted Productc</Link>
+          <Link>Releted Product</Link>
         </li>
       </ul>
       <div className="grid lg:grid-cols-5 md:grid-cols-3 gap-5  sm:grid-cols-2 ">
-        {books?.map((book, index) => (
+        {books?.slice(0, 6).map((book, index) => (
           <div
             key={index}
             className="flex  md:h-64 h-56 w-full hover:border- hover:shadow-xl  duration-300  border  relative"

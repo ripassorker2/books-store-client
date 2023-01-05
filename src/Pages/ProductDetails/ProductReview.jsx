@@ -130,10 +130,17 @@ const ProductReview = ({ details }) => {
           <Link>Reviews</Link>
         </li>
       </ul>
-
-      {reviews.map((review, i) => (
-        <Review key={i} review={review}></Review>
-      ))}
+      {reviews.length > 0 ? (
+        <div>
+          {reviews.map((review, i) => (
+            <Review key={i} review={review}></Review>
+          ))}
+        </div>
+      ) : (
+        <>
+          <p>No review available!!</p>
+        </>
+      )}
     </div>
   );
 };
