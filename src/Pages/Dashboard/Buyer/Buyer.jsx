@@ -21,8 +21,6 @@ const Buyer = () => {
       }).then((res) => res.json()),
   });
 
-  console.log(buyers);
-
   const handleDelete = (id) => {
     const aggre = window.confirm("Are sure ?You want to delete this buyer?");
     if (aggre) {
@@ -48,11 +46,7 @@ const Buyer = () => {
   }
   return (
     <>
-      {buyers.lenght <= 0 ? (
-        <div className="flex justify-center items-center min-h-fit pt-20">
-          <p className="text-4xl font-semibold text-red-600">No data to show</p>
-        </div>
-      ) : (
+      {!buyers ? (
         <div>
           <h1 className="text-3xl font-semibold mb-4">Buyer</h1>
           <div>
@@ -62,7 +56,6 @@ const Buyer = () => {
               <p className="border p-3">Email</p>
               <p className="border p-3">Delete</p>
             </div>
-            {/* data */}
 
             {buyers?.map((buyer) => (
               <>
@@ -93,6 +86,10 @@ const Buyer = () => {
               </>
             ))}
           </div>
+        </div>
+      ) : (
+        <div className="flex justify-center items-center h-screen">
+          <p className="text-4xl font-semibold text-red-600">No data to show</p>
         </div>
       )}
     </>

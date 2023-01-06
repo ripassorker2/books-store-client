@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import './Banner.css'
+import React, { useEffect, useState } from "react";
+import "./Banner.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./Banner.css";
 import { Autoplay, Pagination, Navigation } from "swiper";
-import BannerItem from './BannerItem';
+import BannerItem from "./BannerItem";
 
 const Banner = () => {
   const [product, setProduct] = useState([]);
@@ -22,7 +22,7 @@ const Banner = () => {
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
-          delay: 3000,
+          delay: 4000,
           disableOnInteraction: false,
         }}
         pagination={{

@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const BannerItem = ({ products }) => {
-  const { picture, category, id } = products;
+  const { picture, category } = products;
   return (
     <>
-      <div className="first_slide">
+      <div className="first_slide md:py-6">
         <div className="slide_details">
           <h1>{category}</h1>
           <p>
@@ -17,7 +17,7 @@ const BannerItem = ({ products }) => {
           </Link>
         </div>
         <div className="slide-img">
-          <img className='slider_img' src={picture} alt="img" />
+          <img className="slider_img" src={picture} alt="img" />
         </div>
       </div>
     </>

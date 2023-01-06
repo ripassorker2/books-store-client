@@ -29,8 +29,8 @@ const HotSell = () => {
 
   return (
     <>
-      <div className="mb-8 mx-6 mt-5">
-        <div className=" max-w-screen-xl  m-auto border p-2">
+      <div className="mb-8 mx-6 mt-10">
+        <div className=" max-w-screen-xl  m-auto  p-2">
           <ul className="flex justify-center md:justify-end lg:justify-end offer-ul no-underline">
             <li>
               <Link

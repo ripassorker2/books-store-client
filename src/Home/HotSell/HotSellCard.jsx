@@ -26,9 +26,10 @@ const HotSellCard = ({ book }) => {
             >
               ${book?.price}.00
             </p>
-            <Link to={`/detailsPage/${book?._id}`}
+            <Link
+              to={`/detailsPage/${book?._id}`}
               className="px-2 py-1 absolute bottom-4 right-4 text-gray-100 bg-[#fc3333] 
-            hover:bg-purple-600  text-sm font-semibold rounded-md duration-300 "
+            hover:bg-red-600  text-sm font-semibold rounded-md duration-300 "
             >
               Details
             </Link>

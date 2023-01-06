@@ -5,7 +5,7 @@ import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import { MdDelete } from "react-icons/md";
 import useCartProducts from "../../Hooks/useCartProducts";
 
-const WhistListCard = ({ product, setRefresh }) => {
+const WhistListCard = ({ product, refetch }) => {
   const { user } = useContext(AuthContext);
   const { _id, title, price, status, photo, category, description } = product;
 
@@ -21,7 +21,7 @@ const WhistListCard = ({ product, setRefresh }) => {
         .then((data) => {
           if (data.deletedCount) {
             toast.success("Succesfully Removed!!");
-            setRefresh(true);
+            refetch();
           }
         })
         .catch((err) => console.error(err));

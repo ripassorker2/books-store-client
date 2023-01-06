@@ -13,8 +13,7 @@ const ProductDetails = () => {
   const { _id, photo, title, category, description, price, status } = details;
   const { pathname } = useLocation();
   const [isRole] = useRole(user?.email);
-  console.log(user);
-  console.log(isRole);
+
   const handleAddWhisList = () => {
     const wishListData = {
       id: _id,
